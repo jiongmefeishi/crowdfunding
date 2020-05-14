@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="crowdfunding03-admin-component" />
         <module name="crowdfunding02-admin-webui" />
       </profile>
     </annotationProcessing>
