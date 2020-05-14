@@ -2,15 +2,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>crowdfunding01-admin-parent</artifactId>
+        <groupId>com.zqt.crowd</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <packaging>war</packaging>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.zqt.crowd</groupId>
-    <artifactId>crowdfunding01-admin-parent</artifactId>
-    <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
-    <modules>
-        <module>crowdfunding02-admin-webui</module>
-    </modules>
+    <artifactId>crowdfunding02-admin-webui</artifactId>
 
 
 </project>
