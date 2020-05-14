@@ -11,6 +11,7 @@
     <modules>
         <module>crowdfunding02-admin-webui</module>
         <module>crowdfunding03-admin-component</module>
+        <module>crowdfunding04-admin-entity</module>
     </modules>
 
 
