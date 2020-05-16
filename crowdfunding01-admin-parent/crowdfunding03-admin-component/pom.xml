@@ -11,5 +11,24 @@
 
     <artifactId>crowdfunding03-admin-component</artifactId>
 
+    <dependencies>
+        <!-- component依赖模块util和模块entity -->
+        <dependency>
+            <groupId>com.zqt.crowd</groupId>
+            <artifactId>crowdfunding04-admin-entity</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.zqt.crowd</groupId>
+            <artifactId>crowdfunding05-common-util</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
 
+        <!-- 依赖MyBatis核心包 -->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.2.8</version>
+        </dependency>
+    </dependencies>
 </project>

@@ -13,4 +13,15 @@
     <artifactId>crowdfunding02-admin-webui</artifactId>
 
 
+    <dependencies>
+        <!-- 模块webui 依赖模块component -->
+        <dependency>
+            <groupId>com.zqt.crowd</groupId>
+            <artifactId>crowdfunding03-admin-component</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+    </dependencies>
+
+
 </project>
