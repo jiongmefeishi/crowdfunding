@@ -2,6 +2,7 @@ package com.zqt.crowd;
 
 import com.zqt.crowd.entity.Admin;
 import com.zqt.crowd.mapper.AdminMapper;
+import com.zqt.crowd.service.api.AdminService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,8 @@ import java.sql.SQLException;
 // spring 整合Junit注解
 @RunWith(SpringJUnit4ClassRunner.class)
 // spring和mybatis配置文件
-@ContextConfiguration(locations = {"classpath:spring-persist-mybatis.xml"})
+@ContextConfiguration(locations = {"classpath:spring-persist-mybatis.xml",
+        "classpath:spring-persist-transaction.xml"})
 public class CrowdTest {
 
     @Autowired
@@ -30,11 +32,13 @@ public class CrowdTest {
     @Autowired
     private AdminMapper adminMapper;
 
+    @Autowired
+    private AdminService adminService;
+
     @Test
     public void testInsertAdmin() {
-        Admin admin = new Admin(null, "jerry", "123456", "杰瑞", "jerry@qq.com", null);
-        int insert = adminMapper.insert(admin);
-        System.out.println("影响行数：" + insert);
+        Admin admin = new Admin(null, "tom", "33333", "汤姆", "tom@qq.com", null);
+       adminService.saveAdmin(admin);
     }
 
     @Test

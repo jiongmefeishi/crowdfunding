@@ -6,6 +6,8 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
 	<!-- Spring 和 Mybatis 整合文件 persist（持久化）-->
+
+
 	<!-- 加载外部属性配置文件 mysql相关 jdbc.properties -->
 	<context:property-placeholder location="classpath:jdbc.properties"/>
 
