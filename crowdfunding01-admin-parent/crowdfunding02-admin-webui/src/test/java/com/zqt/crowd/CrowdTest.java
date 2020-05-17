@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import javax.sound.midi.Soundbank;
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -35,7 +34,7 @@ public class CrowdTest {
     public void testInsertAdmin() {
         Admin admin = new Admin(null, "jerry", "123456", "杰瑞", "jerry@qq.com", null);
         int insert = adminMapper.insert(admin);
-        System.out.println(insert);
+        System.out.println("影响行数：" + insert);
     }
 
     @Test
