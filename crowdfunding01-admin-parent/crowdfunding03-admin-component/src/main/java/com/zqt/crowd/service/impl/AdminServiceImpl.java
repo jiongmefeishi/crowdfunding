@@ -1,6 +1,7 @@
 package com.zqt.crowd.service.impl;
 
 import com.zqt.crowd.entity.Admin;
+import com.zqt.crowd.entity.AdminExample;
 import com.zqt.crowd.mapper.AdminMapper;
 import com.zqt.crowd.service.api.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,8 @@ public class AdminServiceImpl implements AdminService {
     }
 
     public List<Admin> getAll() {
-        return null;
+//        空Example就是查全部
+        List<Admin> adminList = adminMapper.selectByExample(new AdminExample());
+        return adminList;
     }
 }
