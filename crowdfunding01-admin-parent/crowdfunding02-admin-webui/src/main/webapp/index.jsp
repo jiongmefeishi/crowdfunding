@@ -12,6 +12,33 @@
 </head>
 <!-- http://localhost:8080/atcrowdfunding02-admin-webui/test/ssm.html -->
 <base href="http://${pageContext.request.serverName }:${pageContext.request.serverPort }${pageContext.request.contextPath }/"/>
+<%-- 引入jQuery支持 --%>
+<script type="text/javascript" src="jquery/jquery-2.1.1.min.js"></script>
+
+<script type="text/javascript">
+    $(function () {
+        $("#btn1").click(function () {
+
+            $.ajax({
+                "url": "send/array/one.html",
+                "type": "post",
+                //    要发送的参数
+                "data": {
+                    "array": [5, 8, 12, 13]
+                },
+                "dataType": "text",
+                "success": function (response) {
+                    // 服务器端成功处理请求后调用的回调函数，response是响应体数据
+                    alert(response);
+                },
+                "error": function (response) {
+                    // 服务器端处理请求失败后调用的回调函数，response是响应体数据
+                    alert(response);
+                }
+            });
+        });
+    });
+</script>
 <body>
 <%--
     1、因为配置了servlet的请求拦截 url-pattern 的*.html 扩展名
@@ -29,5 +56,11 @@
     可以替换为
  --%>
 <a href="test/ssm.html">测试SSM整合</a>
+
+<%--测试接收JSON请求--%>
+<br/>
+<br/>
+<button id="btn1">Send [5,8,12] One</button>
+
 </body>
 </html>
