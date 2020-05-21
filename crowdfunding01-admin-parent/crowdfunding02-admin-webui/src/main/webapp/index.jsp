@@ -17,6 +17,54 @@
 
 <script type="text/javascript">
     $(function () {
+
+        $("#btn4").click(function () {
+
+            // 准备要发送的数据
+            var student = {
+                "stuId": 5,
+                "stuName": "tom",
+                "address": {
+                    "province": "广东",
+                    "city": "深圳",
+                    "street": "后瑞"
+                },
+                "subjectList": [
+                    {
+                        "subjectName": "JavaSE",
+                        "subjectScore": 100
+                    }, {
+                        "subjectName": "SSM",
+                        "subjectScore": 99
+                    }
+                ],
+                "map": {
+                    "k1": "v1",
+                    "k2": "v2"
+                }
+            };
+
+            // 将JSON对象转换为JSON字符串
+            var requestBody = JSON.stringify(student);
+
+            // 发送Ajax请求
+            $.ajax({
+                "url": "send/compose/object.json",
+                "type": "post",
+                "data": requestBody,
+                "contentType": "application/json;charset=UTF-8",
+                "dataType": "json",
+                "success": function (response) {
+                    console.log(response);
+                },
+                "error": function (response) {
+                    console.log(response);
+                }
+            });
+
+        });
+
+
         $("#btn1").click(function () {
 
             $.ajax({
@@ -61,6 +109,10 @@
 <br/>
 <br/>
 <button id="btn1">Send [5,8,12] One</button>
+
+<br/>
+<br/>
+<button id="btn4">Send Compose Object</button>
 
 </body>
 </html>
