@@ -25,14 +25,14 @@
 
     <style>
     </style>
-    <title>众筹</title>
+    <title>爱众筹</title>
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
             <div>
-                <a class="navbar-brand" href="index.html" style="font-size: 32px;">众筹-创意产品众筹平台</a>
+                <a class="navbar-brand" href="index.html" style="font-size: 32px;">爱众筹-创意产品众筹平台</a>
             </div>
         </div>
     </div>
