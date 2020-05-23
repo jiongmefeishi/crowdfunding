@@ -1,6 +1,7 @@
 package com.zqt.crowd.mvc.config;
 
 import com.google.gson.Gson;
+import com.zqt.crowd.exception.AccessForbiddenException;
 import com.zqt.crowd.util.JudgeRequestTypeUtil;
 import com.zqt.crowd.util.ResultEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -20,6 +21,21 @@ import java.io.IOException;
 // @ControllerAdvice表示当前类是一个基于注解的异常处理器类
 @ControllerAdvice
 public class BaseAnnotationExceptionResolver {
+
+    /**
+     * 自定义访问控制异常
+     */
+    @ExceptionHandler(value = AccessForbiddenException.class)
+    public ModelAndView resolveAccessForbiddenException(
+            AccessForbiddenException exception,
+            HttpServletRequest request,
+            HttpServletResponse response
+    ) throws IOException {
+
+        String viewName = "admin-login";
+        return commonResolve(viewName, exception, request, response);
+    }
+
     /**
      * 自定义数学异常映射
      *
