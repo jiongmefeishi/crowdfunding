@@ -22,6 +22,28 @@ public class AdminController {
     @Autowired
     private AdminService adminService;
 
+    /**
+     * 注销
+     * @param session session
+     * @return 重定向到登录页面
+     */
+    @RequestMapping("/admin/do/logout.html")
+    public String doLogout(HttpSession session) {
+
+        // 强制Session失效
+        session.invalidate();
+
+        return "redirect:/admin/to/login/page.html";
+    }
+
+
+    /**
+     * 登录
+     * @param loginAcct 登录账户
+     * @param userPswd 登录密码
+     * @param session session
+     * @return 重定向到主页
+     */
     @RequestMapping("/admin/do/login.html")
     public String doLogin(
             @RequestParam("loginAcct") String loginAcct,
