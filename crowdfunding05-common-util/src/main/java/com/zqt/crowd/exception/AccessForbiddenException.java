@@ -7,6 +7,9 @@ package com.zqt.crowd.exception;
  * @version: 1.0
  */
 public class AccessForbiddenException extends RuntimeException{
+
+
+
     public AccessForbiddenException() {
     }
 

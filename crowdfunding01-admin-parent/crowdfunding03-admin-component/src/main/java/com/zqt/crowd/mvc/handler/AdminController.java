@@ -1,10 +1,12 @@
 package com.zqt.crowd.mvc.handler;
 
+import com.github.pagehelper.PageInfo;
 import com.zqt.crowd.constant.CommonConstant;
 import com.zqt.crowd.entity.Admin;
 import com.zqt.crowd.service.api.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -24,6 +26,7 @@ public class AdminController {
 
     /**
      * 注销
+     *
      * @param session session
      * @return 重定向到登录页面
      */
@@ -39,9 +42,10 @@ public class AdminController {
 
     /**
      * 登录
+     *
      * @param loginAcct 登录账户
-     * @param userPswd 登录密码
-     * @param session session
+     * @param userPswd  登录密码
+     * @param session   session
      * @return 重定向到主页
      */
     @RequestMapping("/admin/do/login.html")
@@ -60,5 +64,37 @@ public class AdminController {
         session.setAttribute(CommonConstant.ATTR_NAME_LOGIN_ADMIN, admin);
 
         return "redirect:/admin/to/main/page.html";
+    }
+
+    /**
+     * 获取用户信息
+     *
+     * @param keyword  查询条件关键词
+     * @param pageNum  页码
+     * @param pageSize 每页记录数
+     * @param modelMap 存放记录
+     * @return
+     */
+    @RequestMapping("/admin/get/page.html")
+    public String getPageInfo(
+            // 使用@RequestParam注解的defaultValue属性，指定默认值，在请求中没有携带对应参数时使用默认值
+            // keyword默认值使用空字符串，和SQL语句配合实现两种情况适配
+            @RequestParam(value = "keyword", defaultValue = "") String keyword,
+
+            // pageNum默认值使用1
+            @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,
+
+            // pageSize默认值使用5
+            @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
+
+            ModelMap modelMap) {
+
+        // 调用Service方法获取PageInfo对象
+        PageInfo<Admin> pageInfo = adminService.getPageInfo(keyword, pageNum, pageSize);
+
+        // 将PageInfo对象存入模型
+        modelMap.addAttribute(CommonConstant.ATTR_NAME_PAGE_INFO, pageInfo);
+
+        return "admin-page";
     }
 }

@@ -1,5 +1,7 @@
 package com.zqt.crowd.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.zqt.crowd.constant.CommonConstant;
 import com.zqt.crowd.entity.Admin;
 import com.zqt.crowd.entity.AdminExample;
@@ -68,5 +70,20 @@ public class AdminServiceImpl implements AdminService {
             throw new LoginFailedException(CommonConstant.MESSAGE_LOGIN_FAILED);
         // 8、一致，返回
         return admin;
+    }
+
+    @Override
+    public PageInfo<Admin> getPageInfo(String keyword, Integer pageNum, Integer pageSize) {
+
+        // 1、调用PageHelper的startPage() 方法开启分页功能
+        // 这里充分体现了PageHelper的“非侵入式”设计：原本要做的查询不必有任何修改
+        PageHelper.startPage(pageNum, pageSize);
+
+        // 2、执行查询
+        List<Admin> adminList = adminMapper.selectAdminByKeyword(keyword);
+
+        // 3、将List封装到PageInfo对象中
+        return new PageInfo<>(adminList);
+
     }
 }
