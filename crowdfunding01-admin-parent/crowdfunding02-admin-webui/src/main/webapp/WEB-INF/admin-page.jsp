@@ -15,6 +15,54 @@
 <%-- 加载公共头部 --%>
 <%@include file="/WEB-INF/include-head.jsp" %>
 
+<%-- 引入分页插件样式 --%>
+<link rel="stylesheet" href="css/pagination.css"/>
+<%-- 引入分页插件js --%>
+<script type="text/javascript" src="jquery/jquery.pagination.js"></script>
+<script type="text/javascript">
+
+    $(function () {
+        // 调用后面声明的函数对页码导航条进行初始化操作
+        initPagination();
+    });
+
+    // 声明页码导航条初始化函数
+    function initPagination() {
+
+        // 获取总记录数
+        var totalRecord = ${requestScope.pageInfo.total};
+
+        // 声明一个 JSON对象存储Pagination 要设置的属性
+        var properties = {
+            num_edge_entries: 3,								// 边缘页数
+            num_display_entries: 5,								// 主体页数
+            callback: pageSelectCallback,						// 指定用户点击“翻页”的按钮时跳转页面的回调函数
+            items_per_page: ${requestScope.pageInfo.pageSize},	// 每页要显示的数据的数量
+            current_page: ${requestScope.pageInfo.pageNum - 1},	// Pagination内部使用pageIndex来管理页码，pageIndex从0开始，pageNum从1开始，所以要减一
+            prev_text: "上一页",									// 上一页按钮上显示的文本
+            next_text: "下一页"									// 下一页按钮上显示的文本
+        };
+
+        // 生成页码导航条
+        $("#Pagination").pagination(totalRecord, properties);
+
+
+        // 声明一个回调函数
+        // 回调函数的含义：声明出来以后不是自己调用，而是交给系统或框架调用
+        // 用户点击“上一页、下一页、1、2、3……”这样的页码时调用这个函数实现页面跳转
+        // pageIndex是Pagination传给我们的那个“从0开始”的页码
+        function pageSelectCallback(pageIndex, jQuery) {
+            // 根据pageIndex计算得到pageNum
+            var pageNum = pageIndex + 1;
+
+            // 跳转页面
+            window.location.href = "admin/get/page.html?pageNum=" + pageNum + "&keyword=${param.keyword}";
+
+            // 由于每一个页码按钮都是超链接，所以在这个函数最后取消超链接的默认行为
+            return false;
+        }
+    }
+</script>
 <body>
 
 <%-- 加载公共导航栏 --%>
@@ -98,16 +146,7 @@
                             <tfoot>
                             <tr>
                                 <td colspan="6" align="center">
-                                    <ul class="pagination">
-                                        <li class="disabled"><a href="#">上一页</a></li>
-                                        <li class="active"><a href="#">1 <span
-                                                class="sr-only">(current)</span></a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#">4</a></li>
-                                        <li><a href="#">5</a></li>
-                                        <li><a href="#">下一页</a></li>
-                                    </ul>
+                                    <div id="Pagination" class="pagination"><!-- 这里显示分页 --></div>
                                 </td>
                             </tr>
 
