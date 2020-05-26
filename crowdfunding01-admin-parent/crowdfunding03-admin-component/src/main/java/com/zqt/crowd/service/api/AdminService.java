@@ -20,10 +20,17 @@ public interface AdminService {
 
     /**
      * 分页查询 Admin 记录
-     * @param keyword 查询关键词
-     * @param pageNum 页码
+     *
+     * @param keyword  查询关键词
+     * @param pageNum  页码
      * @param pageSize 每页的数量，记录条数
      * @return PageInfo<Admin>
      */
     PageInfo<Admin> getPageInfo(String keyword, Integer pageNum, Integer pageSize);
+
+    /**
+     * 根据 admin ID 删除一条记录
+     * @param adminId 用户ID
+     */
+    void remove(Integer adminId);
 }

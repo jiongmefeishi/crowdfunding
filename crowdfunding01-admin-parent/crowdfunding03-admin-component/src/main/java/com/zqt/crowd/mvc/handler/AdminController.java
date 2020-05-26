@@ -4,9 +4,11 @@ import com.github.pagehelper.PageInfo;
 import com.zqt.crowd.constant.CommonConstant;
 import com.zqt.crowd.entity.Admin;
 import com.zqt.crowd.service.api.AdminService;
+import org.omg.Dynamic.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -96,5 +98,16 @@ public class AdminController {
         modelMap.addAttribute(CommonConstant.ATTR_NAME_PAGE_INFO, pageInfo);
 
         return "admin-page";
+    }
+
+    @RequestMapping("/admin/remove/{adminId}/{pageNum}/{keyword}.html")
+    public String remove(
+            @PathVariable("adminId") Integer adminId,
+            @PathVariable("pageNum") Integer pageNum,
+            @PathVariable("keyword") Integer keyword
+    ) {
+
+        // 执行删除
+        adminService.remove(adminId);
     }
 }

@@ -81,7 +81,8 @@
                     </h3>
                 </div>
                 <div class="panel-body">
-                    <form action="admin/get/page.html" method="post" class="form-inline" role="form" style="float: left;">
+                    <form action="admin/get/page.html" method="post" class="form-inline" role="form"
+                          style="float: left;">
                         <div class="form-group has-feedback">
                             <div class="input-group">
                                 <div class="input-group-addon">查询条件</div>
@@ -136,9 +137,11 @@
                                             <button type="button" class="btn btn-primary btn-xs">
                                                 <i class=" glyphicon glyphicon-pencil"></i>
                                             </button>
-                                            <button type="button" class="btn btn-danger btn-xs">
+                                            <%-- 标签中删除一条数据按钮 --%>
+                                            <a href="admin/remove/${admin.id }/${requestScope.pageInfo.pageNum }/${param.keyword }.html"
+                                               class="btn btn-danger btn-xs">
                                                 <i class=" glyphicon glyphicon-remove"></i>
-                                            </button>
+                                            </a>
                                         </td>
                                     </tr>
                                 </c:forEach>
