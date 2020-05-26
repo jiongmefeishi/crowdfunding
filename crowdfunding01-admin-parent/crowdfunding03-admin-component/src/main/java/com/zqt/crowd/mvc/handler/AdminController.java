@@ -4,6 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.zqt.crowd.constant.CommonConstant;
 import com.zqt.crowd.entity.Admin;
 import com.zqt.crowd.service.api.AdminService;
+import com.zqt.crowd.util.MD5Util;
 import org.omg.Dynamic.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -104,8 +105,15 @@ public class AdminController {
     public String remove(
             @PathVariable("adminId") Integer adminId,
             @PathVariable("pageNum") Integer pageNum,
-            @PathVariable("keyword") Integer keyword
+            @PathVariable("keyword") String keyword,
+            HttpSession session
     ) {
+
+        // 获取当前登录用户 ID
+        Admin admin = (Admin) session.getAttribute(CommonConstant.ATTR_NAME_LOGIN_ADMIN);
+        Integer currentUserId = admin.getId();
+        if (adminId.equals(currentUserId))
+            throw new RuntimeException("非法操作：请勿删除自己");
 
         // 执行删除
         adminService.remove(adminId);
