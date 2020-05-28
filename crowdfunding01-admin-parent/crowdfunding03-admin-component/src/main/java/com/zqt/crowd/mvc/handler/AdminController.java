@@ -127,6 +127,16 @@ public class AdminController {
 
         // 尝试方案3：重定向到/admin/get/page.html地址
         // 同时为了保持原本所在的页面和查询关键词再附加pageNum和keyword两个请求参数
-        return "redirect:/admin/get/page.html?pageNum="+pageNum+"&keyword="+keyword;
+        return "redirect:/admin/get/page.html?pageNum=" + pageNum + "&keyword=" + keyword;
     }
+
+    @RequestMapping("/admin/save.html")
+    public String addAdmin(Admin admin) {
+        // 执行保存
+        adminService.saveAdmin(admin);
+        // 重定向到分页页面，使用重定向是为了避免刷新浏览器重复提交表单
+        return "redirect:/admin/get/page.html?pageNum=" + Integer.MAX_VALUE;
+    }
+
+
 }

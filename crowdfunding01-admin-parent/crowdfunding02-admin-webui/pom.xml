@@ -26,6 +26,7 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
             <scope>test</scope>
+            <!-- 引入的是logback 日志框架，排除spring 本身commons-logging 不然会报错 -->
             <exclusions>
                 <exclusion>
                     <groupId>commons-logging</groupId>

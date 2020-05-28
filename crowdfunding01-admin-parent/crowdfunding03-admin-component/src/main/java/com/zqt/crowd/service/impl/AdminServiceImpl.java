@@ -5,11 +5,14 @@ import com.github.pagehelper.PageInfo;
 import com.zqt.crowd.constant.CommonConstant;
 import com.zqt.crowd.entity.Admin;
 import com.zqt.crowd.entity.AdminExample;
+import com.zqt.crowd.exception.LoginAcctAlreadyInUseException;
 import com.zqt.crowd.exception.LoginFailedException;
 import com.zqt.crowd.mapper.AdminMapper;
 import com.zqt.crowd.service.api.AdminService;
+import com.zqt.crowd.util.DateUtil;
 import com.zqt.crowd.util.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,7 +31,29 @@ public class AdminServiceImpl implements AdminService {
     private AdminMapper adminMapper;
 
     public void saveAdmin(Admin admin) {
-        int insert = adminMapper.insert(admin);
+        // 获取系统时间
+        String createTime = DateUtil.getDate();
+        admin.setCreateTime(createTime);
+
+        // 登录密码加密
+        String userPswd = admin.getUserPswd();
+        String encoded = MD5Util.md5(userPswd);
+        admin.setUserPswd(encoded);
+
+        // 执行保存，如果账户被占用，跑出异常
+        try {
+            adminMapper.insert(admin);
+        } catch (Exception e) {
+            e.printStackTrace();
+            // 检测当前捕获的异常对象，如果是 DuplicateKeyException 类型说明是账号重复导致的
+            if (e instanceof DuplicateKeyException) {
+                // 抛出自定义的 LoginAcctAlreadyInUseException 异常
+                throw new LoginAcctAlreadyInUseException(CommonConstant.MESSAGE_LOGIN_ACCT_ALREADY_IN_USE);
+            }
+            // 为了不掩盖问题，如果当前捕获到的不是 DuplicateKeyException 类型的异常，
+            // 则把当前捕获到的异常对象继续向上抛出
+            throw e;
+        }
     }
 
     public List<Admin> getAll() {

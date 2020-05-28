@@ -8,7 +8,7 @@ package com.zqt.crowd.exception;
  */
 public class AccessForbiddenException extends RuntimeException{
 
-
+    static final long serialVersionUID = 1L;
 
     public AccessForbiddenException() {
     }

@@ -2,6 +2,7 @@ package com.zqt.crowd.mvc.config;
 
 import com.google.gson.Gson;
 import com.zqt.crowd.exception.AccessForbiddenException;
+import com.zqt.crowd.exception.LoginAcctAlreadyInUseException;
 import com.zqt.crowd.util.JudgeRequestTypeUtil;
 import com.zqt.crowd.util.ResultEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -23,7 +24,21 @@ import java.io.IOException;
 public class BaseAnnotationExceptionResolver {
 
     /**
-     * 自定义访问控制异常
+     * 自定义账号重复异常注解处理器
+     */
+    // @ExceptionHandler 注解将一个具体的异常类型和此方法关联
+    @ExceptionHandler(value = LoginAcctAlreadyInUseException.class)
+    public ModelAndView resolveLoginAcctAlreadyInUseException(
+            LoginAcctAlreadyInUseException exception,
+            HttpServletRequest request,
+            HttpServletResponse response
+    ) throws IOException {
+        String viewName = "system-error";
+        return commonResolve(viewName, exception, request, response);
+    }
+
+    /**
+     * 自定义访问控制异常注解处理器
      */
     @ExceptionHandler(value = AccessForbiddenException.class)
     public ModelAndView resolveAccessForbiddenException(
@@ -37,7 +52,7 @@ public class BaseAnnotationExceptionResolver {
     }
 
     /**
-     * 自定义数学异常映射
+     * 自定义数学异常映射注解处理器
      *
      * @param exception ArithmeticException
      */
