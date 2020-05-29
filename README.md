@@ -3,40 +3,102 @@
 
 众筹平台，由发起人、跟投人、平台构成。具有低门槛、多样性、依靠大众力量、注重创意的特征，是指一种向群众募资，以支持发起的个人或组织的行为。一般而言是透过网络上的平台连结起赞助者与提案者。
 
+### 开发工具
 
+| 工具         | 版本                      |
+| :----------- | :------------------------ |
+| IDEA         | 2019                      |
+| 本地开发系统 | window10 家庭版           |
+| 线上测试系统 | Linux centos7  / Ubuntu19 |
+|              |                           |
 
 **《更新》**
 
+**【2020/5/29】**
+
+| 更新内容操作 | 更新描述                 |
+| :----------: | ------------------------ |
+|     [+]      | 管理员登录               |
+|     [+]      | 管理用户分页查询         |
+|     [+]      | 管理用户新增、删除、更新 |
+
 **【2020/5/20】**
 
-[+] 整合SpringMVC
-
-[+] 配置Ajax请求返回格式
-
-[+] 配置异常映射
+| 更新内容操作 | 更新描述             |
+| :----------: | -------------------- |
+|     [+]      | 整合SpringMVC        |
+|     [+]      | 配置Ajax请求返回格式 |
+|     [+]      | 配置异常映射机制     |
 
 **【2020/5/17】**
 
-[+] Spring集成日志系统 增加配置 logback.xml
-
-[+] Spring事务配置-声明式事务
+| 更新内容操作 | 更新描述                                |
+| :----------: | --------------------------------------- |
+|     [+]      | Spring集成日志系统 增加配置 logback.xml |
+|     [+]      | Spring事务配置-声明式事务               |
 
 **【2020/5/16】**
 
-[+] 更新子工程crowdfunding06-common-reverse  mybatis逆向工程
-
-[+] 整合spring+mybatis
+| 更新内容操作 | 更新描述                                                 |
+| :----------: | -------------------------------------------------------- |
+|     [+]      | 更新子工程crowdfunding06-common-reverse  mybatis逆向工程 |
+|     [+]      | 整合spring+mybatis                                       |
 
 **【2020/5/14】**
 
-[+] 父工程 crowdfunding01-admin-parent
+| 更新内容操作 | 更新描述                               |
+| :----------: | :------------------------------------- |
+|     [+]      | 父工程 crowdfunding01-admin-parent     |
+|     [+]      | 子工程 crowdfunding02-admin-webui      |
+|     [+]      | 子工程 crowdfunding03-admin-component  |
+|     [+]      | 子工程 crowdfunding04-admin-entity     |
+|     [+]      | 辅助工程 crowdfunding05-common-util    |
+|     [+]      | 辅助工程 crowdfunding06-common-reverse |
 
-[+] 子工程 crowdfunding02-admin-webui
+**【工程说明】**
 
-[+] 子工程 crowdfunding03-admin-component
+**1、工程依赖关系说明**
 
-[+] 子工程 crowdfunding04-admin-entity
+1. parent工程管理依赖控制版本
+2. webui继承parent，依赖于component
+3. component继承parent，依赖于util和entity
+4. entity继承parent
+5. util和reverse 都是独立工程，不参与继承，聚合
 
-[+] 辅助工程 crowdfunding05-common-util
+**2、工程各自职责说明**
 
-[+] 辅助工程 crowdfunding06-common-reverse
+**父工程 crowdfunding01-admin-parent**
+
+1. 统一的依赖管理，去重，控制版本、控制插件的版本
+2. 聚合工程
+
+**子工程 crowdfunding02-admin-webui**
+
+1. 项目工程运行的核心，只运行此war包工程
+2. 所有mybatis的xxxMapper.xml文件均在此工程下
+3. 所有的web配置项，web.xml，Spring等整合配置文件均在此工程下
+4. 所有的静态资源，js,css,html 均在此工程下
+
+**子工程 crowdfunding03-admin-component**
+
+  定义所有的功能性组件，如：
+
+- mapper接口
+- mvc.config配置项
+- mvc.handler控制器
+- mvc.interceptor拦截器
+- service 业务层
+
+**子工程 crowdfunding04-admin-entity**
+
+  定义所有的实体类
+
+**辅助工程 crowdfunding05-common-util**
+
+定义所有的辅助工具、常量类、自定义异常，如：
+
+1. 加密工具
+2. 时间工具
+3. 常量类
+4. 自定义异常
+
