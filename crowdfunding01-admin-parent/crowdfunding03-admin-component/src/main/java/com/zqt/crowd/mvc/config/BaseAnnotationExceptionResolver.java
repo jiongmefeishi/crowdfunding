@@ -33,7 +33,7 @@ public class BaseAnnotationExceptionResolver {
             HttpServletRequest request,
             HttpServletResponse response
     ) throws IOException {
-        String viewName = "system-error";
+        String viewName = "admin-add";
         return commonResolve(viewName, exception, request, response);
     }
 

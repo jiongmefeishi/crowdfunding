@@ -4,8 +4,6 @@ import com.github.pagehelper.PageInfo;
 import com.zqt.crowd.constant.CommonConstant;
 import com.zqt.crowd.entity.Admin;
 import com.zqt.crowd.service.api.AdminService;
-import com.zqt.crowd.util.MD5Util;
-import org.omg.Dynamic.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -84,10 +82,10 @@ public class AdminController {
             // keyword默认值使用空字符串，和SQL语句配合实现两种情况适配
             @RequestParam(value = "keyword", defaultValue = "") String keyword,
 
-            // pageNum默认值使用1
+            // pageNum默认值使用1，页码默认是第一页
             @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,
 
-            // pageSize默认值使用5
+            // pageSize默认值使用5，每页默认显示5条记录
             @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
 
             ModelMap modelMap) {
@@ -138,5 +136,48 @@ public class AdminController {
         return "redirect:/admin/get/page.html?pageNum=" + Integer.MAX_VALUE;
     }
 
+    /**
+     * 点击修改按钮，查询需要修改的Admin的信息，保存到ModelMap中，并转发到修改页面
+     *
+     * @param adminId 需要修改的目标Admin的 adminID
+     * @return 转发到修改页面
+     */
+    @RequestMapping("/admin/to/edit/page.html")
+    public String toEditPage(
+            @RequestParam("adminId") Integer adminId,
+            ModelMap modelMap
+    ) {
+
+        // 1、根据ID查询管理员信息
+        Admin admin = adminService.getAdminById(adminId);
+        // 2、封装到 ModelMap 中
+        modelMap.addAttribute("admin", admin);
+
+        return "admin-edit";
+    }
+
+    /**
+     * 更新admin 信息
+     *
+     * @param admin   需要更新的信息封装到Admin 对象
+     * @param pageNum 页码
+     * @param keyword 关键词
+     * @return
+     */
+    @RequestMapping("/admin/update.html")
+    public String update(
+            Admin admin,
+            @RequestParam("pageNum") Integer pageNum,
+            @RequestParam("keyword") String keyword
+    ) {
+
+        for (int i = 0; i < 20; i++) {
+            System.out.println(admin);
+        }
+
+        // 更新Admin 信息
+        adminService.update(admin);
+        return "redirect:/admin/get/page.html?pageNum=" + pageNum + "&keyword=" + keyword;
+    }
 
 }

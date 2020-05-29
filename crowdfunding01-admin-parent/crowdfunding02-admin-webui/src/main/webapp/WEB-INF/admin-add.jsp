@@ -49,7 +49,7 @@
                                 <label for="exampleInputPassword1">登录密码</label>
                                 <input
                                         name="userPswd"
-                                        type="text" class="form-control" id="exampleInputPassword1"
+                                        type="password" class="form-control" id="exampleInputPassword1"
                                         placeholder="请输入登录密码">
                             </div>
                             <div class="form-group">

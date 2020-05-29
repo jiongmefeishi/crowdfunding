@@ -116,4 +116,32 @@ public class AdminServiceImpl implements AdminService {
     public void remove(Integer adminId) {
         adminMapper.deleteByPrimaryKey(adminId);
     }
+
+    @Override
+    public Admin getAdminById(Integer adminId) {
+        return adminMapper.selectByPrimaryKey(adminId);
+    }
+
+    @Override
+    public void update(Admin admin) {
+
+        // 密码明文加密
+        String userPswd = admin.getUserPswd();
+        admin.setUserPswd(MD5Util.md5(userPswd));
+
+        try {
+            // Selective 表示选择性更新，对于 Admin对象中值为 null的不进行更新，只更新存在的字段
+            adminMapper.updateByPrimaryKeySelective(admin);
+        } catch (Exception e) {
+            // 检测当前捕获的异常对象，如果是 DuplicateKeyException 类型说明是账号重复导致的
+            if (e instanceof DuplicateKeyException) {
+                // 抛出自定义的 LoginAcctAlreadyInUseException 异常
+                throw new LoginAcctAlreadyInUseException(CommonConstant.MESSAGE_LOGIN_ACCT_ALREADY_IN_USE);
+            }
+            // 为了不掩盖问题，如果当前捕获到的不是 DuplicateKeyException 类型的异常，
+            // 则把当前捕获到的异常对象继续向上抛出
+            throw e;
+        }
+    }
+
 }

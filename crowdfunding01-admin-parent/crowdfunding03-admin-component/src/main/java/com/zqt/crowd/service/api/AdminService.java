@@ -33,4 +33,17 @@ public interface AdminService {
      * @param adminId 用户ID
      */
     void remove(Integer adminId);
+
+    /**
+     * 根据adminID 查询管理员记录
+     * @param adminId 管理员ID
+     * @return
+     */
+    Admin getAdminById(Integer adminId);
+
+    /**
+     * 根据用户信息更新信息
+     * @param admin 管理员新信息
+     */
+    void update(Admin admin);
 }

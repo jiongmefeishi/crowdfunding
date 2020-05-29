@@ -98,10 +98,10 @@
                             style="float: right; margin-left: 10px;">
                         <i class=" glyphicon glyphicon-remove"></i> 删除
                     </button>
-<%--                    <button type="button" class="btn btn-primary"--%>
-<%--                            style="float: right;" onclick="window.location.href='add.html'">--%>
-<%--                        <i class="glyphicon glyphicon-plus"></i> 新增--%>
-<%--                    </button>--%>
+                    <%--                    <button type="button" class="btn btn-primary"--%>
+                    <%--                            style="float: right;" onclick="window.location.href='add.html'">--%>
+                    <%--                        <i class="glyphicon glyphicon-plus"></i> 新增--%>
+                    <%--                    </button>--%>
 
                     <%-- 因为admin/to/add/page.html，新增按钮不需要携带数据
                      所以不需要写controller方法
@@ -143,9 +143,12 @@
                                             <button type="button" class="btn btn-success btn-xs">
                                                 <i class=" glyphicon glyphicon-check"></i>
                                             </button>
-                                            <button type="button" class="btn btn-primary btn-xs">
-                                                <i class=" glyphicon glyphicon-pencil"></i>
-                                            </button>
+
+                                                <%-- 修改按钮，带上参数是希望修改后回写 --%>
+                                            <a href="admin/to/edit/page.html?adminId=${admin.id }&pageNum=${requestScope.pageInfo.pageNum }&keyword=${param.keyword }"
+                                               class="btn btn-primary btn-xs"><i
+                                                    class=" glyphicon glyphicon-pencil"></i>
+                                            </a>
                                                 <%-- 标签中删除一条数据按钮 --%>
                                             <a href="admin/remove/${admin.id }/${requestScope.pageInfo.pageNum }/${param.keyword }.html"
                                                class="btn btn-danger btn-xs">
