@@ -1,7 +1,7 @@
 package com.zqt.crowd.mvc.interceptor;
 
 import com.zqt.crowd.constant.CommonConstant;
-import com.zqt.crowd.entity.Admin;
+import com.zqt.crowd.entity.admin.Admin;
 import com.zqt.crowd.exception.AccessForbiddenException;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 

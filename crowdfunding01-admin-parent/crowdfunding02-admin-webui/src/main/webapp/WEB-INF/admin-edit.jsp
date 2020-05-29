@@ -60,10 +60,10 @@
                         <div class="form-group">
                             <label for="exampleInputPassword1">登录密码</label>
                             <input
-                                    name="userName"
-                                    value="${requestScope.admin.userPswd }"
+                                    name="userPswd"
+                                    value=""
                                     type="password" class="form-control"
-                                    id="exampleInputPassword1" placeholder="请输入登录密码">
+                                    id="exampleInputPassword1" placeholder="如需修改，请输入新的登录密码">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">用户昵称</label>

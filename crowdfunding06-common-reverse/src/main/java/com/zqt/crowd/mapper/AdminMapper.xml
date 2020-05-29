@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.zqt.crowd.mapper.AdminMapper">
-    <resultMap id="BaseResultMap" type="com.zqt.crowd.entity.Admin">
+<mapper namespace="com.zqt.crowd.mapper.admin.AdminMapper">
+    <resultMap id="BaseResultMap" type="com.zqt.crowd.entity.admin.Admin">
         <id column="id" property="id" jdbcType="INTEGER"/>
         <result column="login_acct" property="loginAcct" jdbcType="VARCHAR"/>
         <result column="user_pswd" property="userPswd" jdbcType="CHAR"/>
@@ -72,7 +72,7 @@
     <sql id="Base_Column_List">
     id, login_acct, user_pswd, user_name, email, create_time
   </sql>
-    <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.zqt.crowd.entity.AdminExample">
+    <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.zqt.crowd.entity.admin.AdminExample">
         select
         <if test="distinct">
             distinct
@@ -96,13 +96,13 @@
     delete from t_admin
     where id = #{id,jdbcType=INTEGER}
   </delete>
-    <delete id="deleteByExample" parameterType="com.zqt.crowd.entity.AdminExample">
+    <delete id="deleteByExample" parameterType="com.zqt.crowd.entity.admin.AdminExample">
         delete from t_admin
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
         </if>
     </delete>
-    <insert id="insert" parameterType="com.zqt.crowd.entity.Admin">
+    <insert id="insert" parameterType="com.zqt.crowd.entity.admin.Admin">
     insert into t_admin (id, login_acct, user_pswd, 
       user_name, email, create_time
       )
@@ -110,7 +110,7 @@
       #{userName,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{createTime,jdbcType=CHAR}
       )
   </insert>
-    <insert id="insertSelective" parameterType="com.zqt.crowd.entity.Admin">
+    <insert id="insertSelective" parameterType="com.zqt.crowd.entity.admin.Admin">
         insert into t_admin
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -153,7 +153,7 @@
             </if>
         </trim>
     </insert>
-    <select id="countByExample" parameterType="com.zqt.crowd.entity.AdminExample" resultType="java.lang.Integer">
+    <select id="countByExample" parameterType="com.zqt.crowd.entity.admin.AdminExample" resultType="java.lang.Integer">
         select count(*) from t_admin
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
@@ -197,7 +197,7 @@
             <include refid="Update_By_Example_Where_Clause"/>
         </if>
     </update>
-    <update id="updateByPrimaryKeySelective" parameterType="com.zqt.crowd.entity.Admin">
+    <update id="updateByPrimaryKeySelective" parameterType="com.zqt.crowd.entity.admin.Admin">
         update t_admin
         <set>
             <if test="loginAcct != null">
@@ -218,7 +218,7 @@
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
-    <update id="updateByPrimaryKey" parameterType="com.zqt.crowd.entity.Admin">
+    <update id="updateByPrimaryKey" parameterType="com.zqt.crowd.entity.admin.Admin">
     update t_admin
     set login_acct = #{loginAcct,jdbcType=VARCHAR},
       user_pswd = #{userPswd,jdbcType=CHAR},

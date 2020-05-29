@@ -1,4 +1,4 @@
-package com.zqt.crowd.entity;
+package com.zqt.crowd.entity.admin;
 
 public class Admin {
     private Integer id;

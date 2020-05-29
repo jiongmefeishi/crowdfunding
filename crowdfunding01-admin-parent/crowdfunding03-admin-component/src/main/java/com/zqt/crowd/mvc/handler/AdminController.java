@@ -2,7 +2,7 @@ package com.zqt.crowd.mvc.handler;
 
 import com.github.pagehelper.PageInfo;
 import com.zqt.crowd.constant.CommonConstant;
-import com.zqt.crowd.entity.Admin;
+import com.zqt.crowd.entity.admin.Admin;
 import com.zqt.crowd.service.api.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

@@ -25,7 +25,8 @@
         <property name="configLocation" value="classpath:mybatis/mybatis-config.xml"/>
 
         <!-- 指定Mapper.xml配置文件位置 -->
-        <property name="mapperLocations" value="classpath:mybatis/mapper/xml/*Mapper.xml"/>
+        <!--<property name="mapperLocations" value="classpath:mybatis/mapper/xml/*Mapper.xml"/>-->
+        <property name="mapperLocations" value="classpath:mybatis/mapper/xml/**/*Mapper.xml"/>
 
         <!-- 装配数据源 -->
         <property name="dataSource" ref="dataSource"/>

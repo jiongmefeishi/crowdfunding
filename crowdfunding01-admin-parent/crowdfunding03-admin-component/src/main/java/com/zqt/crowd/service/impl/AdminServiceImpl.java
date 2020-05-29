@@ -3,11 +3,11 @@ package com.zqt.crowd.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.zqt.crowd.constant.CommonConstant;
-import com.zqt.crowd.entity.Admin;
-import com.zqt.crowd.entity.AdminExample;
+import com.zqt.crowd.entity.admin.Admin;
+import com.zqt.crowd.entity.admin.AdminExample;
 import com.zqt.crowd.exception.LoginAcctAlreadyInUseException;
 import com.zqt.crowd.exception.LoginFailedException;
-import com.zqt.crowd.mapper.AdminMapper;
+import com.zqt.crowd.mapper.admin.AdminMapper;
 import com.zqt.crowd.service.api.AdminService;
 import com.zqt.crowd.util.DateUtil;
 import com.zqt.crowd.util.MD5Util;
@@ -125,9 +125,11 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public void update(Admin admin) {
 
-        // 密码明文加密
-        String userPswd = admin.getUserPswd();
-        admin.setUserPswd(MD5Util.md5(userPswd));
+        // 密码明文加密，注意可能为修改，那么传值为空
+        if (!"".equals(admin.getUserPswd())) {
+            String userPswd = admin.getUserPswd();
+            admin.setUserPswd(MD5Util.md5(userPswd));
+        }
 
         try {
             // Selective 表示选择性更新，对于 Admin对象中值为 null的不进行更新，只更新存在的字段

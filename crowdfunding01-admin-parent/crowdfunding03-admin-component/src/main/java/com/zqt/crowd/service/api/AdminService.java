@@ -1,7 +1,7 @@
 package com.zqt.crowd.service.api;
 
 import com.github.pagehelper.PageInfo;
-import com.zqt.crowd.entity.Admin;
+import com.zqt.crowd.entity.admin.Admin;
 
 import java.util.List;
 

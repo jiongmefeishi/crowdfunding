@@ -1,7 +1,7 @@
-package com.zqt.crowd.mapper;
+package com.zqt.crowd.mapper.admin;
 
-import com.zqt.crowd.entity.Admin;
-import com.zqt.crowd.entity.AdminExample;
+import com.zqt.crowd.entity.admin.Admin;
+import com.zqt.crowd.entity.admin.AdminExample;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

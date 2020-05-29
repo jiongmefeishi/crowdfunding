@@ -1,7 +1,7 @@
 package com.zqt.crowd;
 
-import com.zqt.crowd.entity.Admin;
-import com.zqt.crowd.mapper.AdminMapper;
+import com.zqt.crowd.entity.admin.Admin;
+import com.zqt.crowd.mapper.admin.AdminMapper;
 import com.zqt.crowd.service.api.AdminService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
