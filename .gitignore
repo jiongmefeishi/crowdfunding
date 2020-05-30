@@ -1,10 +1,13 @@
 crowdfunding01-admin-parent/crowdfunding02-admin-webui/target/
 crowdfunding01-admin-parent/crowdfunding03-admin-component/target/
 crowdfunding01-admin-parent/crowdfunding04-admin-entity/target/
+crowdfunding05-common-util/target/
+crowdfunding06-common-reverse/target/
 
 crowdfunding01-admin-parent/.idea/
+crowdfunding05-common-util/.idea/
+crowdfunding06-common-reverse/.idea/
+
 crowdfunding01-admin-parent/crowdfunding02-admin-webui/src/test/
 
-crowdfunding06-common-reverse/target/
-crowdfunding05-common-util/target/
-
+*.iml
