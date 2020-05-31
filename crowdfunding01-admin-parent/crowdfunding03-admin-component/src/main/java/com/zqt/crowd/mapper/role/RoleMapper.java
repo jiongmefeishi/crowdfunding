@@ -1,7 +1,7 @@
-package com.zqt.crowd.mapper;
+package com.zqt.crowd.mapper.role;
 
-import com.zqt.crowd.entity.Role;
-import com.zqt.crowd.entity.RoleExample;
+import com.zqt.crowd.entity.role.Role;
+import com.zqt.crowd.entity.role.RoleExample;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

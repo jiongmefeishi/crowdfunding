@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.zqt.crowd.mapper.RoleMapper" >
-  <resultMap id="BaseResultMap" type="com.zqt.crowd.entity.Role" >
+<mapper namespace="com.zqt.crowd.mapper.role.RoleMapper" >
+  <resultMap id="BaseResultMap" type="com.zqt.crowd.entity.role.Role" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="CHAR" />
   </resultMap>
@@ -66,7 +66,7 @@
   <sql id="Base_Column_List" >
     id, name
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.zqt.crowd.entity.RoleExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.zqt.crowd.entity.role.RoleExample" >
     select
     <if test="distinct" >
       distinct
@@ -90,17 +90,17 @@
     delete from t_role
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.zqt.crowd.entity.RoleExample" >
+  <delete id="deleteByExample" parameterType="com.zqt.crowd.entity.role.RoleExample" >
     delete from t_role
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.zqt.crowd.entity.Role" >
+  <insert id="insert" parameterType="com.zqt.crowd.entity.role.Role" >
     insert into t_role (id, name)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=CHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.zqt.crowd.entity.Role" >
+  <insert id="insertSelective" parameterType="com.zqt.crowd.entity.role.Role" >
     insert into t_role
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -119,7 +119,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.zqt.crowd.entity.RoleExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.zqt.crowd.entity.role.RoleExample" resultType="java.lang.Integer" >
     select count(*) from t_role
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -147,7 +147,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.zqt.crowd.entity.Role" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.zqt.crowd.entity.role.Role" >
     update t_role
     <set >
       <if test="name != null" >
@@ -156,7 +156,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.zqt.crowd.entity.Role" >
+  <update id="updateByPrimaryKey" parameterType="com.zqt.crowd.entity.role.Role" >
     update t_role
     set name = #{name,jdbcType=CHAR}
     where id = #{id,jdbcType=INTEGER}
