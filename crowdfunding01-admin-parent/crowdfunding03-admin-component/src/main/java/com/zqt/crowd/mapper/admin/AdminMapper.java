@@ -6,6 +6,9 @@ import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
+/**
+ * 管理员数据层操纵接口
+ */
 public interface AdminMapper {
     int countByExample(AdminExample example);
 

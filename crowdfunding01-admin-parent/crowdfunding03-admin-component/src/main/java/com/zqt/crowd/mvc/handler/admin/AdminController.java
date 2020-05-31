@@ -1,21 +1,22 @@
-package com.zqt.crowd.mvc.handler;
+package com.zqt.crowd.mvc.handler.admin;
 
 import com.github.pagehelper.PageInfo;
 import com.zqt.crowd.constant.CommonConstant;
 import com.zqt.crowd.entity.admin.Admin;
-import com.zqt.crowd.service.api.AdminService;
+import com.zqt.crowd.service.api.admin.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 
 /**
  * @auther: zqtao
- * @description:
+ * @description: 管理员控制层
  * @Date: 2020/5/22 15:43
  * @version: 1.0
  */

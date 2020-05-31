@@ -1,5 +1,8 @@
 package com.zqt.crowd.entity.role;
 
+/**
+ * 权限校验之角色实体
+ */
 public class Role {
     private Integer id;
 

@@ -1,4 +1,4 @@
-package com.zqt.crowd.service.api;
+package com.zqt.crowd.service.api.admin;
 
 import com.github.pagehelper.PageInfo;
 import com.zqt.crowd.entity.admin.Admin;
@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * @auther: zqtao
- * @description:
+ * @description: 管理员业务层接口
  * @Date: 2020/5/17 22:39
  * @version: 1.0
  */

@@ -1,4 +1,4 @@
-package com.zqt.crowd.service.impl;
+package com.zqt.crowd.service.impl.admin;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -8,7 +8,7 @@ import com.zqt.crowd.entity.admin.AdminExample;
 import com.zqt.crowd.exception.LoginAcctAlreadyInUseException;
 import com.zqt.crowd.exception.LoginFailedException;
 import com.zqt.crowd.mapper.admin.AdminMapper;
-import com.zqt.crowd.service.api.AdminService;
+import com.zqt.crowd.service.api.admin.AdminService;
 import com.zqt.crowd.util.DateUtil;
 import com.zqt.crowd.util.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ import java.util.Objects;
 
 /**
  * @auther: zqtao
- * @description:
+ * @description: 管理员业务层实现类
  * @Date: 2020/5/17 22:35
  * @version: 1.0
  */

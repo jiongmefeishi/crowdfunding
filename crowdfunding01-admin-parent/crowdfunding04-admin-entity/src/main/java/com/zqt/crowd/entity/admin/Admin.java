@@ -1,5 +1,8 @@
 package com.zqt.crowd.entity.admin;
 
+/**
+ * 管理员实体
+ */
 public class Admin {
     private Integer id;
 

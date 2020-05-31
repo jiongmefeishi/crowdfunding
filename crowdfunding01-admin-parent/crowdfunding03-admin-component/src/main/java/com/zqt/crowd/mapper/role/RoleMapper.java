@@ -6,6 +6,9 @@ import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
+/**
+ * 权限校验之角色数据层操纵接口
+ */
 public interface RoleMapper {
     int countByExample(RoleExample example);
 
@@ -28,4 +31,6 @@ public interface RoleMapper {
     int updateByPrimaryKeySelective(Role record);
 
     int updateByPrimaryKey(Role record);
+
+    List<Role> selectByKeyword(String keyword);
 }

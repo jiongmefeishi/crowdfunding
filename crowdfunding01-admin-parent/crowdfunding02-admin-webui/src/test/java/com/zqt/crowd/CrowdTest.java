@@ -2,7 +2,7 @@ package com.zqt.crowd;
 
 import com.zqt.crowd.entity.admin.Admin;
 import com.zqt.crowd.mapper.admin.AdminMapper;
-import com.zqt.crowd.service.api.AdminService;
+import com.zqt.crowd.service.api.admin.AdminService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
