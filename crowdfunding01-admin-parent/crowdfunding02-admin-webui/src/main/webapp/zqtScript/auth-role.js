@@ -84,6 +84,8 @@ function fillTableBody(pageInfo) {
     // （点击翻页时，会调用fillTableBody() 函数将新一页的数据拼接进表格标签中，
     // 上一页数据不会自动清除，这里需要手动清除）
     $("#rolePageBody").empty();
+    // 这里清空是为了让没有搜索结果时不显示页码导航条
+    $("#Pagination").empty();
 
 
     // 2.判断pageInfo对象是否有效
@@ -117,10 +119,10 @@ function fillTableBody(pageInfo) {
         // 通过button标签的id属性（别的属性其实也可以）把roleId值传递到button按钮的单击响应函数中，在单击响应函数中使用this.id
         var removeBtn = "<button id='" + roleId + "' type='button' class='btn btn-danger btn-xs removeBtn'><i class=' glyphicon glyphicon-remove'></i></button>";
         // 拼接各个按钮到一个 <td> 中
-        var buttonTd = "<td>"+checkBtn+" "+pencilBtn+" "+removeBtn+"</td>";
+        var buttonTd = "<td>" + checkBtn + " " + pencilBtn + " " + removeBtn + "</td>";
 
         // 生成 表格 <tr>, 组装所有的 <td> 标签
-        var tr = "<tr>"+numberTd+checkBoxTd+roleNameTd+buttonTd+"</tr>";
+        var tr = "<tr>" + numberTd + checkBoxTd + roleNameTd + buttonTd + "</tr>";
 
         // 将组装的表格标签，追加到 表格标签 <tbody> 中
         $("#rolePageBody").append(tr);
@@ -138,15 +140,15 @@ function generateNavigator(pageInfo) {
     // 1.获取总记录数
     var totalRecord = pageInfo.total;
 
-    // 2.声明相关属性，声明一个 JSON对象存储Pagination 要设置的属性
+    // 2.声明相关属性，声明一个 JSON对象存储 Pagination 要设置的属性
     var properties = {
-        "num_edge_entries": 3,
-        "num_display_entries": 5,
-        "callback": paginationCallBack,
-        "items_per_page": pageInfo.pageSize,
-        "current_page": pageInfo.pageNum - 1,
-        "prev_text": "上一页",
-        "next_text": "下一页"
+        "num_edge_entries": 3,								 // 边缘页数
+        "num_display_entries": 5,                            // 主体页数
+        "callback": paginationCallBack,                      // 指定用户点击“翻页”的按钮时跳转页面的回调函数
+        "items_per_page": pageInfo.pageSize,                 // 每页要显示的数据的数量
+        "current_page": pageInfo.pageNum - 1,                // Pagination内部使用pageIndex来管理页码，pageIndex从0开始，pageNum从1开始，所以要减一
+        "prev_text": "上一页",                                // 上一页按钮上显示的文本
+        "next_text": "下一页"                                 // 下一页按钮上显示的文本
     }
 
     // 调用pagination()函数， 执行分页

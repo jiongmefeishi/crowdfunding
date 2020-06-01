@@ -13,7 +13,7 @@
 <%-- 加载公共头部 --%>
 <%@include file="/WEB-INF/include-head.jsp" %>
 <%-- 引入pagination css --%>
-<link rel="stylesheet" href="css/pagination.css" />
+<link rel="stylesheet" href="css/pagination.css"/>
 <%-- 引入pagination js --%>
 <script type="text/javascript" src="jquery/jquery.pagination.js"></script>
 <%-- 引入自定义的js 文件--%>
@@ -25,8 +25,23 @@
         window.pageSize = 5;
         window.keyword = "";
 
-        // 调用执行分页的函数， 显示分页效果
+        // 2.调用执行分页的函数， 显示分页效果
         generateRolePage();
+
+        // 给查询按钮绑定响应函数
+        $("#searchBtn").click(function () {
+
+            // 1.获取关键词数据，赋值给对应的全局变量 keyword
+            window.keyword = $("#keywordInput").val();
+
+            // 2.调用分页函数,刷新表格主体
+            generateRolePage();
+        });
+
+        // 给新增按钮添加响应事件，弹出新增模态框
+        $("#showAddModalBtn").click(function () {
+            $("#addModel").modal('show');
+        });
     });
 </script>
 
@@ -64,7 +79,8 @@
                     </button>
                     <button
                             type="button"
-                            id="showAddModalBtn" class="btn btn-primary"
+                            id="showAddModalBtn"
+                            class="btn btn-primary"
                             style="float: right;">
                         <i class="glyphicon glyphicon-plus"></i> 新增
                     </button>
@@ -99,5 +115,9 @@
         </div>
     </div>
 </div>
+
+<%-- 统一添加模态框在页面的最后，因为加入的模态框默认是不显示的 --%>
+<%-- 这里添加一个新增的模态框，通过给按钮添加点击事件来调用模态框 --%>
+<%@include file="/WEB-INF/model-add.jsp"%>
 </body>
 </html>
