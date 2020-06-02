@@ -32,7 +32,7 @@
     <div class="container">
         <div class="navbar-header">
             <div>
-                <a class="navbar-brand" href="index.html" style="font-size: 32px;">爱众筹-创意产品众筹平台</a>
+                <a class="navbar-brand" href="index.html" style="font-size: 32px;">爱众筹-创意产品-众筹平台</a>
             </div>
         </div>
     </div>
