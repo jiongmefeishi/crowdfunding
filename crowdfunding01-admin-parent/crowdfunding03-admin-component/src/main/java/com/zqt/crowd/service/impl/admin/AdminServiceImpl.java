@@ -129,6 +129,8 @@ public class AdminServiceImpl implements AdminService {
         if (!"".equals(admin.getUserPswd())) {
             String userPswd = admin.getUserPswd();
             admin.setUserPswd(MD5Util.md5(userPswd));
+        } else {
+            admin.setUserPswd(null);
         }
 
         try {

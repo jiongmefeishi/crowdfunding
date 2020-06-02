@@ -93,6 +93,64 @@
             // 清理模态框
             $("#addModel [name=roleName]").val("");
         });
+
+        // 给role 表格中的更新按钮新增点击事件响应函数
+        // $(".pencilBtn").click(function () {
+        //     // 传统的事件绑定方式只能在第一页有效，翻页后失效
+        //     // 因为这按钮是动态生成的，每一此加载新页面都会重新生成
+        //     // 使用 jQuery 的on 函数来解决此问题
+        // });
+        // on 函数解决事件绑定问题 on("事件类型", "找到真正需要绑定事件的元素选择器", 事件响应函数)
+        // 1. 首先找到所有“动态生成”的元素（按钮）所附着的“静态”元素
+        $("#rolePageBody").on("click", ".pencilBtn", function () {
+            // 打开模态框
+            $("#editModel").modal("show");
+
+            // 回显，填充数据
+            // 获取表格中当前行的角色名称
+            var roleName = $(this).parent().prev().text();
+
+            // 获取当前角色的 role id, this.id 获取的是<button id=""> 中的id 属性值
+            // 当前函数用不到，更新模态框里点击更新按钮时触发的响应事件中需要，所以设置全局保存
+            window.roleId = this.id;
+
+            // 使用roleName 填充模态框中的文本框
+            $("#editModel [name=roleName]").val(roleName);
+        });
+
+        // 给更新模态框更新按钮添加响应事件函数
+        $("#updateRoleBtn").click(function () {
+
+            // 从文本框中获取更新后的角色名称
+            var roleName = $("#editModel [name=roleName]").val();
+            $.ajax({
+                "url": "role/update.json",
+                "type": "post",
+                "data": {
+                    id: window.roleId,
+                    name: roleName,
+                },
+                "dataType": "json",
+                "success": function (res) {
+                    var result = res.result;
+                    if (result == "SUCCESS") {
+                        layer.msg("操作成功")
+
+                        // 成功，重新加载分页数据
+                        generateRolePage()
+                    }
+                    if (result == "FAILED") {
+                        layer.msg("操作失败")
+                    }
+                },
+                "error": function (res) {
+                    layer.msg(res.status + res.statusText)
+                }
+            });
+            // 关闭模态框
+            $("#editModel").modal('hide');
+        });
+
     });
 </script>
 

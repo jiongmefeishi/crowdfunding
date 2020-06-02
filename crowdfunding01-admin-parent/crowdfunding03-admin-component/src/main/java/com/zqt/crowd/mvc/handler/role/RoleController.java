@@ -47,10 +47,27 @@ public class RoleController {
         return ResultEntity.successWithData(pageInfo);
     }
 
+    /**
+     * 新增一条 Role记录
+     * @param role
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "role/save.json", method = RequestMethod.POST)
     public ResultEntity<String> saveRole(Role role) {
         roleService.saveRole(role);
+
+        return ResultEntity.successWithoutData();
+    }
+
+    /**
+     * 更新一条 role 记录
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("role/update.json")
+    public ResultEntity updateRole(Role role){
+        roleService.updateRole(role);
 
         return ResultEntity.successWithoutData();
     }

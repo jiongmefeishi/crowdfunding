@@ -27,4 +27,10 @@ public interface RoleService {
      * @param role role
      */
     void saveRole(Role role);
+
+    /**
+     * 更新一条 Role 记录
+     * @param role Role
+     */
+    void updateRole(Role role);
 }

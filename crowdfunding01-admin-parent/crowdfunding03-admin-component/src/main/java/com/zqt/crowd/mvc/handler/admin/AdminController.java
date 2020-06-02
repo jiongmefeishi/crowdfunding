@@ -172,10 +172,6 @@ public class AdminController {
             @RequestParam("keyword") String keyword
     ) {
 
-        for (int i = 0; i < 20; i++) {
-            System.out.println(admin);
-        }
-
         // 更新Admin 信息
         adminService.update(admin);
         return "redirect:/admin/get/page.html?pageNum=" + pageNum + "&keyword=" + keyword;
