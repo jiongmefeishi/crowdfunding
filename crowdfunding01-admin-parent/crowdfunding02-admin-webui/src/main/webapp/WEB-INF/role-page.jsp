@@ -169,6 +169,7 @@
 
 <%-- 统一添加模态框在页面的最后，因为加入的模态框默认是不显示的 --%>
 <%-- 这里添加一个新增的模态框，通过给按钮添加点击事件来调用模态框 --%>
-<%@include file="/WEB-INF/model-add.jsp" %>
+<%@include file="/WEB-INF/model/model-role-add.jsp" %>
+<%@include file="/WEB-INF/model/model-role-edit.jsp" %>
 </body>
 </html>
