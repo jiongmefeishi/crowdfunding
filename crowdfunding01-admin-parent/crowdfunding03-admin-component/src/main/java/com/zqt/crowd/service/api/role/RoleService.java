@@ -21,4 +21,10 @@ public interface RoleService {
      */
     PageInfo<Role> getPageInfo(Integer pageNum, Integer pageSize, String keyword);
 
+
+    /**
+     * 新增一条 Role 记录
+     * @param role role
+     */
+    void saveRole(Role role);
 }

@@ -55,7 +55,7 @@
                    placeholder="请输入登录密码" style="margin-top: 10px;"> <span
                 class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
-        <button type="submit" class="btn btn-lg btn-success btn-block">登录</button>
+        <button id="saveRoleBtn" type="submit" class="btn btn-lg btn-success btn-block">登录</button>
     </form>
 </div>
 <script src="jquery/jquery-2.1.1.min.js"></script>

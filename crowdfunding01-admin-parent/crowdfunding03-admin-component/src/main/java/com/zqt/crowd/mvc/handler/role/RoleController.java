@@ -7,6 +7,7 @@ import com.zqt.crowd.util.ResultEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -34,7 +35,7 @@ public class RoleController {
      */
     // 返回的是json 数据，所有请求路径也以json 结束
     @ResponseBody
-    @RequestMapping("/role/get/page/info.json")
+    @RequestMapping(value = "/role/get/page/info.json", method = RequestMethod.POST)
     public ResultEntity<PageInfo<Role>> getPageInfo(
             @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,
             @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
@@ -44,5 +45,13 @@ public class RoleController {
         PageInfo<Role> pageInfo = roleService.getPageInfo(pageNum, pageSize, keyword);
         // 2、封装数据到ResultEntity(如果某一层执行抛出异常，交给配置的全局Spring异常映射机制处理->1.注解 2.xml配置)
         return ResultEntity.successWithData(pageInfo);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "role/save.json", method = RequestMethod.POST)
+    public ResultEntity<String> saveRole(Role role) {
+        roleService.saveRole(role);
+
+        return ResultEntity.successWithoutData();
     }
 }

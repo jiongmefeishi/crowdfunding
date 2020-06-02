@@ -169,3 +169,16 @@ function paginationCallBack(pageIndex, jQuery) {
     // 取消页码超链接的默认行为
     return false;
 }
+
+/**
+ * 获取role 的分页总数
+ */
+function getTotalPageNum() {
+
+    // 1.获取分页数据
+    var pageInfo = getPageInfoRemote();
+
+    // 2.获取总页数
+    var totalPages = pageInfo["pages"];
+    return totalPages;
+}

@@ -42,6 +42,57 @@
         $("#showAddModalBtn").click(function () {
             $("#addModel").modal('show');
         });
+
+        // 给模态框的保存按钮点击事件新增响应函数
+        $("#saveRoleBtn").click(function () {
+            // 1.获取输入的角色名称
+            // 第一种：给<input> 标签绑定 id
+            // var roleName = $("#roleNameInput").val();
+
+            // 第二种：通过父标签找到子标签，通过子标签里的属性定位到确定的子标签，获取值
+            // 父标签+空格 表示父标签下面的子标签集合
+            // #addModel [name=roleName] 含义解释
+            // #addModel 找到整个模态框
+            // 空格表示在后代元素中继续查找
+            // [name=roleName] 表示匹配后代元素中属性name="roleName" 的元素
+            var roleName = $("#addModel [name=roleName]").val();
+
+            // 发送Ajax请求，保存
+            $.ajax({
+                "url": "role/save.json",
+                "type": "post",
+                "data": {
+                    "name": roleName,
+                },
+                "dataType": "json",
+                "success": function (res) {
+                    var result = res.result;
+                    if (result == "SUCCESS") {
+                        layer.msg("操作成功")
+
+                        // 成功，重新加载分页数据
+                        // 新增的数据在最后一页，这里先处理将页数设为最大
+                        var pages = getTotalPageNum();
+                        // 将页码定位到最后一页
+                        window.pageNum = pages
+                        generateRolePage()
+                    }
+
+                    if (result == "FAILED") {
+                        layer.msg("操作失败")
+                    }
+                },
+                "error": function (res) {
+                    layer.msg(res.status + res.statusText)
+                }
+            });
+
+            // 关闭模态框
+            $("#addModel").modal('hide');
+
+            // 清理模态框
+            $("#addModel [name=roleName]").val("");
+        });
     });
 </script>
 
@@ -118,6 +169,6 @@
 
 <%-- 统一添加模态框在页面的最后，因为加入的模态框默认是不显示的 --%>
 <%-- 这里添加一个新增的模态框，通过给按钮添加点击事件来调用模态框 --%>
-<%@include file="/WEB-INF/model-add.jsp"%>
+<%@include file="/WEB-INF/model-add.jsp" %>
 </body>
 </html>
