@@ -182,3 +182,12 @@ function getTotalPageNum() {
     var totalPages = pageInfo["pages"];
     return totalPages;
 }
+
+
+/**
+ * 显示确认模态框：role 删除时弹出进行确认
+ */
+function showConfirmModal() {
+
+
+}

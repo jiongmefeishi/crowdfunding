@@ -6,12 +6,9 @@ import com.zqt.crowd.service.api.role.RoleService;
 import com.zqt.crowd.util.ResultEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpSession;
+import java.util.List;
 
 /**
  * @auther: zqtao
@@ -31,7 +28,7 @@ public class RoleController {
      * @param keyword  查询关键词
      * @param pageNum  页码
      * @param pageSize 每页的数量，记录条数
-     * @return ResultEntity<PageInfo<Role>> json数据
+     * @return ResultEntity<PageInfo < Role>> json数据
      */
     // 返回的是json 数据，所有请求路径也以json 结束
     @ResponseBody
@@ -49,6 +46,7 @@ public class RoleController {
 
     /**
      * 新增一条 Role记录
+     *
      * @param role
      * @return
      */
@@ -62,13 +60,25 @@ public class RoleController {
 
     /**
      * 更新一条 role 记录
+     *
      * @return
      */
     @ResponseBody
     @RequestMapping("role/update.json")
-    public ResultEntity updateRole(Role role){
+    public ResultEntity updateRole(Role role) {
         roleService.updateRole(role);
 
+        return ResultEntity.successWithoutData();
+    }
+
+    /**
+     * 合并单条删除和批量删除，根据传入的 role id list 进行删除记录
+     * @param roleIdList 角色id 集合
+     */
+    @ResponseBody
+    @RequestMapping("/role/remove/by/role/id/array.json")
+    public ResultEntity<String> removeByRoleIdArray(@RequestBody List<Integer> roleIdList) {
+        roleService.removeRole(roleIdList);
         return ResultEntity.successWithoutData();
     }
 }

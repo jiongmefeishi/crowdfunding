@@ -3,6 +3,8 @@ package com.zqt.crowd.service.api.role;
 import com.github.pagehelper.PageInfo;
 import com.zqt.crowd.entity.role.Role;
 
+import java.util.List;
+
 /**
  * @auther: zqtao
  * @description: 权限校验之角色业务层接口
@@ -33,4 +35,11 @@ public interface RoleService {
      * @param role Role
      */
     void updateRole(Role role);
+
+    /**
+     * 合并单条删除和批量删除
+     * @param roleIdList role id 集合
+     * @return 影响条数
+     */
+    int removeRole(List<Integer> roleIdList);
 }

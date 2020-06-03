@@ -100,6 +100,14 @@ public class AdminController {
         return "admin-page";
     }
 
+    /**
+     * 删除一条 admin 记录
+     * @param adminId adminId
+     * @param pageNum 页码
+     * @param keyword 关键词
+     * @param session session
+     * @return 重定向到原本所在页面，不能使用转发，转发会重复提交删除
+     */
     @RequestMapping("/admin/remove/{adminId}/{pageNum}/{keyword}.html")
     public String remove(
             @PathVariable("adminId") Integer adminId,
@@ -129,6 +137,11 @@ public class AdminController {
         return "redirect:/admin/get/page.html?pageNum=" + pageNum + "&keyword=" + keyword;
     }
 
+    /**
+     * 新增一条 admin 记录
+     * @param admin Admin
+     * @return 重定向到分页页面
+     */
     @RequestMapping("/admin/save.html")
     public String addAdmin(Admin admin) {
         // 执行保存
