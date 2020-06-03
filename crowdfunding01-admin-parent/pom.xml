@@ -184,6 +184,15 @@
                 <artifactId>spring-security-taglibs</artifactId>
                 <version>4.2.10.RELEASE</version>
             </dependency>
+
+            <!-- 工具 -->
+            <!-- lombok 代码简化工具 setter getter -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>1.18.10</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 

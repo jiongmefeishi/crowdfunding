@@ -40,7 +40,7 @@
 
         // 给新增按钮添加响应事件，弹出新增模态框
         $("#showAddModalBtn").click(function () {
-            $("#addModel").modal('show');
+            $("#addModal").modal('show');
         });
 
         // 给模态框的保存按钮点击事件新增响应函数
@@ -51,11 +51,11 @@
 
             // 第二种：通过父标签找到子标签，通过子标签里的属性定位到确定的子标签，获取值
             // 父标签+空格 表示父标签下面的子标签集合
-            // #addModel [name=roleName] 含义解释
-            // #addModel 找到整个模态框
+            // #addModal [name=roleName] 含义解释
+            // #addModal 找到整个模态框
             // 空格表示在后代元素中继续查找
             // [name=roleName] 表示匹配后代元素中属性name="roleName" 的元素
-            var roleName = $("#addModel [name=roleName]").val();
+            var roleName = $("#addModal [name=roleName]").val();
 
             // 发送Ajax请求，保存
             $.ajax({
@@ -88,10 +88,10 @@
             });
 
             // 关闭模态框
-            $("#addModel").modal('hide');
+            $("#addModal").modal('hide');
 
             // 清理模态框
-            $("#addModel [name=roleName]").val("");
+            $("#addModal [name=roleName]").val("");
         });
 
         // 给role 表格中的更新按钮新增点击事件响应函数
@@ -104,7 +104,7 @@
         // 1. 首先找到所有“动态生成”的元素（按钮）所附着的“静态”元素
         $("#rolePageBody").on("click", ".pencilBtn", function () {
             // 打开模态框
-            $("#editModel").modal("show");
+            $("#editModal").modal("show");
 
             // 回显，填充数据
             // 获取表格中当前行的角色名称
@@ -115,14 +115,14 @@
             window.roleId = this.id;
 
             // 使用roleName 填充模态框中的文本框
-            $("#editModel [name=roleName]").val(roleName);
+            $("#editModal [name=roleName]").val(roleName);
         });
 
         // 给更新模态框更新按钮添加响应事件函数
         $("#updateRoleBtn").click(function () {
 
             // 从文本框中获取更新后的角色名称
-            var roleName = $("#editModel [name=roleName]").val();
+            var roleName = $("#editModal [name=roleName]").val();
             $.ajax({
                 "url": "role/update.json",
                 "type": "post",
@@ -148,7 +148,7 @@
                 }
             });
             // 关闭模态框
-            $("#editModel").modal('hide');
+            $("#editModal").modal('hide');
         });
 
     });
@@ -227,7 +227,7 @@
 
 <%-- 统一添加模态框在页面的最后，因为加入的模态框默认是不显示的 --%>
 <%-- 这里添加一个新增的模态框，通过给按钮添加点击事件来调用模态框 --%>
-<%@include file="/WEB-INF/model/model-role-add.jsp" %>
-<%@include file="/WEB-INF/model/model-role-edit.jsp" %>
+<%@include file="/WEB-INF/modal/modal-role-add.jsp" %>
+<%@include file="/WEB-INF/modal/modal-role-edit.jsp" %>
 </body>
 </html>

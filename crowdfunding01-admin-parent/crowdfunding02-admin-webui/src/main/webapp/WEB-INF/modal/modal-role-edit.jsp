@@ -9,7 +9,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%-- 基于bootstrap 的模态框 --%>
-<div id="addModel" class="modal fade" tabindex="-1" role="dialog">
+<div id="editModal" class="modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -31,7 +31,7 @@
 
             <%--底部--%>
             <div class="modal-footer">
-                <button id="saveRoleBtn" type="button" class="btn btn-primary">保存</button>
+                <button id="updateRoleBtn" type="button" class="btn btn-success">更新</button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
