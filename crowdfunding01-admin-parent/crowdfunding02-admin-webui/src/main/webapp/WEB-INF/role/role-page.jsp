@@ -151,6 +151,64 @@
             $("#editModal").modal('hide');
         });
 
+
+        // 给确认模态框中的确认删除按钮添加单击响应事件
+        $("#removeRoleBtn").click(function () {
+
+            // 从全局变量范围获取roleIdArray，转换为JSON字符串
+            var requestBody = JSON.stringify(window.roleIdList)
+
+            $.ajax({
+                "url": "role/remove/by/role/id/array.json",
+                "type": "post",
+                // 集合形式，后端也没有准备响应的接收实体，那么就采用JSON字符串形式传递
+                // 同样，后端也需要使用@RequestBody List<Integer> roleIdList 进行接收
+                "data": requestBody,
+                "dataType": "json",
+                // 传入的是JSON 字符串，需要指定字符集
+                "contentType": "application/json;charset=UTF-8",
+                "success": function (res) {
+                    var result = res.result;
+                    if (result == "SUCCESS") {
+                        layer.msg("操作成功")
+                        // 删除成功，重新加载页面
+                        generateRolePage()
+                    }
+
+                    if (result == "FAILED") {
+                        layer.msg("操作失败")
+                    }
+                },
+                "error": function (res) {
+                    layer.msg(res.status + res.statusText)
+                }
+            });
+            // 关闭模态框
+            $("#confirmModal").modal('hide');
+        });
+
+
+        // 给单条删除按钮绑定单击响应事件
+        // 单条删除按钮是动态生成的，需要找到其依赖"静态"元素,借助 on() 函数绑定响应事件
+        $("#rolePageBody").on("click", ".removeBtn", function () {
+
+            console.log("dan")
+            // 从当前按钮出发去获取角色的名称
+            let roleName = $(this).parent().prev().text();
+
+            // 单条删除，创建 Role 对象存入数组
+            var roleArray = [
+                {
+                    roleId: this.id,
+                    roleName: roleName,
+                }
+            ];
+            // 打开模态框
+            showConfirmModal(roleArray)
+        });
+
+        // 批量删除的删除按钮绑定响应事件
+
     });
 </script>
 
@@ -228,6 +286,9 @@
 <%-- 统一添加模态框在页面的最后，因为加入的模态框默认是不显示的 --%>
 <%-- 这里添加一个新增的模态框，通过给按钮添加点击事件来调用模态框 --%>
 <%@include file="/WEB-INF/modal/modal-role-add.jsp" %>
+<%-- role 修改模态框 --%>
 <%@include file="/WEB-INF/modal/modal-role-edit.jsp" %>
+<%-- role 删除确认模态框 --%>
+<%@include file="/WEB-INF/modal/modal-role-confirm.jsp" %>
 </body>
 </html>

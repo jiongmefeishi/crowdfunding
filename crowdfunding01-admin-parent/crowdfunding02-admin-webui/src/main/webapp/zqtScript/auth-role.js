@@ -187,7 +187,26 @@ function getTotalPageNum() {
 /**
  * 显示确认模态框：role 删除时弹出进行确认
  */
-function showConfirmModal() {
+function showConfirmModal(roleArray) {
 
+    // 打开确认提示模态框
+    $("#confirmModal").modal('show');
 
+    // 先清除上一次遗留的信息
+    $("#roleNameDiv").empty();
+
+    // 创建全局范围内的 roleIdList
+    window.roleIdList = [];
+
+    // 遍历roleArray 数组
+    for (let i = 0; i < roleArray.length; i++) {
+        // 取出 Role，填充进模态框
+        var role = roleArray[i];
+        var roleName = role.roleName;
+        $("#roleNameDiv").append(roleName + "<br/>");
+
+        var roleId = role.roleId;
+        // 通过 数组的 push() 方法将 roleId 添加到集合
+        window.roleIdList.push(roleId);
+    }
 }
