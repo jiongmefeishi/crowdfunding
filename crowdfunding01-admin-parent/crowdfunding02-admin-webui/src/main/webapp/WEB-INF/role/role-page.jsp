@@ -230,6 +230,37 @@
             $("#summaryBox").prop('checked', checkedItemBoxCount==totalItemBoxCount);
         });
 
+        // 3.给批量删除按钮绑定响应函数
+        $("#batchRemoveBtn").click(function () {
+
+            var roleArray = []
+
+            // 获取状态为选中状态的选择框里的role信息
+            $(".itemBox:checked").each(function () {
+
+                // 获取role id
+                var roleId = this.id;
+
+                // 获取角色名称
+                var roleName = $(this).parent().next().text();
+
+                // 以对象形式存放
+                roleArray.push({
+                    "roleId": roleId,
+                    "roleName": roleName
+                })
+
+                // 检查 roleArray 有效性，没有值，不进行删除
+                if(roleArray.length == 0) {
+                    layer.msg("请选择需要删除的记录！ ")
+                    return;
+                }
+
+                // 调用函数打开确认模态框
+                showConfirmModal(roleArray);
+            });
+        });
+
     });
 </script>
 

@@ -109,7 +109,7 @@ function fillTableBody(pageInfo) {
 
         // 生成分页数据表的各表项标签
         var numberTd = "<td>" + (i + 1) + "</td>";
-        var checkBoxTd = "<td><input class='itemBox' type='checkbox'></td>";
+        var checkBoxTd = "<td><input id='" + roleId + "' class='itemBox' type='checkbox'></td>";
         var roleNameTd = "<td>" + roleName + "</td>";
 
         // 生成按钮标签
