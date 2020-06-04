@@ -208,6 +208,27 @@
         });
 
         // 批量删除的删除按钮绑定响应事件
+        // 1、给全选按钮绑定响应函数
+        $("#summaryBox").click(function () {
+            // 1.获取当前多选框状态，（全选？未选？）,根据checked 属性
+            var currentCheckStatus = this.checked;
+
+            // 2.根据当前多选框的桩体，设置其他选择框状态
+            $(".itemBox").prop('checked', currentCheckStatus);
+        });
+
+        // 2、如果表格中的所有选择框的状态都被手动勾选为被选择状态，那么将全选框也变为选择状态
+        // 因为表格中的选择框都是动态生成的，需要 on 函数
+        $("#rolePageBody").on('click', '.itemBox', function () {
+            // 1.获取当前已经处于选择状态的选择框数量
+            var checkedItemBoxCount = $(".itemBox:checked").length;
+
+            // 2.获取全部选择框数量
+            var totalItemBoxCount = $(".itemBox").length;
+
+            // 比较控制全选框的状态
+            $("#summaryBox").prop('checked', checkedItemBoxCount==totalItemBoxCount);
+        });
 
     });
 </script>
@@ -258,6 +279,7 @@
                             <thead>
                             <tr>
                                 <th width="30">#</th>
+                                <%--全选按钮--%>
                                 <th width="30"><input id="summaryBox" type="checkbox"></th>
                                 <th>名称</th>
                                 <th width="100">操作</th>
