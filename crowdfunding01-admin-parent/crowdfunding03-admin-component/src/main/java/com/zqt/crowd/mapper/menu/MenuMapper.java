@@ -1,7 +1,7 @@
-package com.zqt.crowd.mapper;
+package com.zqt.crowd.mapper.menu;
 
-import com.zqt.crowd.entity.Menu;
-import com.zqt.crowd.entity.MenuExample;
+import com.zqt.crowd.entity.menu.Menu;
+import com.zqt.crowd.entity.menu.MenuExample;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
