@@ -30,10 +30,10 @@ https://github.com/zqtao2332/crowdfunding/{{`替换为关键时间点`}}
 
 |   工程模块开发顺序   |                          关键时间点                          |
 | :------------------: | :----------------------------------------------------------: |
-| mybatis 逆向工程模块 |           929ebd09e199977d7a7f72dc59f6a716e11f7896           |
-|    管理员管理模块    |           40ce306d1552911a0adc50d334e7647c6ff3e1de           |
-|  权限之角色管理模块  |           21f8e19ab9bee86318f45cc42174c735a8afe474           |
-|  权限之菜单管理模块  | [新增-更新管理员信息模块](https://github.com/zqtao2332/crowdfunding/commit/7c85fd6123027744e9272bc8136571dda32a85c6) |
+| mybatis 逆向工程模块 | [mybatis逆向工程](https://github.com/zqtao2332/crowdfunding/tree/929ebd09e199977d7a7f72dc59f6a716e11f7896) |
+|    管理员管理模块    | [管理员管理模块](https://github.com/zqtao2332/crowdfunding/tree/40ce306d1552911a0adc50d334e7647c6ff3e1de) |
+|  权限之角色管理模块  | [权限之角色管理模块](https://github.com/zqtao2332/crowdfunding/tree/21f8e19ab9bee86318f45cc42174c735a8afe474) |
+|  权限之菜单管理模块  |                                                              |
 |                      |                                                              |
 
 **【工程关系说明】**
