@@ -43,9 +43,9 @@
             return "admin-login";
         }
      -->
-    <mvc:view-controller path="/admin/to/login/page.html" view-name="admin-login"/>
-    <mvc:view-controller path="/admin/to/main/page.html" view-name="admin-main"/>
-    <mvc:view-controller path="/admin/to/add/page.html" view-name="admin-add"/>
+    <mvc:view-controller path="/admin/to/login/page.html" view-name="admin/admin-login"/>
+    <mvc:view-controller path="/admin/to/main/page.html" view-name="admin/admin-main"/>
+    <mvc:view-controller path="/admin/to/add/page.html" view-name="admin/admin-add"/>
     <mvc:view-controller path="/role/to/page.html" view-name="role/role-page"/>
     <mvc:view-controller path="/menu/to/page.html" view-name="menu/menu-page"/>
 

@@ -97,7 +97,7 @@ public class AdminController {
         // 将PageInfo对象存入模型
         modelMap.addAttribute(CommonConstant.ATTR_NAME_PAGE_INFO, pageInfo);
 
-        return "admin-page";
+        return "admin/admin-page";
     }
 
     /**
@@ -167,7 +167,7 @@ public class AdminController {
         // 2、封装到 ModelMap 中
         modelMap.addAttribute("admin", admin);
 
-        return "admin-edit";
+        return "admin/admin-edit";
     }
 
     /**
