@@ -14,7 +14,7 @@ import java.util.Map;
 
 /**
  * @auther: zqtao
- * @description: 菜单管理控制层
+ * @description: 权限校验之菜单管理控制层
  * @Date: 2020/6/5 14:55
  * @version: 1.0
  */

@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * @auther: zqtao
- * @description: 菜单管理业务层接口
+ * @description: 权限校验之菜单管理业务层接口
  * @Date: 2020/6/5 14:55
  * @version: 1.0
  */

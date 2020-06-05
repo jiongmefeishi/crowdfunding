@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  * @auther: zqtao
- * @description: 菜单管理业务层实现类
+ * @description: 权限校验之菜单管理业务层实现类
  * @Date: 2020/6/5 14:56
  * @version: 1.0
  */
