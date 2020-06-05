@@ -17,7 +17,7 @@
 <%-- 引入pagination js --%>
 <script type="text/javascript" src="jquery/jquery.pagination.js"></script>
 <%-- 引入自定义的js 文件--%>
-<script type="text/javascript" src="zqtScript/auth-role.js"></script>
+<script type="text/javascript" src="zqtScript/role/auth-role.js"></script>
 <script type="text/javascript">
     $(function () {
         // 1.为分页操作初始化数据，存放使用window对象，全局使用
@@ -341,10 +341,10 @@
 
 <%-- 统一添加模态框在页面的最后，因为加入的模态框默认是不显示的 --%>
 <%-- 这里添加一个新增的模态框，通过给按钮添加点击事件来调用模态框 --%>
-<%@include file="/WEB-INF/modal/modal-role-add.jsp" %>
+<%@include file="/WEB-INF/modal/role/modal-role-add.jsp" %>
 <%-- role 修改模态框 --%>
-<%@include file="/WEB-INF/modal/modal-role-edit.jsp" %>
+<%@include file="/WEB-INF/modal/role/modal-role-edit.jsp" %>
 <%-- role 删除确认模态框 --%>
-<%@include file="/WEB-INF/modal/modal-role-confirm.jsp" %>
+<%@include file="/WEB-INF/modal/role/modal-role-confirm.jsp" %>
 </body>
 </html>
