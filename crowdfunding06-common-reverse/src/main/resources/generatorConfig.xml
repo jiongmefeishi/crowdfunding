@@ -56,7 +56,11 @@
 
         <!-- 逆向工程：Admin-->
         <!--<table tableName="t_admin" domainObjectName="Admin" />-->
-		<!-- 逆向工程：Role-->
-        <table tableName="t_role" domainObjectName="Role"/>
+
+        <!-- 逆向工程：Role-->
+        <!--<table tableName="t_role" domainObjectName="Role"/>-->
+
+        <!-- 逆向工程：Menu-->
+        <table tableName="t_menu" domainObjectName="Menu"/>
     </context>
 </generatorConfiguration>

@@ -258,6 +258,9 @@
 
                 // 调用函数打开确认模态框
                 showConfirmModal(roleArray);
+
+                // 重置全选框,为未选择状态
+                $("#summaryBox").prop('checked', false);
             });
         });
 
