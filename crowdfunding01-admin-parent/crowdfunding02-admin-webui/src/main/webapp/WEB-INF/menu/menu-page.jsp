@@ -12,7 +12,48 @@
 <html lang="zh-CN">
 <%-- 加载公共头部 --%>
 <%@include file="/WEB-INF/include/include-head.jsp" %>
+<%-- 加载ztree 样式 --%>
+<link rel="stylesheet" href="ztree/zTreeStyle.css">
+<%-- 加载ztree js --%>
+<script type="text/javascript" src="ztree/jquery.ztree.all-3.5.min.js"></script>
+<%-- 加载自定义 js 文件 --%>
+<script type="text/javascript" src="zqtScript/auth-menu.js"></script>
 
+<script type="text/javascript">
+
+    $(function () {
+
+        // 1.Ajax请求服务器获取菜单列表的树形结构的JSON数据
+        $.ajax({
+            "url": "menu/get/whole/tree.json",
+            "type": "post",
+            "data": {
+
+            },
+            "dataType": "json",
+            "success": function (res) {
+                var result = res.result;
+                if(result == "SUCCESS") {
+
+                    // 2.获取用来生成树形结构的JSON数据
+                    var zNodes = res.data;
+                    // 3.创建 ztree 所需的JSON设置
+                    var setting = {};
+                    // 4.初始化树形结构
+                    $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+                }
+
+                if (result == "FAILED"){
+                    layer.msg(res.message)
+                }
+            },
+            "error": function (res) {
+
+            }
+        });
+    });
+
+</script>
 <body>
 
 <%-- 加载公共导航栏 --%>
