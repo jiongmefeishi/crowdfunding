@@ -17,7 +17,7 @@
 <%-- 加载ztree js --%>
 <script type="text/javascript" src="ztree/jquery.ztree.all-3.5.min.js"></script>
 <%-- 加载自定义 js 文件 --%>
-<script type="text/javascript" src="zqtScript/auth-menu.js"></script>
+<script type="text/javascript" src="zqtScript/menu/auth-menu.js"></script>
 
 <script type="text/javascript">
 
@@ -38,7 +38,11 @@
                     // 2.获取用来生成树形结构的JSON数据
                     var zNodes = res.data;
                     // 3.创建 ztree 所需的JSON设置
-                    var setting = {};
+                    var setting = {
+                        "view": {
+                            "addDiyDom": myAddDiyDom
+                        }
+                    };
                     // 4.初始化树形结构
                     $.fn.zTree.init($("#treeDemo"), setting, zNodes);
                 }
