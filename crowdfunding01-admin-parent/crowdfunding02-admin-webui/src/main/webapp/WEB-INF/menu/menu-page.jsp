@@ -39,8 +39,20 @@
                     var zNodes = res.data;
                     // 3.创建 ztree 所需的JSON设置
                     var setting = {
-                        "view": {
-                            "addDiyDom": myAddDiyDom
+                        "view": { // 菜单节点显示视图相关
+                            // 调用myAddDiyDom() 函数设置图标
+                            "addDiyDom": myAddDiyDom,
+                            // 调用myAddHoverDom() 函数给菜单节点增加鼠标悬停效果和动画
+                            // 鼠标悬停：显示修改和删除按钮
+                            "addHoverDom": myAddHoverDom,
+                            // 鼠标离开：移除修改和删除按钮
+                            "removeHoverDom": myRemoveHoverDom
+                        },
+                        "data": {
+                            "key": { // 菜单节点属性设置相关
+                                // 设置点击菜单节点，不可跳转
+                                "url": "xUrl" // 默认为url,即对应后台返回的菜单节点的url 属性
+                            }
                         }
                     };
                     // 4.初始化树形结构
