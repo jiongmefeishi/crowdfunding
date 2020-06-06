@@ -1,4 +1,54 @@
 /**
+ * 封装菜单树创建函数
+ *
+ * 调用此函数创建菜单树结构
+ */
+function generateMenuTree() {
+    // 1.Ajax请求服务器获取菜单列表的树形结构的JSON数据
+    $.ajax({
+        "url": "menu/get/whole/tree.json",
+        "type": "post",
+        "data": {},
+        "dataType": "json",
+        "success": function (res) {
+            var result = res.result;
+            if (result == "SUCCESS") {
+
+                // 2.获取用来生成树形结构的JSON数据
+                var zNodes = res.data;
+                // 3.创建 ztree 所需的JSON设置
+                var setting = {
+                    "view": { // 菜单节点显示视图相关
+                        // 调用myAddDiyDom() 函数设置图标
+                        "addDiyDom": myAddDiyDom,
+                        // 调用myAddHoverDom() 函数给菜单节点增加鼠标悬停效果和动画
+                        // 鼠标悬停：显示修改和删除按钮
+                        "addHoverDom": myAddHoverDom,
+                        // 鼠标离开：移除修改和删除按钮
+                        "removeHoverDom": myRemoveHoverDom
+                    },
+                    "data": {
+                        "key": { // 菜单节点属性设置相关
+                            // 设置点击菜单节点，不可跳转
+                            "url": "xUrl" // 默认为url,即对应后台返回的菜单节点的url 属性
+                        }
+                    }
+                };
+                // 4.初始化树形结构
+                $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+            }
+
+            if (result == "FAILED") {
+                layer.msg(res.message)
+            }
+        },
+        "error": function (res) {
+            layer.msg(res.status + res.statusText)
+        }
+    });
+}
+
+/**
  * 每一个菜单节点的生成都会调用此函数，修改默认的图标
  * @param treeId treeId 是整个树形结构附着的 ul 标签的 id
  * @param treeNode 当前树形节点的全部的数据，包括从后端查询得到的 Menu 对象的全部属性
@@ -98,5 +148,7 @@ function myRemoveHoverDom(treeId, treeNode) {
     var btnGroupId = treeNode.tId + "_btnGrp";
 
     // 移除对应的元素
-    $("#"+btnGroupId).remove();
+    $("#" + btnGroupId).remove();
 }
+
+
