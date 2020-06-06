@@ -57,39 +57,10 @@
             // [name=roleName] 表示匹配后代元素中属性name="roleName" 的元素
             var roleName = $("#addModal [name=roleName]").val();
 
-            // 发送Ajax请求，保存
-            $.ajax({
-                "url": "role/save.json",
-                "type": "post",
-                "data": {
-                    "name": roleName,
-                },
-                "dataType": "json",
-                "success": function (res) {
-                    var result = res.result;
-                    if (result == "SUCCESS") {
-                        layer.msg("操作成功")
-
-                        // 成功，重新加载分页数据
-                        // 新增的数据在最后一页，这里先处理将页数设为最大
-                        var pages = getTotalPageNum();
-                        // 将页码定位到最后一页
-                        window.pageNum = pages
-                        generateRolePage()
-                    }
-
-                    if (result == "FAILED") {
-                        layer.msg("操作失败")
-                    }
-                },
-                "error": function (res) {
-                    layer.msg(res.status + res.statusText)
-                }
-            });
-
+            // 发送Ajax请求，保存role记录
+            saveRole(roleName);
             // 关闭模态框
             $("#addModal").modal('hide');
-
             // 清理模态框
             $("#addModal [name=roleName]").val("");
         });
@@ -113,7 +84,6 @@
             // 获取当前角色的 role id, this.id 获取的是<button id=""> 中的id 属性值
             // 当前函数用不到，更新模态框里点击更新按钮时触发的响应事件中需要，所以设置全局保存
             window.roleId = this.id;
-
             // 使用roleName 填充模态框中的文本框
             $("#editModal [name=roleName]").val(roleName);
         });
@@ -123,66 +93,19 @@
 
             // 从文本框中获取更新后的角色名称
             var roleName = $("#editModal [name=roleName]").val();
-            $.ajax({
-                "url": "role/update.json",
-                "type": "post",
-                "data": {
-                    id: window.roleId,
-                    name: roleName,
-                },
-                "dataType": "json",
-                "success": function (res) {
-                    var result = res.result;
-                    if (result == "SUCCESS") {
-                        layer.msg("操作成功")
-
-                        // 成功，重新加载分页数据
-                        generateRolePage()
-                    }
-                    if (result == "FAILED") {
-                        layer.msg("操作失败")
-                    }
-                },
-                "error": function (res) {
-                    layer.msg(res.status + res.statusText)
-                }
-            });
+            //更新 role 记录
+            updateRole(roleName);
             // 关闭模态框
             $("#editModal").modal('hide');
         });
-
 
         // 给确认模态框中的确认删除按钮添加单击响应事件
         $("#removeRoleBtn").click(function () {
 
             // 从全局变量范围获取roleIdArray，转换为JSON字符串
             var requestBody = JSON.stringify(window.roleIdList)
-
-            $.ajax({
-                "url": "role/remove/by/role/id/array.json",
-                "type": "post",
-                // 集合形式，后端也没有准备响应的接收实体，那么就采用JSON字符串形式传递
-                // 同样，后端也需要使用@RequestBody List<Integer> roleIdList 进行接收
-                "data": requestBody,
-                "dataType": "json",
-                // 传入的是JSON 字符串，需要指定字符集
-                "contentType": "application/json;charset=UTF-8",
-                "success": function (res) {
-                    var result = res.result;
-                    if (result == "SUCCESS") {
-                        layer.msg("操作成功")
-                        // 删除成功，重新加载页面
-                        generateRolePage()
-                    }
-
-                    if (result == "FAILED") {
-                        layer.msg("操作失败")
-                    }
-                },
-                "error": function (res) {
-                    layer.msg(res.status + res.statusText)
-                }
-            });
+            // 根据roleIdArray 删除role记录（单/多）
+            removeRole(requestBody);
             // 关闭模态框
             $("#confirmModal").modal('hide');
         });
@@ -192,7 +115,6 @@
         // 单条删除按钮是动态生成的，需要找到其依赖"静态"元素,借助 on() 函数绑定响应事件
         $("#rolePageBody").on("click", ".removeBtn", function () {
 
-            console.log("dan")
             // 从当前按钮出发去获取角色的名称
             let roleName = $(this).parent().prev().text();
 
@@ -227,7 +149,7 @@
             var totalItemBoxCount = $(".itemBox").length;
 
             // 比较控制全选框的状态
-            $("#summaryBox").prop('checked', checkedItemBoxCount==totalItemBoxCount);
+            $("#summaryBox").prop('checked', checkedItemBoxCount == totalItemBoxCount);
         });
 
         // 3.给批量删除按钮绑定响应函数
@@ -251,8 +173,8 @@
                 })
 
                 // 检查 roleArray 有效性，没有值，不进行删除
-                if(roleArray.length == 0) {
-                    layer.msg("请选择需要删除的记录！ ")
+                if (roleArray.length == 0) {
+                    layer.msg("请选择需要删除的记录！")
                     return;
                 }
 

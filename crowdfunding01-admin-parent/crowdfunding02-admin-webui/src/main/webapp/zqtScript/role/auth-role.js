@@ -210,3 +210,113 @@ function showConfirmModal(roleArray) {
         window.roleIdList.push(roleId);
     }
 }
+
+
+/**
+ * 新增一条 Role 记录
+ * 成功，弹出提示，重新加载分页数据
+ * 失败，弹出提示
+ * 异常，弹出错误信息
+ * @param roleName 新增的Role对象的名称
+ */
+function saveRole(roleName) {
+    $.ajax({
+        "url": "role/save.json",
+        "type": "post",
+        "data": {
+            "name": roleName,
+        },
+        "dataType": "json",
+        "success": function (res) {
+            var result = res.result;
+            if (result == "SUCCESS") {
+                layer.msg("操作成功")
+                // 成功，重新加载分页数据
+                // 新增的数据在最后一页，这里先处理将页数设为最大
+                var pages = getTotalPageNum();
+                // 将页码定位到最后一页
+                window.pageNum = pages
+                generateRolePage()
+            }
+
+            if (result == "FAILED") {
+                layer.msg("操作失败")
+            }
+        },
+        "error": function (res) {
+            layer.msg(res.status + res.statusText)
+        }
+    });
+}
+
+
+/**
+ * 更新一条 Role 记录
+ * 成功，弹出提示，重新加载分页数据
+ * 失败，弹出提示
+ * 异常，弹出错误信息
+ * @param roleName 新增的Role对象的名称
+ */
+function updateRole(roleName) {
+    console.log("update")
+    $.ajax({
+        "url": "role/update.json",
+        "type": "post",
+        "data": {
+            id: window.roleId,
+            name: roleName,
+        },
+        "dataType": "json",
+        "success": function (res) {
+            var result = res.result;
+            if (result == "SUCCESS") {
+                layer.msg("操作成功")
+
+                // 成功，重新加载分页数据
+                generateRolePage()
+            }
+            if (result == "FAILED") {
+                layer.msg("操作失败")
+            }
+        },
+        "error": function (res) {
+            layer.msg(res.status + res.statusText)
+        }
+    });
+}
+
+/**
+ * 删除 Role 记录，根据roleIdArray（转为JSON字符串） 删除role记录（单/多）
+ * 成功，弹出提示，重新加载分页数据
+ * 失败，弹出提示
+ * 异常，弹出错误信息
+ * @param requestBody 从全局变量范围获取的roleIdArray，转换为的JSON字符串
+ */
+function removeRole(requestBody) {
+    console.log("remove")
+
+    $.ajax({
+        "url": "role/remove/by/role/id/array.json",
+        "type": "post",
+        // 集合形式，后端也没有准备响应的接收实体，那么就采用JSON字符串形式传递
+        // 同样，后端也需要使用@RequestBody List<Integer> roleIdList 进行接收
+        "data": requestBody,
+        "dataType": "json",
+        // 传入的是JSON 字符串，需要指定字符集
+        "contentType": "application/json;charset=UTF-8",
+        "success": function (res) {
+            var result = res.result;
+            if (result == "SUCCESS") {
+                layer.msg("操作成功")
+                // 删除成功，重新加载页面
+                generateRolePage()
+            }
+            if (result == "FAILED") {
+                layer.msg("操作失败")
+            }
+        },
+        "error": function (res) {
+            layer.msg(res.status + res.statusText)
+        }
+    });
+}
