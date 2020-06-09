@@ -18,5 +18,15 @@ public interface MenuService {
      */
     List<Menu> getAll();
 
+    /**
+     * 新增一条菜单记录
+     * @param menu 菜单
+     */
     void saveMenu(Menu menu);
+
+    /**
+     * 更新一条菜单记录
+     * @param menu 菜单
+     */
+    void updateMenu(Menu menu);
 }

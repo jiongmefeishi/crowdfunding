@@ -9,8 +9,7 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
-
-<div id="menuAddModal" class="modal fade" tabindex="-1" role="dialog">
+<div id="menuEditModal" class="modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -82,11 +81,8 @@
 
                 <%-- 底部 --%>
                 <div class="modal-footer">
-                    <button id="menuSaveBtn" type="button" class="btn btn-default"><i
-                            class="glyphicon glyphicon-plus"></i> 保存
-                    </button>
-                    <button id="menuResetBtn" type="reset" class="btn btn-primary"><i
-                            class="glyphicon glyphicon-refresh"></i> 重置
+                    <button id="menuEditBtn" type="button" class="btn btn-default"><i
+                            class="glyphicon glyphicon-edit"></i> 更新
                     </button>
                 </div>
             </form>

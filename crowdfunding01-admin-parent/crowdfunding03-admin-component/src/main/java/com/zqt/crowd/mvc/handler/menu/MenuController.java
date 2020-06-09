@@ -66,10 +66,30 @@ public class MenuController {
         return ResultEntity.successWithData(root);
     }
 
+    /**
+     * 新增一条菜单记录
+     * @param menu 菜单信息
+     */
     @ResponseBody
     @RequestMapping("/menu/save.json")
     public ResultEntity<Menu> saveMenu(Menu menu){
         menuService.saveMenu(menu);
+
+        return ResultEntity.successWithoutData();
+    }
+
+    /**
+     * 更新一条菜单记录
+     * @param menu 菜单信息
+     */
+    @ResponseBody
+    @RequestMapping("/menu/update.json")
+    public ResultEntity<Menu> updateMenu(Menu menu){
+
+        for (int i = 0; i < 10; i++) {
+            System.out.println(menu);
+        }
+        menuService.updateMenu(menu);
 
         return ResultEntity.successWithoutData();
     }

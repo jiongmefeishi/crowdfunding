@@ -65,7 +65,7 @@ public class RoleController {
      */
     @ResponseBody
     @RequestMapping("role/update.json")
-    public ResultEntity updateRole(Role role) {
+    public ResultEntity<String> updateRole(Role role) {
         roleService.updateRole(role);
 
         return ResultEntity.successWithoutData();

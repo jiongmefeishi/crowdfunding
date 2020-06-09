@@ -153,6 +153,7 @@ function myRemoveHoverDom(treeId, treeNode) {
 
 /**
  * 新增一条菜单记录
+ * @param menu 菜单实体
  */
 function saveMenu(menu) {
 
@@ -171,12 +172,41 @@ function saveMenu(menu) {
                 generateMenuTree();
             }
 
-            if(result == "FAILED") {
-                layer.msg("操作失败！"+response.message);
+            if (result == "FAILED") {
+                layer.msg("操作失败！" + response.message);
             }
         },
-        "error":function(response){
-            layer.msg(response.status+" "+response.statusText);
+        "error": function (response) {
+            layer.msg(response.status + " " + response.statusText);
+        }
+    });
+}
+
+
+/**
+ * 更新一条菜单记录
+ * @param menu 菜单实体
+ */
+function updateMenu(menu) {
+    $.ajax({
+        "url": "menu/update.json",
+        "type": "post",
+        "data": menu,
+        "dataType": "json",
+        "success": function (res) {
+            var result = res.result;
+
+            if (result == "SUCCESS") {
+                layer.msg("操作成功！");
+                generateMenuTree();
+            }
+
+            if (result == "FAILED") {
+                layer.msg("操作失败！" + res.message);
+            }
+        },
+        "error": function (res) {
+            layer.msg(res.status + " " + res.statusText);
         }
     });
 }

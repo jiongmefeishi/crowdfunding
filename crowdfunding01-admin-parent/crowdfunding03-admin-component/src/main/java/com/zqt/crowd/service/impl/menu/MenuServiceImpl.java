@@ -30,4 +30,9 @@ public class MenuServiceImpl implements MenuService {
     public void saveMenu(Menu menu) {
         menuMapper.insert(menu);
     }
+
+    @Override
+    public void updateMenu(Menu menu) {
+        menuMapper.updateByPrimaryKeySelective(menu);
+    }
 }

@@ -63,14 +63,67 @@
 
             // 新增一条菜单记录
             saveMenu(menu);
-
             // 关闭模态框
             $("#menuAddModal").modal('hide');
-
             // 清空表单
             $("#menuResetBtn").click();
-
         });
+
+        // 给菜单节点的编辑按钮绑定单击响应函数，按钮是动态生成的，需要先找到对应依赖的静态元素
+        $("#treeDemo").on("click", ".editBtn", function () {
+
+            // 将当前节点的id保存到全局变量
+            window.id = this.id;
+
+            // 打开模态框
+            $("#menuEditModal").modal("show");
+
+            // 获取zTreeObj对象
+            var zTreeObj = $.fn.zTree.getZTreeObj("treeDemo");
+
+            // 根据id属性查询节点对象
+            // 用来搜索节点的属性名
+            var key = "id";
+
+            // 用来搜索节点的属性值
+            var value = window.id;
+
+            var currentNode = zTreeObj.getNodeByParam(key, value);
+
+            // 回显表单数据
+            $("#menuEditModal [name=name]").val(currentNode.name);
+            $("#menuEditModal [name=url]").val(currentNode.url);
+
+            // 回显radio可以这样理解：被选中的radio的value属性可以组成一个数组，
+            // 然后再用这个数组设置回radio，就能够把对应的值选中
+            $("#menuEditModal [name=icon]").val([currentNode.icon]);
+
+            return false;
+        });
+
+        // 给更新模态框中的更新按钮绑定单击响应函数
+        $("#menuEditBtn").click(function () {
+
+            // 收集表单数据
+            // 由于未给<input> 标签绑定 id,通过name属性确定标签
+            var name = $("#menuEditModal [name=name]").val();
+            var url = $("#menuEditModal [name=url]").val();
+            var icon = $("#menuEditModal [name=icon]:checked").val();
+
+            // 封装数据为菜单实体
+            var menu = {
+                "id": window.id,
+                "name": name,
+                "url": url,
+                "icon": icon
+            }
+
+            // 新增一条菜单记录
+            updateMenu(menu);
+            // 关闭模态框
+            $("#menuEditModal").modal("hide");
+        });
+
     });
 
 </script>
@@ -105,5 +158,7 @@
 <%-- 加载模态框 --%>
 <%-- 加载新增菜单模态框 --%>
 <jsp:include page="/WEB-INF/modal/menu/modal-menu-add.jsp"/>
+<%-- 加载修改菜单模态框 --%>
+<jsp:include page="/WEB-INF/modal/menu/modal-menu-edit.jsp"/>
 </body>
 </html>
