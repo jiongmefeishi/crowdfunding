@@ -64,7 +64,7 @@ public class ResultEntity<T> {
      * @return
      */
     public static <E> ResultEntity<E> failed(String message) {
-        return new ResultEntity<E>(SUCCESS, message, null);
+        return new ResultEntity<E>(FAILED, message, null);
     }
 
     public String getResult() {
