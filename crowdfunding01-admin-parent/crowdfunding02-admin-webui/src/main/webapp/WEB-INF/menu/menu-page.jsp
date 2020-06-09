@@ -25,6 +25,52 @@
 
         // 调用生成菜单树结构函数，生成菜单树
         generateMenuTree()
+
+        // 给菜单节点的新增按钮绑定响应函数，按钮是动态生成的，需要先找到对应依赖的静态元素
+        // <ul id="treeDemo" class="ztree"></ul>
+        $("#treeDemo").on('click', '.addBtn', function () {
+
+            // 分析：点击当前按钮-> 触发响应事件 -> 打开模态框-> 在模态框中填写新增菜单信息
+            // -> 点击模态框中保存按钮 ->触发响应事件 -> 执行Ajax请求服务器新增一条菜单记录
+            // -> 关闭模态框，清理表单，刷新菜单树
+
+            // 打开模态框
+            $("#menuAddModal").modal('show');
+
+            // 将当前节点的 id 作为新增节点的 pid， 保存到全局变量
+            window.pid = this.id;
+            // 取消超链接默认行为
+            return false;
+        });
+
+        // 给新增菜单模态框中的保存按钮绑定响应函数
+        $("#menuSaveBtn").click(function () {
+
+            // 收集模态框中新增的菜单数据
+            // 由于未给<input> 标签绑定 id,通过name属性确定标签
+            var name = $.trim($("#menuAddModal [name=name]").val());
+            var url = $.trim($("#menuAddModal [name=url]").val());
+            // name=icon 有多个，这里是选择框，需要选择checked 状态的标签
+            var icon = $.trim($("#menuAddModal [name=icon]:checked").val());
+
+            // 封装数据为菜单实体
+            var menu = {
+                "pid": window.pid,
+                "name": name,
+                "url": url,
+                "icon": icon
+            }
+
+            // 新增一条菜单记录
+            saveMenu(menu);
+
+            // 关闭模态框
+            $("#menuAddModal").modal('hide');
+
+            // 清空表单
+            $("#menuResetBtn").click();
+
+        });
     });
 
 </script>
@@ -55,5 +101,9 @@
         </div>
     </div>
 </div>
+
+<%-- 加载模态框 --%>
+<%-- 加载新增菜单模态框 --%>
+<jsp:include page="/WEB-INF/modal/menu/modal-menu-add.jsp"/>
 </body>
 </html>

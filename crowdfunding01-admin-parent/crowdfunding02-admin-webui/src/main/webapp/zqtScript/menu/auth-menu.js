@@ -151,4 +151,32 @@ function myRemoveHoverDom(treeId, treeNode) {
     $("#" + btnGroupId).remove();
 }
 
+/**
+ * 新增一条菜单记录
+ */
+function saveMenu(menu) {
 
+    $.ajax({
+        "url": "menu/save.json",
+        "type": "post",
+        "data": menu,
+        "dataType": "json",
+        "success": function (res) {
+            let result = res.result;
+            if (result == "SUCCESS") {
+                layer.msg("操作成功！");
+
+                // 重新加载树形结构，注意：要在确认服务器端完成保存操作后再刷新
+                // 否则有可能刷新不到最新的数据，因为这里是异步的
+                generateMenuTree();
+            }
+
+            if(result == "FAILED") {
+                layer.msg("操作失败！"+response.message);
+            }
+        },
+        "error":function(response){
+            layer.msg(response.status+" "+response.statusText);
+        }
+    });
+}

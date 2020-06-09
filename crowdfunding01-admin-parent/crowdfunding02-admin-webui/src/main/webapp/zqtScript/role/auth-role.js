@@ -258,7 +258,6 @@ function saveRole(roleName) {
  * @param roleName 新增的Role对象的名称
  */
 function updateRole(roleName) {
-    console.log("update")
     $.ajax({
         "url": "role/update.json",
         "type": "post",
@@ -293,8 +292,6 @@ function updateRole(roleName) {
  * @param requestBody 从全局变量范围获取的roleIdArray，转换为的JSON字符串
  */
 function removeRole(requestBody) {
-    console.log("remove")
-
     $.ajax({
         "url": "role/remove/by/role/id/array.json",
         "type": "post",

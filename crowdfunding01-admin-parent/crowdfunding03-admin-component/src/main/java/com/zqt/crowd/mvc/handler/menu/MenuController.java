@@ -65,4 +65,12 @@ public class MenuController {
         // 经过上面的运算，根节点包含了整个菜单的树形结构，返回根节点就是返回整个树
         return ResultEntity.successWithData(root);
     }
+
+    @ResponseBody
+    @RequestMapping("/menu/save.json")
+    public ResultEntity<Menu> saveMenu(Menu menu){
+        menuService.saveMenu(menu);
+
+        return ResultEntity.successWithoutData();
+    }
 }
