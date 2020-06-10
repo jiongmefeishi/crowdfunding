@@ -40,7 +40,7 @@
 
         // 给新增按钮添加响应事件，弹出新增模态框
         $("#showAddModalBtn").click(function () {
-            $("#addModal").modal('show');
+            $("#roleAddModal").modal('show');
         });
 
         // 给模态框的保存按钮点击事件新增响应函数
@@ -51,18 +51,18 @@
 
             // 第二种：通过父标签找到子标签，通过子标签里的属性定位到确定的子标签，获取值
             // 父标签+空格 表示父标签下面的子标签集合
-            // #addModal [name=roleName] 含义解释
-            // #addModal 找到整个模态框
+            // #roleAddModal [name=roleName] 含义解释
+            // #roleAddModal 找到整个模态框
             // 空格表示在后代元素中继续查找
             // [name=roleName] 表示匹配后代元素中属性name="roleName" 的元素
-            var roleName = $("#addModal [name=roleName]").val();
+            var roleName = $("#roleAddModal [name=roleName]").val();
 
             // 发送Ajax请求，保存role记录
             saveRole(roleName);
             // 关闭模态框
-            $("#addModal").modal('hide');
+            $("#roleAddModal").modal('hide');
             // 清理模态框
-            $("#addModal [name=roleName]").val("");
+            $("#roleAddModal [name=roleName]").val("");
         });
 
         // 给role 表格中的更新按钮新增点击事件响应函数
@@ -75,7 +75,7 @@
         // 1. 首先找到所有“动态生成”的元素（按钮）所附着的“静态”元素
         $("#rolePageBody").on("click", ".pencilBtn", function () {
             // 打开模态框
-            $("#editModal").modal("show");
+            $("#roleEditModal").modal("show");
 
             // 回显，填充数据
             // 获取表格中当前行的角色名称
@@ -85,18 +85,18 @@
             // 当前函数用不到，更新模态框里点击更新按钮时触发的响应事件中需要，所以设置全局保存
             window.roleId = this.id;
             // 使用roleName 填充模态框中的文本框
-            $("#editModal [name=roleName]").val(roleName);
+            $("#roleEditModal [name=roleName]").val(roleName);
         });
 
         // 给更新模态框更新按钮添加响应事件函数
         $("#updateRoleBtn").click(function () {
 
             // 从文本框中获取更新后的角色名称
-            var roleName = $("#editModal [name=roleName]").val();
+            var roleName = $("#roleEditModal [name=roleName]").val();
             //更新 role 记录
             updateRole(roleName);
             // 关闭模态框
-            $("#editModal").modal('hide');
+            $("#roleEditModal").modal('hide');
         });
 
         // 给确认模态框中的确认删除按钮添加单击响应事件
@@ -107,7 +107,7 @@
             // 根据roleIdArray 删除role记录（单/多）
             removeRole(requestBody);
             // 关闭模态框
-            $("#confirmModal").modal('hide');
+            $("#roleConfirmModal").modal('hide');
         });
 
 

@@ -190,7 +190,7 @@ function getTotalPageNum() {
 function showConfirmModal(roleArray) {
 
     // 打开确认提示模态框
-    $("#confirmModal").modal('show');
+    $("#roleConfirmModal").modal('show');
 
     // 先清除上一次遗留的信息
     $("#roleNameDiv").empty();

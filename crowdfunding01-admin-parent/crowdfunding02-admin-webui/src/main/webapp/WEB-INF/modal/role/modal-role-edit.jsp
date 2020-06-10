@@ -9,7 +9,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%-- 基于bootstrap 的模态框 --%>
-<div id="editModal" class="modal fade" tabindex="-1" role="dialog">
+<div id="roleEditModal" class="modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
