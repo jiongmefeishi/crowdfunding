@@ -210,3 +210,36 @@ function updateMenu(menu) {
         }
     });
 }
+
+/**
+ * 删除一条菜单记录
+ * @param menuId 菜单id
+ */
+function removeMenu(menuId) {
+    $.ajax({
+        "url": "menu/remove.json",
+        "type": "post",
+        "data": {
+            "id": menuId
+        },
+        "dataType": "json",
+        "success": function (response) {
+            var result = response.result;
+
+            if (result == "SUCCESS") {
+                layer.msg("操作成功！");
+
+                // 重新加载树形结构，注意：要在确认服务器端完成保存操作后再刷新
+                // 否则有可能刷新不到最新的数据，因为这里是异步的
+                generateMenuTree();
+            }
+
+            if (result == "FAILED") {
+                layer.msg("操作失败！" + response.message);
+            }
+        },
+        "error": function (response) {
+            layer.msg(response.status + " " + response.statusText);
+        }
+    });
+}

@@ -35,4 +35,9 @@ public class MenuServiceImpl implements MenuService {
     public void updateMenu(Menu menu) {
         menuMapper.updateByPrimaryKeySelective(menu);
     }
+
+    @Override
+    public void removeMenu(Integer menuId) {
+        menuMapper.deleteByPrimaryKey(menuId);
+    }
 }

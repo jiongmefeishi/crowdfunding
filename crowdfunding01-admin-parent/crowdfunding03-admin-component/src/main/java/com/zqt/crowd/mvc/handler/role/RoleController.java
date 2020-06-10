@@ -5,7 +5,6 @@ import com.zqt.crowd.entity.role.Role;
 import com.zqt.crowd.service.api.role.RoleService;
 import com.zqt.crowd.util.ResultEntity;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,7 +15,7 @@ import java.util.List;
  * @Date: 2020/5/31 8:54
  * @version: 1.0
  */
-@Controller
+@RestController
 public class RoleController {
 
     @Autowired
@@ -31,7 +30,6 @@ public class RoleController {
      * @return ResultEntity<PageInfo < Role>> json数据
      */
     // 返回的是json 数据，所有请求路径也以json 结束
-    @ResponseBody
     @RequestMapping(value = "/role/get/page/info.json", method = RequestMethod.POST)
     public ResultEntity<PageInfo<Role>> getPageInfo(
             @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,
@@ -50,7 +48,6 @@ public class RoleController {
      * @param role
      * @return
      */
-    @ResponseBody
     @RequestMapping(value = "role/save.json", method = RequestMethod.POST)
     public ResultEntity<String> saveRole(Role role) {
         roleService.saveRole(role);
@@ -63,7 +60,6 @@ public class RoleController {
      *
      * @return
      */
-    @ResponseBody
     @RequestMapping("role/update.json")
     public ResultEntity<String> updateRole(Role role) {
         roleService.updateRole(role);
@@ -75,7 +71,6 @@ public class RoleController {
      * 合并单条删除和批量删除，根据传入的 role id list 进行删除记录
      * @param roleIdList 角色id 集合
      */
-    @ResponseBody
     @RequestMapping("/role/remove/by/role/id/array.json")
     public ResultEntity<String> removeByRoleIdArray(@RequestBody List<Integer> roleIdList) {
         roleService.removeRole(roleIdList);

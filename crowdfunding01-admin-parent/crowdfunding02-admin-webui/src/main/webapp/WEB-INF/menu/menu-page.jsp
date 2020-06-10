@@ -124,6 +124,42 @@
             $("#menuEditModal").modal("hide");
         });
 
+        // 给菜单删除按钮绑定单击响应函数
+        $("#treeDemo").on("click", ".removeBtn", function () {
+
+            // 将当前节点的id保存到全局变量
+            window.id = this.id;
+
+            // 打开模态框
+            $("#menuConfirmModal").modal("show");
+
+            // 获取zTreeObj对象
+            var zTreeObj = $.fn.zTree.getZTreeObj("treeDemo");
+
+            // 根据id属性查询节点对象
+            // 用来搜索节点的属性名
+            var key = "id";
+
+            // 用来搜索节点的属性值
+            var value = window.id;
+
+            var currentNode = zTreeObj.getNodeByParam(key, value);
+
+            $("#removeNodeSpan").html("【<i class='" + currentNode.icon + "'></i>" + currentNode.name + "】");
+
+            return false;
+        });
+
+        // 给确认模态框中的OK按钮绑定单击响应函数
+        $("#confirmBtn").click(function () {
+
+            let menuId = window.id;
+            // 根据菜单id删除一条菜单记录
+            removeMenu(menuId)
+            // 关闭模态框
+            $("#menuConfirmModal").modal("hide");
+        });
+
     });
 
 </script>
@@ -160,5 +196,7 @@
 <jsp:include page="/WEB-INF/modal/menu/modal-menu-add.jsp"/>
 <%-- 加载修改菜单模态框 --%>
 <jsp:include page="/WEB-INF/modal/menu/modal-menu-edit.jsp"/>
+<%-- 加载确认菜单模态框 --%>
+<jsp:include page="/WEB-INF/modal/menu/modal-menu-confirm.jsp"/>
 </body>
 </html>

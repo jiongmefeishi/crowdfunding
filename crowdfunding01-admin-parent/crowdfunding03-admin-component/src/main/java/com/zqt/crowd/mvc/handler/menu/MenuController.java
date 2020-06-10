@@ -4,9 +4,11 @@ import com.zqt.crowd.entity.menu.Menu;
 import com.zqt.crowd.service.api.menu.MenuService;
 import com.zqt.crowd.util.ResultEntity;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+//import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+//import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.HashMap;
 import java.util.List;
@@ -18,7 +20,10 @@ import java.util.Map;
  * @Date: 2020/6/5 14:55
  * @version: 1.0
  */
-@Controller
+//@ResponseBody
+//@Controller
+// @RestController 来替换 @Controller 和ResponseBody
+@RestController
 public class MenuController {
 
     @Autowired
@@ -27,7 +32,6 @@ public class MenuController {
     /**
      * 获取所有的菜单节点
      */
-    @ResponseBody
     @RequestMapping("/menu/get/whole/tree.json")
     public ResultEntity<Menu> getWholeTreeNew() {
 
@@ -68,29 +72,34 @@ public class MenuController {
 
     /**
      * 新增一条菜单记录
+     *
      * @param menu 菜单信息
      */
-    @ResponseBody
     @RequestMapping("/menu/save.json")
-    public ResultEntity<Menu> saveMenu(Menu menu){
+    public ResultEntity<String> saveMenu(Menu menu) {
         menuService.saveMenu(menu);
-
         return ResultEntity.successWithoutData();
     }
 
     /**
      * 更新一条菜单记录
+     *
      * @param menu 菜单信息
      */
-    @ResponseBody
     @RequestMapping("/menu/update.json")
-    public ResultEntity<Menu> updateMenu(Menu menu){
-
-        for (int i = 0; i < 10; i++) {
-            System.out.println(menu);
-        }
+    public ResultEntity<String> updateMenu(Menu menu) {
         menuService.updateMenu(menu);
+        return ResultEntity.successWithoutData();
+    }
 
+    /**
+     * 根据菜单id删除一条菜单记录
+     *
+     * @param id 菜单id
+     */
+    @RequestMapping("/menu/remove.json")
+    public ResultEntity<String> removeMenu(@RequestParam("id") Integer id) {
+        menuService.removeMenu(id);
         return ResultEntity.successWithoutData();
     }
 }
