@@ -68,11 +68,28 @@
     <sql id="Base_Column_List">
     id, name
   </sql>
+    <!-- 根据关键词进行模糊查询 -->
     <select id="selectByKeyword" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
         from t_role
         where name like concat("%", #{keyword}, "%")
+    </select>
+    <!-- 根据 adminId 查询已经分配的role -->
+    <select id="selectAssignedRole" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from t_role
+        where id
+        in (select role_id from t_inner_admin_role where admin_id = #{adminId})
+    </select>
+    <!-- 根据 adminId 查询未分配的role -->
+    <select id="selectUnAssignedRole" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from t_role
+        where id
+        not in (select role_id from t_inner_admin_role where admin_id = #{adminId})
     </select>
     <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.zqt.crowd.entity.role.RoleExample">
         select

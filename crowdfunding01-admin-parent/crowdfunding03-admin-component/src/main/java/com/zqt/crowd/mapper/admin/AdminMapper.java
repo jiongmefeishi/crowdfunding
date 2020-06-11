@@ -34,8 +34,24 @@ public interface AdminMapper {
 
     /**
      * 根据关键词查询记录，模糊查询
+     *
      * @param keyword 关键词
      * @return admin list
      */
     List<Admin> selectAdminByKeyword(String keyword);
+
+    /**
+     * 根据adminId删除旧的关联关系数据
+     *
+     * @param adminId adminId
+     */
+    void deleteOLdRelationship(Integer adminId);
+
+    /**
+     * 根据roleIdList和adminId保存新的关联关系
+     *
+     * @param adminId    adminId
+     * @param roleIdList 当前adminId 需要绑定的 role 的集合
+     */
+    void insertNewRelationship(@Param("adminId") Integer adminId, @Param("roleIdList") List<Integer> roleIdList);
 }

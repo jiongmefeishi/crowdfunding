@@ -72,9 +72,10 @@
     <sql id="Base_Column_List">
     id, login_acct, user_pswd, user_name, email, create_time
   </sql>
+    <!-- 根据关键词模糊查询 admin -->
     <select id="selectAdminByKeyword" resultMap="BaseResultMap">
         select
-            <include refid="Base_Column_List"/>
+        <include refid="Base_Column_List"/>
         from t_admin
         where
         login_acct like concat("%", #{keyword}, "%")
@@ -101,6 +102,11 @@
         from t_admin
         where id = #{id,jdbcType=INTEGER}
     </select>
+    <!-- 根据adminId删除旧的关联关系数据 -->
+    <delete id="deleteOLdRelationship" parameterType="java.lang.Integer">
+        delete from t_inner_admin_role
+        where admin_id = #{adminId}
+    </delete>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from t_admin
     where id = #{id,jdbcType=INTEGER}
@@ -111,6 +117,24 @@
             <include refid="Example_Where_Clause"/>
         </if>
     </delete>
+    <!-- 根据roleIdList和adminId保存新的关联关系 -->
+    <!--<insert id="insertNewRelationship">-->
+    <!--    insert into t_inner_admin_role (admin_id, role_id)-->
+    <!--    values-->
+    <!--    <foreach collection="roleIdList" item="roleId" separator=",">-->
+    <!--        <if test="roleId != null">-->
+    <!--            (#{adminId},#{roleId})-->
+    <!--        </if>-->
+    <!--    </foreach>-->
+    <!--</insert>-->
+
+    <insert id="insertNewRelationship">
+        insert into t_inner_admin_role(admin_id,role_id) values
+        <foreach collection="roleIdList" item="roleId" separator=",">
+            (#{adminId},#{roleId})
+        </foreach>
+    </insert>
+
     <insert id="insert" parameterType="com.zqt.crowd.entity.admin.Admin">
     insert into t_admin (id, login_acct, user_pswd, 
       user_name, email, create_time

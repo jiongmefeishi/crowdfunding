@@ -30,12 +30,14 @@ public interface AdminService {
 
     /**
      * 根据 admin ID 删除一条记录
+     *
      * @param adminId 用户ID
      */
     void remove(Integer adminId);
 
     /**
      * 根据adminID 查询管理员记录
+     *
      * @param adminId 管理员ID
      * @return
      */
@@ -43,7 +45,10 @@ public interface AdminService {
 
     /**
      * 根据用户信息更新信息
+     *
      * @param admin 管理员新信息
      */
     void update(Admin admin);
+
+    void saveAdminRoleRelationship(Integer adminId, List<Integer> roleIdList);
 }
