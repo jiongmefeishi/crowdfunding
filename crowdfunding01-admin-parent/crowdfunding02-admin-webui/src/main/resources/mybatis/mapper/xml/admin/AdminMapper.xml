@@ -118,20 +118,13 @@
         </if>
     </delete>
     <!-- 根据roleIdList和adminId保存新的关联关系 -->
-    <!--<insert id="insertNewRelationship">-->
-    <!--    insert into t_inner_admin_role (admin_id, role_id)-->
-    <!--    values-->
-    <!--    <foreach collection="roleIdList" item="roleId" separator=",">-->
-    <!--        <if test="roleId != null">-->
-    <!--            (#{adminId},#{roleId})-->
-    <!--        </if>-->
-    <!--    </foreach>-->
-    <!--</insert>-->
-
     <insert id="insertNewRelationship">
-        insert into t_inner_admin_role(admin_id,role_id) values
+        insert into t_inner_admin_role (admin_id, role_id)
+        values
         <foreach collection="roleIdList" item="roleId" separator=",">
-            (#{adminId},#{roleId})
+            <if test="roleId != null">
+                (#{adminId},#{roleId})
+            </if>
         </foreach>
     </insert>
 
