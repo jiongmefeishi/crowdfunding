@@ -29,7 +29,7 @@
 
             <%--底部--%>
             <div class="modal-footer">
-                <button id="saveRoleBtn" type="button" class="btn btn-primary">执行分配</button>
+                <button id="assignBtn" type="button" class="btn btn-primary">执行分配</button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->

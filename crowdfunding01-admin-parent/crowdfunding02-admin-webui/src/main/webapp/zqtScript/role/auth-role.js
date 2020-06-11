@@ -426,3 +426,41 @@ function getAuthListByRoleId(roleId) {
 
     return res;
 }
+
+
+/**
+ * 请求服务器保存分配的权限
+ * 根据角色id和权限id列表进行关系绑定
+ * @param requestBody
+ */
+function saveAssignRelationship(authIdArray, roleId) {
+    var requestBody = {
+        "authIdArray": authIdArray,
+
+        // 为了服务器端handler方法能够统一使用List<Integer>方式接收数据，roleId也存入数组
+        // 后端使用 Map<String, List<Integer>> 就可以轻松接收数据
+        "roleId": [roleId]
+    };
+    // 转为 JSON字符串
+    requestBody = JSON.stringify(requestBody);
+
+    $.ajax({
+        "url": "assign/do/role/assign/auth.json",
+        "type": "post",
+        "data": requestBody,
+        "contentType": "application/json;charset=UTF-8",
+        "dataType": "json",
+        "success": function (response) {
+            var result = response.result;
+            if (result == "SUCCESS") {
+                layer.msg("操作成功！");
+            }
+            if (result == "FAILED") {
+                layer.msg("操作失败！" + response.message);
+            }
+        },
+        "error": function (response) {
+            layer.msg(response.status + " " + response.statusText);
+        }
+    });
+}

@@ -37,4 +37,17 @@ public interface AuthMapper {
      * @return 权限id列表
      */
     List<Integer> selectAssignedAuthIdByRoleId(Integer roleId);
+
+    /**
+     * 根据roleId 删除旧的关联关系
+     * @param roleId 角色id
+     */
+    void deleteOldRelationship(Integer roleId);
+
+    /**
+     * 根据角色id 和 权限id列表 建立新的关联关系
+     * @param roleId 角色id
+     * @param authIdList 权限id列表
+     */
+    void insertNewRelationship(@Param("roleId") Integer roleId, @Param("authIdList") List<Integer> authIdList);
 }

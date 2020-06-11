@@ -3,6 +3,7 @@ package com.zqt.crowd.service.api.auth;
 import com.zqt.crowd.entity.auth.Auth;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @auther: zqtao
@@ -24,4 +25,6 @@ public interface AuthService {
      * @return 权限列表
      */
     List<Auth> getAll();
+
+    void saveRoleAuthRelationship(Map<String, List<Integer>> map);
 }

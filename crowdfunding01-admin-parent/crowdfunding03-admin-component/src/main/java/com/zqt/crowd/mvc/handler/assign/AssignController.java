@@ -9,11 +9,13 @@ import com.zqt.crowd.util.ResultEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @auther: zqtao
@@ -105,6 +107,19 @@ public class AssignController {
     public ResultEntity<List<Auth>> getAllAuth() {
         List<Auth> authList = authService.getAll();
         return ResultEntity.successWithData(authList);
+    }
+
+
+    /**
+     * 根据角色id和权限id列表,进行关系关联
+     * @param map 存放的是角色id, 和权限列表
+     */
+    @ResponseBody
+    @RequestMapping("/assign/do/role/assign/auth.json")
+    public ResultEntity<String> saveRoleAuthRelationship(
+            @RequestBody Map<String, List<Integer>> map) {
+        authService.saveRoleAuthRelationship(map);
+        return ResultEntity.successWithoutData();
     }
 
 }

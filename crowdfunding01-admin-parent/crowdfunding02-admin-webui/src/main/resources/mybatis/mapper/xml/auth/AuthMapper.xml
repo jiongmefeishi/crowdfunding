@@ -99,6 +99,11 @@
         from t_auth
         where id = #{id,jdbcType=INTEGER}
     </select>
+    <!-- 根据roleId 删除旧的关联关系 -->
+    <delete id="deleteOldRelationship" parameterType="java.lang.Integer">
+        delete from t_inner_role_auth
+        where role_id = #{roleId}
+    </delete>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from t_auth
     where id = #{id,jdbcType=INTEGER}
@@ -109,6 +114,15 @@
             <include refid="Example_Where_Clause"/>
         </if>
     </delete>
+    <!-- 根据角色id 和 权限id列表 建立新的关联关系 -->
+    <insert id="insertNewRelationship">
+        insert into t_inner_role_auth (role_id, auth_id) values
+        <foreach collection="authIdList" item="authId" separator=",">
+            <if test="authId != null">
+                (#{roleId}, #{authId})
+            </if>
+        </foreach>
+    </insert>
     <insert id="insert" parameterType="com.zqt.crowd.entity.auth.Auth">
     insert into t_auth (id, name, title, 
       category_id)

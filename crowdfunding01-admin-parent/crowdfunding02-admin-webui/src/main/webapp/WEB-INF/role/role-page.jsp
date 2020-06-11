@@ -202,6 +202,34 @@
             fillAuthTree();
         });
 
+        // 给分配权限模态框中的“分配”按钮绑定单击响应函数
+        $("#assignBtn").click(function(){
+
+            // ①收集树形结构的各个节点中被勾选的节点
+            // [1]声明一个专门的数组存放id
+            var authIdArray = [];
+
+            // [2]获取zTreeObj对象
+            var zTreeObj = $.fn.zTree.getZTreeObj("authTreeDemo");
+
+            // [3]获取全部被勾选的节点
+            var checkedNodes = zTreeObj.getCheckedNodes();
+
+            // [4]遍历checkedNodes
+            for(var i = 0; i < checkedNodes.length; i++) {
+                var checkedNode = checkedNodes[i];
+                var authId = checkedNode.id;
+                // 存进数组
+                authIdArray.push(authId);
+            }
+
+            let roleId = window.roleId;
+            // ②发送请求保存分配的权限
+            saveAssignRelationship(authIdArray, roleId);
+
+            $("#assignModal").modal("hide");
+        });
+
     });
 </script>
 
