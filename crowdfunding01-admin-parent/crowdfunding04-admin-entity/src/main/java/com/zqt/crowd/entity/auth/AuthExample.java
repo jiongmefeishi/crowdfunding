@@ -1,4 +1,4 @@
-package com.zqt.crowd.entity;
+package com.zqt.crowd.entity.auth;
 
 import java.util.ArrayList;
 import java.util.List;

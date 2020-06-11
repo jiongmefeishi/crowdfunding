@@ -38,11 +38,13 @@ public class Menu {
     private String icon;
 
     /**
+     * （可不加，有其他方法）
      * 扩展属性：存放当前菜单节点下的所有子菜单节点的集合
      */
     private List<Menu> children;
 
     /**
+     * （可不加，有其他方法）
      * 扩展属性：前端展示菜单树使用 zTree， open 属性表示菜单是否打开，显示子菜单节点
      */
     private boolean open;
