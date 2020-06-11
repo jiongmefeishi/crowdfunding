@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="css/pagination.css"/>
 <%-- 引入pagination js --%>
 <script type="text/javascript" src="jquery/jquery.pagination.js"></script>
+<%-- 加载ztree 资源 --%>
+<link rel="stylesheet" href="ztree/zTreeStyle.css"/>
+<script type="text/javascript" src="ztree/jquery.ztree.all-3.5.min.js"></script>
 <%-- 引入自定义的js 文件--%>
 <script type="text/javascript" src="zqtScript/role/auth-role.js"></script>
 <script type="text/javascript">
@@ -186,6 +189,19 @@
             });
         });
 
+        // 给权限分配按钮绑定单击响应函数
+        $("#rolePageBody").on("click",".checkBtn",function(){
+
+            // 把当前角色id存入全局变量
+            window.roleId = this.id;
+
+            // 打开模态框
+            $("#assignModal").modal("show");
+
+            // 在模态框中装载树Auth的形结构数据
+            fillAuthTree();
+        });
+
     });
 </script>
 
@@ -268,5 +284,7 @@
 <%@include file="/WEB-INF/modal/role/modal-role-edit.jsp" %>
 <%-- role 删除确认模态框 --%>
 <%@include file="/WEB-INF/modal/role/modal-role-confirm.jsp" %>
+<%-- role 权限分配模态框：给角色(role) 分配权限(auth) 的模态框 --%>
+<%@include file="/WEB-INF/modal/role/modal-role-assign-auth.jsp" %>
 </body>
 </html>

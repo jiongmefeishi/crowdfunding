@@ -113,7 +113,7 @@ function fillTableBody(pageInfo) {
         var roleNameTd = "<td>" + roleName + "</td>";
 
         // 生成按钮标签
-        var checkBtn = "<button type='button' class='btn btn-success btn-xs'><i class=' glyphicon glyphicon-check'></i></button>";
+        var checkBtn = "<button id='" + roleId + "' type='button' class='btn btn-success btn-xs checkBtn'><i class=' glyphicon glyphicon-check'></i></button>";
         // 通过button标签的id属性（别的属性其实也可以）把roleId值传递到button按钮的单击响应函数中，在单击响应函数中使用this.id
         var pencilBtn = "<button id='" + roleId + "' type='button' class='btn btn-primary btn-xs pencilBtn'><i class=' glyphicon glyphicon-pencil'></i></button>";
         // 通过button标签的id属性（别的属性其实也可以）把roleId值传递到button按钮的单击响应函数中，在单击响应函数中使用this.id
@@ -316,4 +316,113 @@ function removeRole(requestBody) {
             layer.msg(res.status + res.statusText)
         }
     });
+}
+
+
+/**
+ * 声明专门的函数用来在分配Auth的模态框中显示Auth的树形结构数据
+ */
+function fillAuthTree() {
+
+    // 1.发送Ajax请求查询Auth数据
+    var ajaxReturn = getAuthList();
+
+    if (ajaxReturn.status != 200) {
+        layer.msg("请求处理出错！响应状态码是：" + ajaxReturn.status + " 说明是：" + ajaxReturn.statusText);
+        return;
+    }
+
+    // 2.从响应结果中获取Auth的JSON数据
+    // 从服务器端查询到的list不需要组装成树形结构，这里我们交给zTree去组装
+    var authList = ajaxReturn.responseJSON.data;
+
+    // 3.准备对zTree进行设置的JSON对象
+    var setting = {
+        "data": {
+            "simpleData": {
+                // 开启简单JSON功能
+                "enable": true,
+                // 使用categoryId属性关联父节点，不用默认的pId了
+                "pIdKey": "categoryId"
+            },
+            "key": {
+                // 使用title属性显示节点名称，不用默认的name作为属性名了
+                "name": "title"
+            }
+        },
+        "check": {
+            "enable": true
+        }
+    };
+    // 4.生成树形结构
+    // <ul id="authTreeDemo" class="ztree"></ul>
+    $.fn.zTree.init($("#authTreeDemo"), setting, authList);
+
+    // 获取zTreeObj对象
+    var zTreeObj = $.fn.zTree.getZTreeObj("authTreeDemo");
+
+    // 调用zTreeObj对象的方法，把节点展开
+    zTreeObj.expandAll(true);
+
+    // 5.查询已分配的Auth的id组成的数组
+    let roleId = window.roleId;
+    ajaxReturn = getAuthListByRoleId(roleId);
+
+    if (ajaxReturn.status != 200) {
+        layer.msg("请求处理出错！响应状态码是：" + ajaxReturn.status + " 说明是：" + ajaxReturn.statusText);
+        return;
+    }
+
+    // 从响应结果中获取authIdArray
+    var authIdArray = ajaxReturn.responseJSON.data;
+
+    // 6.根据authIdArray把树形结构中对应的节点勾选上
+    // ①遍历authIdArray
+    for (var i = 0; i < authIdArray.length; i++) {
+        var authId = authIdArray[i];
+
+        // ②根据id查询树形结构中对应的节点
+        var treeNode = zTreeObj.getNodeByParam("id", authId);
+
+        // ③将treeNode设置为被勾选
+        // checked设置为true表示节点勾选
+        var checked = true;
+
+        // checkTypeFlag设置为false，表示不“联动”，不联动是为了避免把不该勾选的勾选上
+        var checkTypeFlag = false;
+
+        // 执行
+        zTreeObj.checkNode(treeNode, checked, checkTypeFlag);
+    }
+}
+
+
+/**
+ * 获取权限(Auth)列表
+ */
+function getAuthList() {
+    var res = $.ajax({
+        "url": "assign/get/all/auth.json",
+        "type": "post",
+        "dataType": "json",
+        "async": false
+    });
+    return res;
+}
+
+/**
+ * 根据角色id 查询分配到的 权限列表
+ */
+function getAuthListByRoleId(roleId) {
+    var res = $.ajax({
+        "url": "assign/get/assigned/auth/id/by/role/id.json",
+        "type": "post",
+        "data": {
+            "roleId": roleId
+        },
+        "dataType": "json",
+        "async": false
+    });
+
+    return res;
 }

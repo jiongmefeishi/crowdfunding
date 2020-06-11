@@ -1,19 +1,23 @@
 package com.zqt.crowd.mvc.handler.assign;
 
+import com.zqt.crowd.entity.auth.Auth;
 import com.zqt.crowd.entity.role.Role;
 import com.zqt.crowd.service.api.admin.AdminService;
+import com.zqt.crowd.service.api.auth.AuthService;
 import com.zqt.crowd.service.api.role.RoleService;
+import com.zqt.crowd.util.ResultEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
 /**
  * @auther: zqtao
- * @description: 角色分配控制层
+ * @description: 角色分配（Assign）控制层
  * 给 Admin(管理员用户) 分配相应的 Role(角色)
  * @Date: 2020/6/10 15:20
  * @version: 1.0
@@ -26,6 +30,9 @@ public class AssignController {
 
     @Autowired
     private AdminService adminService;
+
+    @Autowired
+    private AuthService authService;
 
 
     /**
@@ -51,6 +58,14 @@ public class AssignController {
         return "assign/assign-role-to-admin";
     }
 
+    /**
+     * 根据adminId 和 roleIdList 保存关联关系
+     * @param adminId 管理员用户的 id
+     * @param pageNum 页码
+     * @param keyword 关键词
+     * @param roleIdList 角色id 集合
+     * @return 重定向到管理员列表
+     */
     @RequestMapping("/assign/do/role/assign.html")
     public String saveAdminRoleRelationship(
             @RequestParam("adminId") Integer adminId,
@@ -66,4 +81,30 @@ public class AssignController {
 
         return "redirect:/admin/get/page.html?pageNum="+pageNum+"&keyword="+keyword;
     }
+
+    /**
+     * 根据 roleId 查询关联的 authId 列表
+     * @param roleId 角色 id
+     * @return 权限列表
+     */
+    @ResponseBody
+    @RequestMapping("/assign/get/assigned/auth/id/by/role/id.json")
+    public ResultEntity<List<Integer>> getAssignedAuthIdByRoleId(
+            @RequestParam("roleId") Integer roleId) {
+
+        List<Integer> authIdList = authService.getAssignedAuthIdByRoleId(roleId);
+        return ResultEntity.successWithData(authIdList);
+    }
+
+    /**
+     * 获取权限(Auth)列表
+     * @return 权限列表
+     */
+    @ResponseBody
+    @RequestMapping("/assign/get/all/auth.json")
+    public ResultEntity<List<Auth>> getAllAuth() {
+        List<Auth> authList = authService.getAll();
+        return ResultEntity.successWithData(authList);
+    }
+
 }
