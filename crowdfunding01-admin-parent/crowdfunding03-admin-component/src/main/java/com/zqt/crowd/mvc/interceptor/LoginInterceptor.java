@@ -12,10 +12,14 @@ import javax.servlet.http.HttpSession;
 /**
  * @auther: zqtao
  * @description: 登录验证拦截器，校验用户是否登录
- * 需要去spring-web-mvc.xml 配置中配置注册拦截器
+ * 需要去spring-web-mvc.xml 配置文件中配置注册拦截器
  * @Date: 2020/5/23 13:01
  * @version: 1.0
+ *
+ * @supplement: 补充说明，当前拦截器废弃使用，使用 spring security 自行拦截请求
+ * @Deprecated 弃用
  */
+@Deprecated
 public class LoginInterceptor extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)

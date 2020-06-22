@@ -40,11 +40,15 @@
 
 <div class="container">
 
-    <form action="admin/do/login.html" method="post" class="form-signin" role="form">
+    <%--    action="admin/do/login.html" 自行处理 action="security/do/login.html"  交给spring security 处理 --%>
+    <form action="security/do/login.html" method="post" class="form-signin" role="form">
         <h2 class="form-signin-heading">
             <i class="glyphicon glyphicon-log-in"></i> 管理员登录
         </h2>
-        <p>${requestScope.exception.message }</p>
+        <%-- 自行处理异常信息 --%>
+        <%-- <p>${requestScope.exception.message }</p> --%>
+        <%-- spring security 给定的异常信息 --%>
+        <p>${SPRING_SECURITY_LAST_EXCEPTION.message}</p>
         <div class="form-group has-success has-feedback">
             <input type="text" name="loginAcct" value="pc" class="form-control" id="inputSuccess4"
                    placeholder="请输入登录账号" autofocus> <span

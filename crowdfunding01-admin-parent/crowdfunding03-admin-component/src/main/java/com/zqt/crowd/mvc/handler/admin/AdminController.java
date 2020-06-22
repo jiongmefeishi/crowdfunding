@@ -32,6 +32,7 @@ public class AdminController {
      * @param session session
      * @return 重定向到登录页面
      */
+    @Deprecated
     @RequestMapping("/admin/do/logout.html")
     public String doLogout(HttpSession session) {
 
@@ -50,6 +51,7 @@ public class AdminController {
      * @param session   session
      * @return 重定向到主页
      */
+    @Deprecated
     @RequestMapping("/admin/do/login.html")
     public String doLogin(
             @RequestParam("loginAcct") String loginAcct,

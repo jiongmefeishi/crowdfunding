@@ -24,7 +24,11 @@
                             <li><a href="#"><i class="glyphicon glyphicon-comment"></i>
                                 消息</a></li>
                             <li class="divider"></li>
-                            <li><a href="admin/do/logout.html"><i
+                            <li>
+                                <%-- 使用spring security 接管退出登录处理，
+                                原来退出登录作废 <a href="admin/do/logout.html">--%>
+                                <a href="security/do/logout.html">
+                                <i
                                     class="glyphicon glyphicon-off"></i> 退出系统</a></li>
                         </ul>
                     </div>

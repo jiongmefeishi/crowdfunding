@@ -7,7 +7,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 /**
- * @auther: zqtao
+ * @author: zqtao
  * @description: 基于注解的spring security 配置类
  * @Date: 2020/6/15
  * @version: 1.0
@@ -18,6 +18,18 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 // 标记启用 web 环境下权限控制功能
 @EnableWebSecurity
 public class WebAppSecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+
+        // 1. 内存指定登录账户和登录密码，临时使用，测试登录验证
+        auth
+                .inMemoryAuthentication()
+                .withUser("tom")
+                .password("123456").roles("ADMIN")
+
+        ;
+    }
 
     // 请求授权
     @Override
@@ -47,11 +59,28 @@ public class WebAppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .antMatchers("/zqtScript/**")    // 针对静态资源进行设置，无条件访问
                 .permitAll()
-                .anyRequest()					            // 其他任意请求
-                .authenticated();                   		// 认证后访问
+                .anyRequest()                               // 其他任意请求
+                .authenticated()                            // 认证后访问
+                // 3.指定跨站请求伪造(csrf)的防护手段
+                .and()
+                .csrf()                                     // 防跨站请求伪造功能
+                // 禁用csrf 功能(之前未引入spring security模块时没有加上CSRF，导致测试无法访问)
+                // 无法通过认证 Could not verify the provided CSRF token because your session was not found.
+                .disable()
+                // 4.开启登录认证
+                .formLogin()                                    // 开启表单登录功能
+                .loginPage("/admin/to/login/page.html")         // 指定登录页面
+                .loginProcessingUrl("/security/do/login.html")  // 指定处理登录请求的地址，交给spring security处理，不需要具体实现
+                .defaultSuccessUrl("/admin/to/main/page.html")  // 指定登录成功跳转地址
+                .usernameParameter("loginAcct")                 // 指定登录请求的账号参数
+                .passwordParameter("userPswd")                  // 指定登录请求的密码参数
+                .and()
+                .logout()                                       // 开启退出登录功能
+                .logoutUrl("/security/do/logout.html")          // 指定退出登录处理的地址，交给spring security处理，不需要具体实现
+                .logoutSuccessUrl("/admin/to/login/page.html")  // 指定退出成功以后前往的地址
+        ;
 
 
     }
-
 
 }
