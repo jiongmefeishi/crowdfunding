@@ -16,7 +16,23 @@ public interface AdminService {
 
     List<Admin> getAll();
 
+    /**
+     * 根据登录账号和密码查询 Admin
+     *
+     * @param loginAcct 登录账号
+     * @param userPswd  登录密码
+     * @return Admin对象
+     */
     Admin getAdminByLoginAcct(String loginAcct, String userPswd);
+
+
+    /**
+     * 根据登录账号查询 Admin
+     *
+     * @param loginAcct 登录账号
+     * @return Admin对象
+     */
+    Admin getAdminByLoginAcct(String loginAcct);
 
     /**
      * 分页查询 Admin 记录
@@ -39,7 +55,7 @@ public interface AdminService {
      * 根据adminID 查询管理员记录
      *
      * @param adminId 管理员ID
-     * @return
+     * @return Admin
      */
     Admin getAdminById(Integer adminId);
 

@@ -1,5 +1,6 @@
 package com.zqt.crowd.mvc.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -19,16 +20,22 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 public class WebAppSecurityConfig extends WebSecurityConfigurerAdapter {
 
+
+    @Autowired
+    private SecurityUserDetailService securityUserDetailService;
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
-        // 1. 内存指定登录账户和登录密码，临时使用，测试登录验证
-        auth
-                .inMemoryAuthentication()
-                .withUser("tom")
-                .password("123456").roles("ADMIN")
+//         1. 内存指定登录账户和登录密码，临时使用，测试登录验证
+//        auth
+//                .inMemoryAuthentication()
+//                .withUser("tom")
+//                .password("123456").roles("ADMIN")
+//        ;
 
-        ;
+        // 2. 使用数据库中信息进行登陆验证
+        auth.userDetailsService(securityUserDetailService);
     }
 
     // 请求授权

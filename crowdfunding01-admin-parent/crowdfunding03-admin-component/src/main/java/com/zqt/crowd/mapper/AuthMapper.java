@@ -50,4 +50,11 @@ public interface AuthMapper {
      * @param authIdList 权限id列表
      */
     void insertNewRelationship(@Param("roleId") Integer roleId, @Param("authIdList") List<Integer> authIdList);
+
+    /**
+     * 根据管理员 id 查询已经分配到的 权限列表 名称
+     * @param adminId 角色id
+     * @return 权限id列表
+     */
+    List<String> selectAssignedAuthNameByAdminId(Integer adminId);
 }

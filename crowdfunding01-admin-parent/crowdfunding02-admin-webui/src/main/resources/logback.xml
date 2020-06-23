@@ -21,5 +21,4 @@
 
 	<!-- 根据特殊需求指定局部日志级别 -->
 	<logger name="com.zqt.crowd.mapper" level="DEBUG"/>
-	
 </configuration>

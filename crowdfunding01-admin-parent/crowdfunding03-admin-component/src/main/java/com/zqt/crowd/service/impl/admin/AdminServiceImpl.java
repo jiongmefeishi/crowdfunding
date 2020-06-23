@@ -97,6 +97,22 @@ public class AdminServiceImpl implements AdminService {
         return admin;
     }
 
+    public Admin getAdminByLoginAcct(String loginAcct) {
+
+        // 根据登录账号查询Admin对象
+        // 创建AdminExample对象
+        AdminExample adminExample = new AdminExample();
+        // 创建Criteria 对象
+        AdminExample.Criteria criteria = adminExample.createCriteria();
+        // 在Criteria对象中封装查询条件
+        criteria.andLoginAcctEqualTo(loginAcct);
+        // 查询
+        List<Admin> adminList = adminMapper.selectByExample(adminExample);
+
+        return adminList.get(0);
+    }
+
+
     @Override
     public PageInfo<Admin> getPageInfo(String keyword, Integer pageNum, Integer pageSize) {
 

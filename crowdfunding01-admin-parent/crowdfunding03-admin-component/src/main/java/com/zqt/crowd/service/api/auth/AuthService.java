@@ -21,6 +21,13 @@ public interface AuthService {
     List<Integer> getAssignedAuthIdByRoleId(Integer roleId);
 
     /**
+     * 根据管理员 id 查询已经分配到的 权限列表 名称
+     * @param adminId 角色id
+     * @return 权限id列表
+     */
+    List<String> getAssignedAuthNameByAdminId(Integer adminId);
+
+    /**
      * 获取权限(Auth)列表
      * @return 权限列表
      */
