@@ -9,7 +9,7 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
-    <!-- Spring 事务配置文件 -->
+    <!-- Spring 事务配置文件 维护spring IOC容器 -->
 
     <!-- 配置自动扫描的包：主要是为了把Service扫描到IOC容器中 -->
     <context:component-scan base-package="com.zqt.crowd.service"/>
@@ -20,6 +20,14 @@
         <property name="dataSource" ref="dataSource"/>
 
     </bean>
+
+    <!--
+        配置BCryptPasswordEncoder spring security 配置类 WebAppSecurityConfig 对密码进行盐值加密需要使用
+        因为需要在service 层面使用，需要加载到spring IOC容器
+        所以该 bean 不能注册在 spring-web-mvc.xml 配置文件中
+        不然会加载到 mvc IOC容器中
+     -->
+    <bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
 
     <!-- 配置事务切面 -->
     <aop:config>
