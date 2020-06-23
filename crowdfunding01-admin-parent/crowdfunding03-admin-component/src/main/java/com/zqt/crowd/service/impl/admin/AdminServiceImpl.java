@@ -13,13 +13,14 @@ import com.zqt.crowd.util.DateUtil;
 import com.zqt.crowd.util.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
 
 /**
- * @auther: zqtao
+ * @author: zqtao
  * @description: 管理员业务层实现类
  * @Date: 2020/5/17 22:35
  * @version: 1.0
@@ -30,6 +31,10 @@ public class AdminServiceImpl implements AdminService {
     @Autowired
     private AdminMapper adminMapper;
 
+    // 装配在 spring-web-mvc.xml 中声明的spring security 盐值加密所需 bean
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+
     public void saveAdmin(Admin admin) {
         // 获取系统时间
         String createTime = DateUtil.getDate();
@@ -37,8 +42,8 @@ public class AdminServiceImpl implements AdminService {
 
         // 登录密码加密
         String userPswd = admin.getUserPswd();
-        String encoded = MD5Util.md5(userPswd);
-        admin.setUserPswd(encoded);
+        // 使用spring security 对密码进行盐值加密
+        admin.setUserPswd(passwordEncoder.encode(userPswd));
 
         // 执行保存，如果账户被占用，跑出异常
         try {
@@ -57,9 +62,8 @@ public class AdminServiceImpl implements AdminService {
     }
 
     public List<Admin> getAll() {
-//        空Example就是查全部
-        List<Admin> adminList = adminMapper.selectByExample(new AdminExample());
-        return adminList;
+        // 空Example就是查全部
+        return adminMapper.selectByExample(new AdminExample());
     }
 
     public Admin getAdminByLoginAcct(String loginAcct, String userPswd) {
@@ -144,7 +148,8 @@ public class AdminServiceImpl implements AdminService {
         // 密码明文加密，注意可能为修改，那么传值为空
         if (!"".equals(admin.getUserPswd())) {
             String userPswd = admin.getUserPswd();
-            admin.setUserPswd(MD5Util.md5(userPswd));
+//            admin.setUserPswd(MD5Util.md5(userPswd));
+            admin.setUserPswd(passwordEncoder.encode(userPswd));
         } else {
             admin.setUserPswd(null);
         }

@@ -86,7 +86,7 @@
                  left join t_inner_role_auth tira on t_auth.id = tira.auth_id
                  left join t_inner_admin_role tiar on tira.role_id = tiar.role_id
         where tiar.admin_id = #{adminId}
-          and t_auth.name != ""
+          and t_auth.name != ''
           and t_auth.name is not null
     </select>
     <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.zqt.crowd.entity.auth.AuthExample">

@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @auther: zqtao
+ * @author: zqtao
  * @description: 权限校验之权限业务层实现类
  * @Date: 2020/6/11 10:17
  * @version: 1.0
@@ -29,9 +29,7 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public List<String> getAssignedAuthNameByAdminId(Integer adminId) {
-//        return authMapper.getAssignedAuthNameByAdminId(adminId);
-        List<String> list = authMapper.selectAssignedAuthNameByAdminId(adminId);
-        return list;
+        return authMapper.selectAssignedAuthNameByAdminId(adminId);
     }
 
     @Override

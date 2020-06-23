@@ -6,6 +6,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 /**
  * @author: zqtao
@@ -24,6 +25,10 @@ public class WebAppSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private SecurityUserDetailService securityUserDetailService;
 
+    // 装配在 spring-web-mvc.xml 中声明的spring security 盐值加密所需 bean
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
@@ -35,7 +40,10 @@ public class WebAppSecurityConfig extends WebSecurityConfigurerAdapter {
 //        ;
 
         // 2. 使用数据库中信息进行登陆验证
-        auth.userDetailsService(securityUserDetailService);
+        auth
+                .userDetailsService(securityUserDetailService) // 登录验证
+                .passwordEncoder(passwordEncoder)
+        ;
     }
 
     // 请求授权
