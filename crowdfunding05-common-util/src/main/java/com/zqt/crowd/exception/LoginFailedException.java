@@ -1,7 +1,7 @@
 package com.zqt.crowd.exception;
 
 /**
- * @auther: zqtao
+ * @author: zqtao
  * @description: 登录失败抛出的异常类
  * @Date: 2020/5/21 21:04
  * @version: 1.0

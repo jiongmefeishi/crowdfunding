@@ -18,19 +18,14 @@ package org.springframework.web.filter;
  */
 
 
-import java.io.IOException;
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.util.Assert;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 import org.springframework.web.servlet.FrameworkServlet;
+
+import javax.servlet.*;
+import java.io.IOException;
 
 /*
  * Proxy for a standard Servlet Filter, delegating to a Spring-managed bean that
@@ -84,14 +79,14 @@ import org.springframework.web.servlet.FrameworkServlet;
  */
 
 /**
- * @auther: zqtao
+ * @author: zqtao
  * @description: 更改spring 的源码，初始化时直接跳过查找 IOC 容器的环节
- *
+ * <p>
  * WebAppSecurityConfig 是自定义的spring security 需要的配置类
  * spring IOC容器和spring mvc IOC容器在组件装配时会扫描组件
  * WebAppSecurityConfig 这个类需要在spring mvc IOC容器扫描
  * 问题：会出现无法找到 springSecurityFilterChain bean 的情况。
- *
+ * <p>
  * 解决方式
  * 1.重写 spring的DelegatingFilterProxy部分源码，使spring IOC容器在初始化时直接跳过 查找 IOC容器的环节 initFilterBean()
  * 2.重写 让第一次请求的时候直接找 SpringMVC 的 IOC 容器 doFilter()
@@ -116,6 +111,7 @@ public class DelegatingFilterProxy extends GenericFilterBean {
     /**
      * Create a new {@code DelegatingFilterProxy}. For traditional (pre-Servlet 3.0) use
      * in {@code web.xml}.
+     *
      * @see #setTargetBeanName(String)
      */
     public DelegatingFilterProxy() {
@@ -127,8 +123,9 @@ public class DelegatingFilterProxy extends GenericFilterBean {
      * specifying the {@linkplain #setTargetBeanName target bean name}, etc.
      * <p>For use in Servlet 3.0+ environments where instance-based registration of
      * filters is supported.
+     *
      * @param delegate the {@code Filter} instance that this proxy will delegate to and
-     * manage the lifecycle for (must not be {@code null}).
+     *                 manage the lifecycle for (must not be {@code null}).
      * @see #doFilter(ServletRequest, ServletResponse, FilterChain)
      * @see #invokeDelegate(Filter, ServletRequest, ServletResponse, FilterChain)
      * @see #destroy()
@@ -147,8 +144,9 @@ public class DelegatingFilterProxy extends GenericFilterBean {
      * <p>For use in Servlet 3.0+ environments where instance-based registration of
      * filters is supported.
      * <p>The target bean must implement the standard Servlet Filter.
+     *
      * @param targetBeanName name of the target filter bean to look up in the Spring
-     * application context (must not be {@code null}).
+     *                       application context (must not be {@code null}).
      * @see #findWebApplicationContext()
      * @see #setEnvironment(org.springframework.core.env.Environment)
      */
@@ -168,11 +166,12 @@ public class DelegatingFilterProxy extends GenericFilterBean {
      * retrieving the named target bean.
      * <p>This proxy's {@code Environment} will be inherited from the given
      * {@code WebApplicationContext}.
+     *
      * @param targetBeanName name of the target filter bean in the Spring application
-     * context (must not be {@code null}).
-     * @param wac the application context from which the target filter will be retrieved;
-     * if {@code null}, an application context will be looked up from {@code ServletContext}
-     * as a fallback.
+     *                       context (must not be {@code null}).
+     * @param wac            the application context from which the target filter will be retrieved;
+     *                       if {@code null}, an application context will be looked up from {@code ServletContext}
+     *                       as a fallback.
      * @see #findWebApplicationContext()
      * @see #setEnvironment(org.springframework.core.env.Environment)
      */
@@ -240,8 +239,8 @@ public class DelegatingFilterProxy extends GenericFilterBean {
 
 
     /**
-     * 重写spring 源码，禁止初始化spring时 查找IOC容器
-     * @throws ServletException
+     * @author: zqtao
+     * @description: 重写spring 源码，禁止初始化spring时 查找IOC容器
      */
     @Override
     protected void initFilterBean() throws ServletException {
@@ -263,12 +262,8 @@ public class DelegatingFilterProxy extends GenericFilterBean {
     }
 
     /**
-     * 修改源码：把原来的查找IOC容器的代码注释掉
-     * @param request
-     * @param response
-     * @param filterChain
-     * @throws ServletException
-     * @throws IOException
+     * @author: zqtao
+     * @description: 修改源码：把原来的查找IOC容器的代码注释掉
      */
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain)
@@ -329,6 +324,7 @@ public class DelegatingFilterProxy extends GenericFilterBean {
      * {@code ServletContext} before this filter gets initialized (or invoked).
      * <p>Subclasses may override this method to provide a different
      * {@code WebApplicationContext} retrieval strategy.
+     *
      * @return the {@code WebApplicationContext} for this proxy, or {@code null} if not found
      * @see #DelegatingFilterProxy(String, WebApplicationContext)
      * @see #getContextAttribute()
@@ -350,8 +346,7 @@ public class DelegatingFilterProxy extends GenericFilterBean {
         String attrName = getContextAttribute();
         if (attrName != null) {
             return WebApplicationContextUtils.getWebApplicationContext(getServletContext(), attrName);
-        }
-        else {
+        } else {
             return WebApplicationContextUtils.findWebApplicationContext(getServletContext());
         }
     }
@@ -362,6 +357,7 @@ public class DelegatingFilterProxy extends GenericFilterBean {
      * <p>The default implementation fetches the bean from the application context
      * and calls the standard {@code Filter.init} method on it, passing
      * in the FilterConfig of this Filter proxy.
+     *
      * @param wac the root application context
      * @return the initialized delegate Filter
      * @throws ServletException if thrown by the Filter
@@ -380,12 +376,13 @@ public class DelegatingFilterProxy extends GenericFilterBean {
 
     /**
      * Actually invoke the delegate Filter with the given request and response.
-     * @param delegate the delegate Filter
-     * @param request the current HTTP request
-     * @param response the current HTTP response
+     *
+     * @param delegate    the delegate Filter
+     * @param request     the current HTTP request
+     * @param response    the current HTTP response
      * @param filterChain the current FilterChain
      * @throws ServletException if thrown by the Filter
-     * @throws IOException if thrown by the Filter
+     * @throws IOException      if thrown by the Filter
      */
     protected void invokeDelegate(
             Filter delegate, ServletRequest request, ServletResponse response, FilterChain filterChain)
@@ -397,6 +394,7 @@ public class DelegatingFilterProxy extends GenericFilterBean {
     /**
      * Destroy the Filter delegate.
      * Default implementation simply calls {@code Filter.destroy} on it.
+     *
      * @param delegate the Filter delegate (never {@code null})
      * @see #isTargetFilterLifecycle()
      * @see javax.servlet.Filter#destroy()

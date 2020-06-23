@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @auther: zqtao
+ * @author: zqtao
  * @description: 角色分配（Assign）控制层
  * 给 Admin(管理员用户) 分配相应的 Role(角色)
  * @Date: 2020/6/10 15:20
@@ -42,7 +42,6 @@ public class AssignController {
      *
      * @param adminId  adminId
      * @param modelMap request 的请求域
-     * @return
      */
     @RequestMapping("/assign/to/assign/role/page.html")
     public String toAssignRolePage(
@@ -62,9 +61,10 @@ public class AssignController {
 
     /**
      * 根据adminId 和 roleIdList 保存关联关系
-     * @param adminId 管理员用户的 id
-     * @param pageNum 页码
-     * @param keyword 关键词
+     *
+     * @param adminId    管理员用户的 id
+     * @param pageNum    页码
+     * @param keyword    关键词
      * @param roleIdList 角色id 集合
      * @return 重定向到管理员列表
      */
@@ -76,16 +76,17 @@ public class AssignController {
 
             // 我们允许用户在页面上取消所有已分配角色再提交表单，所以可以不提供roleIdList请求参数
             // 设置required=false表示这个请求参数不是必须的
-            @RequestParam(value="roleIdList", required=false) List<Integer> roleIdList
+            @RequestParam(value = "roleIdList", required = false) List<Integer> roleIdList
     ) {
 
         adminService.saveAdminRoleRelationship(adminId, roleIdList);
 
-        return "redirect:/admin/get/page.html?pageNum="+pageNum+"&keyword="+keyword;
+        return "redirect:/admin/get/page.html?pageNum=" + pageNum + "&keyword=" + keyword;
     }
 
     /**
      * 根据 roleId 查询关联的 authId 列表
+     *
      * @param roleId 角色 id
      * @return 权限列表
      */
@@ -100,6 +101,7 @@ public class AssignController {
 
     /**
      * 获取权限(Auth)列表
+     *
      * @return 权限列表
      */
     @ResponseBody
@@ -112,6 +114,7 @@ public class AssignController {
 
     /**
      * 根据角色id和权限id列表,进行关系关联
+     *
      * @param map 存放的是角色id, 和权限列表
      */
     @ResponseBody

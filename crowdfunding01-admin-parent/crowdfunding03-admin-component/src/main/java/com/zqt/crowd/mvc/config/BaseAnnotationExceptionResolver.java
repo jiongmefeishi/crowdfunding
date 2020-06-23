@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * @auther: zqtao
+ * @author: zqtao
  * @description: 封装 Spring 基于注解的异常处理器类
  * @Date: 2020/5/21 17:16
  * @version: 1.0
@@ -88,8 +88,6 @@ public class BaseAnnotationExceptionResolver {
      * @param exception 实际捕获到的异常类型
      * @param request   当前请求对象
      * @param response  当前响应对象
-     * @return
-     * @throws IOException
      */
     private ModelAndView commonResolve(
 

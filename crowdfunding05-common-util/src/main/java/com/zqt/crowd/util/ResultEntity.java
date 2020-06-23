@@ -1,7 +1,7 @@
 package com.zqt.crowd.util;
 
 /**
- * @auther: zqtao
+ * @author: zqtao
  * @description: 封装规范化 Ajax 请求返回的结果格式
  * @Date: 2020/5/21 16:09
  * @version: 1.0

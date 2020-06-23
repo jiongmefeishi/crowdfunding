@@ -1,7 +1,7 @@
 package com.zqt.crowd.exception;
 
 /**
- * @auther: zqtao
+ * @author: zqtao
  * @description: 表示用户没有登录就访问受保护资源时抛出的异常
  * @Date: 2020/5/23 12:48
  * @version: 1.0

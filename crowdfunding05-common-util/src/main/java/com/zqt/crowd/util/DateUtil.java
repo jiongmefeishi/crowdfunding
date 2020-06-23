@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * @auther: zqtao
+ * @author: zqtao
  * @description: 日期、时间格式校正工具
  * @Date: 2020/5/28 10:18
  * @version: 1.0

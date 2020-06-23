@@ -1,7 +1,7 @@
 package com.zqt.crowd.entity.auth;
 
 /**
- * @auther: zqtao
+ * @author: zqtao
  * @description: 权限校验之权限实体类
  * @Date: 2020/6/11 14:55
  * @version: 1.0

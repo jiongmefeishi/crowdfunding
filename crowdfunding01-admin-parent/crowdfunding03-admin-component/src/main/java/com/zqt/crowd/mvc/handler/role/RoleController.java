@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * @auther: zqtao
+ * @author: zqtao
  * @description: 权限校验之角色管理控制层
  * @Date: 2020/5/31 8:54
  * @version: 1.0
@@ -45,8 +45,7 @@ public class RoleController {
     /**
      * 新增一条 Role记录
      *
-     * @param role
-     * @return
+     * @param role 角色
      */
     @RequestMapping(value = "role/save.json", method = RequestMethod.POST)
     public ResultEntity<String> saveRole(Role role) {
@@ -57,8 +56,6 @@ public class RoleController {
 
     /**
      * 更新一条 role 记录
-     *
-     * @return
      */
     @RequestMapping("role/update.json")
     public ResultEntity<String> updateRole(Role role) {

@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * @auther: zqtao
+ * @author: zqtao
  * @description: 登录验证拦截器，校验用户是否登录
  * 需要去spring-web-mvc.xml 配置文件中配置注册拦截器
  * @Date: 2020/5/23 13:01

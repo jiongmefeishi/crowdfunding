@@ -1,7 +1,7 @@
 package com.zqt.crowd.exception;
 
 /**
- * @auther: zqtao
+ * @author: zqtao
  * @description: 账号重复使用异常
  * @Date: 2020/5/28 10:39
  * @version: 1.0

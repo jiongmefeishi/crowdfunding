@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @auther: zqtao
+ * @author: zqtao
  * @description: 权限校验之权限业务层
  * @Date: 2020/6/11 10:17
  * @version: 1.0

@@ -16,18 +16,17 @@ public class SecurityAdmin extends User {
 
     private static final long serialVersionUID = 1L;
 
-
     // 引入自定义的管理员对象
-    private Admin admin;
-
+    private final Admin admin;
 
 /*public User(String username, String password, Collection<? extends GrantedAuthority> authorities) {
 
     }*/
 
     /**
-     *  仿写 User 的构造方法
-     * @param admin admin
+     * 仿写 User 的构造方法
+     *
+     * @param admin       admin
      * @param authorities 存储角色、权限信息的集合
      */
     public SecurityAdmin(Admin admin, List<GrantedAuthority> authorities) {
@@ -38,6 +37,7 @@ public class SecurityAdmin extends User {
 
     /**
      * 对外提供获取 Admin 对象的 getter 方法
+     *
      * @return Admin
      */
     public Admin getAdmin() {

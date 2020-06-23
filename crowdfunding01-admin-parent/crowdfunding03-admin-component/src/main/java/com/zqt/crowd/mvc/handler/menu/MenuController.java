@@ -16,7 +16,7 @@ import java.util.Map;
 //import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- * @auther: zqtao
+ * @author: zqtao
  * @description: 权限校验之菜单管理控制层
  * @Date: 2020/6/5 14:55
  * @version: 1.0

@@ -7,13 +7,14 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
- * @auther: zqtao
+ * @author: zqtao
  * @description: MD5 明文字符串MD5加密工具
  * @Date: 2020/5/21 20:14
  * @version: 1.0
+ * @Deprecated 废弃使用，密码加密，使用的是spring security 提供的 BCryptPasswordEncoder 进行盐值加密
  */
+@Deprecated
 public class MD5Util {
-
     /**
      * 对铭文字符串进行MD5加密
      *
@@ -43,8 +44,7 @@ public class MD5Util {
 
             // 7、按照16进制将bigInteger的值转换为字符串
             int radix = 16;
-            String encoded = bigInteger.toString(radix).toUpperCase();
-            return encoded;
+            return bigInteger.toString(radix).toUpperCase();
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }

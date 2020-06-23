@@ -6,7 +6,7 @@ import com.zqt.crowd.entity.role.Role;
 import java.util.List;
 
 /**
- * @auther: zqtao
+ * @author: zqtao
  * @description: 权限校验之角色业务层接口
  * @Date: 2020/5/31 8:51
  * @version: 1.0

@@ -1,7 +1,7 @@
 package com.zqt.crowd.constant;
 
 /**
- * @auther: zqtao
+ * @author: zqtao
  * @description: 通用常量
  * @Date: 2020/5/21 18:37
  * @version: 1.0
@@ -18,7 +18,6 @@ public class CommonConstant {
 
     // 通用属性
     public static final String ATTR_NAME_EXCEPTION = "exception";
-
     public static final String ATTR_NAME_LOGIN_ADMIN = "loginAdmin";
     public static final String ATTR_NAME_PAGE_INFO = "pageInfo";
 }

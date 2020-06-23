@@ -10,12 +10,11 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 
 /**
- * @auther: zqtao
+ * @author: zqtao
  * @description: 管理员控制层
  * @Date: 2020/5/22 15:43
  * @version: 1.0
@@ -77,7 +76,6 @@ public class AdminController {
      * @param pageNum  页码
      * @param pageSize 每页记录数
      * @param modelMap 存放记录
-     * @return
      */
     @RequestMapping("/admin/get/page.html")
     public String getPageInfo(
@@ -104,6 +102,7 @@ public class AdminController {
 
     /**
      * 删除一条 admin 记录
+     *
      * @param adminId adminId
      * @param pageNum 页码
      * @param keyword 关键词
@@ -141,6 +140,7 @@ public class AdminController {
 
     /**
      * 新增一条 admin 记录
+     *
      * @param admin Admin
      * @return 重定向到分页页面
      */
@@ -178,7 +178,6 @@ public class AdminController {
      * @param admin   需要更新的信息封装到Admin 对象
      * @param pageNum 页码
      * @param keyword 关键词
-     * @return
      */
     @RequestMapping("/admin/update.html")
     public String update(

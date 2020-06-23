@@ -3,7 +3,7 @@ package com.zqt.crowd.util;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * @auther: zqtao
+ * @author: zqtao
  * @description: 判断请求类型是 Ajax 还是 普通请求
  * @Date: 2020/5/21 16:59
  * @version: 1.0

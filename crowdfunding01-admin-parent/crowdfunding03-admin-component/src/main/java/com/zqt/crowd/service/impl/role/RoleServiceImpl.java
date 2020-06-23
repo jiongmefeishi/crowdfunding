@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * @auther: zqtao
+ * @author: zqtao
  * @description: 权限校验之角色业务层实现类
  * @Date: 2020/5/31 8:52
  * @version: 1.0
@@ -53,8 +53,7 @@ public class RoleServiceImpl implements RoleService {
         // where id in (1,2,3,4)
         criteria.andIdIn(roleIdList);
         // 执行删除 delete form t_role where id in (1,2,3,4)
-        int num = roleMapper.deleteByExample(roleExample);
-        return num;
+        return roleMapper.deleteByExample(roleExample);
     }
 
     @Override

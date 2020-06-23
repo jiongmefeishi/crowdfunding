@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @auther: zqtao
+ * @author: zqtao
  * @description: 权限校验之菜单实体类
  * @Date: 2020/6/5 14:55
  * @version: 1.0
