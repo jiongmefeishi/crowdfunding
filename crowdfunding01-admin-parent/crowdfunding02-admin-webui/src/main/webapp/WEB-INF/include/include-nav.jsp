@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
+<%-- 加载 spring security 标签库 --%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -16,7 +18,9 @@
                                 class="btn btn-default btn-success dropdown-toggle"
                                 data-toggle="dropdown">
                             <i class="glyphicon glyphicon-user"></i>
-                            ${sessionScope.loginAdmin.userName } <span class="caret"></span>
+<%--                            ${sessionScope.loginAdmin.userName }--%>
+                            <security:authentication property="principal.admin.userName"/>
+                            <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="#"><i class="glyphicon glyphicon-cog"></i>
