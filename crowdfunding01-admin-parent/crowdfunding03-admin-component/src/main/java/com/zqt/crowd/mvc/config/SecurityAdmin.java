@@ -33,6 +33,11 @@ public class SecurityAdmin extends User {
         // 调用User 的构造方法
         super(admin.getLoginAcct(), admin.getUserPswd(), authorities);
         this.admin = admin;
+
+        // 将密码擦除, 防止密码泄露
+        // 因为调用的是User的构造器，spring security 检查的是 User 中的密码，比对也是User中的密码
+        // 所以擦除当前密码，不影响登录校验，User中的密码由spring security 进行擦除
+        this.admin.setUserPswd(null);
     }
 
     /**
