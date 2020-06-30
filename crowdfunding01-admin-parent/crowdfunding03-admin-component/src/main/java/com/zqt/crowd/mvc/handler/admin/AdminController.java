@@ -78,7 +78,7 @@ public class AdminController {
      * @param pageSize 每页记录数
      * @param modelMap 存放记录
      */
-    @PreAuthorize("hasRole('管理员')")
+    @PreAuthorize("hasRole('管理员')") // 标注此方法需要管理员角色才能访问
     @RequestMapping("/admin/get/page.html")
     public String getPageInfo(
             // 使用@RequestParam注解的defaultValue属性，指定默认值，在请求中没有携带对应参数时使用默认值

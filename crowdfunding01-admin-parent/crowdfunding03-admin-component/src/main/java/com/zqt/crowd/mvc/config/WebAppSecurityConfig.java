@@ -23,7 +23,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 // 标记启用全局方法权限控制功能 并且设置prePostEnabled = true。
 // 保证@PreAuthority、@PostAuthority、@PreFilter、@PostFilter生效
 // 此注解开启，可使用上述注解对方法进行权限控制，访问某个方法需要某个权限
-@EnableGlobalMethodSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebAppSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
