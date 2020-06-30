@@ -3,6 +3,7 @@ package com.zqt.crowd.mvc.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -19,6 +20,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Configuration
 // 标记启用 web 环境下权限控制功能
 @EnableWebSecurity
+// 标记启用全局方法权限控制功能 并且设置prePostEnabled = true。
+// 保证@PreAuthority、@PostAuthority、@PreFilter、@PostFilter生效
+// 此注解开启，可使用上述注解对方法进行权限控制，访问某个方法需要某个权限
+@EnableGlobalMethodSecurity
 public class WebAppSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -73,6 +78,9 @@ public class WebAppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .antMatchers("/zqtScript/**")    // 针对静态资源进行设置，无条件访问
                 .permitAll()
+//                .antMatchers("/admin/get/page.html")      // 针对用户分页显示页面，限制管理员访问
+//                .hasRole("管理员")                         // 此权限控制，使用 @preAuthorise("hasRole('管理员')) 注解，
+                                                            // 在方法上进行权限分配
                 .anyRequest()                               // 其他任意请求
                 .authenticated()                            // 认证后访问
                 // 3.指定跨站请求伪造(csrf)的防护手段

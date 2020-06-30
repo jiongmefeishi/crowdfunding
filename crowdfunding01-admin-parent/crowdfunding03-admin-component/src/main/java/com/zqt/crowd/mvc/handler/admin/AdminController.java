@@ -5,6 +5,7 @@ import com.zqt.crowd.constant.CommonConstant;
 import com.zqt.crowd.entity.admin.Admin;
 import com.zqt.crowd.service.api.admin.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -77,6 +78,7 @@ public class AdminController {
      * @param pageSize 每页记录数
      * @param modelMap 存放记录
      */
+    @PreAuthorize("hasRole('管理员')")
     @RequestMapping("/admin/get/page.html")
     public String getPageInfo(
             // 使用@RequestParam注解的defaultValue属性，指定默认值，在请求中没有携带对应参数时使用默认值

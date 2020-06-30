@@ -48,7 +48,7 @@ public class AuthServiceImpl implements AuthService {
         authMapper.deleteOldRelationship(roleId);
 
         // 获取authIdList
-        List<Integer> authIdList = map.get("authIdList");
+        List<Integer> authIdList = map.get("authIdArray");
         // 有效性
         if (authIdList != null && !authIdList.isEmpty()) {
             // 建立新的关联关系
