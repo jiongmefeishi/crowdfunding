@@ -23,6 +23,15 @@ import java.io.IOException;
 @ControllerAdvice
 public class BaseAnnotationExceptionResolver {
 
+    // 基于注解的异常映射和基于 XML 的异常映射如果映射同一个异常类型，那么基于注解的方案优先。
+    @ExceptionHandler(value = Exception.class)
+    public ModelAndView resolveException(Exception exception,
+                                         HttpServletRequest request,
+                                         HttpServletResponse response) throws IOException {
+        String viewName = "system-error";
+        return commonResolve(viewName, exception, request, response);
+    }
+
     /**
      * 自定义账号重复异常注解处理器
      */
