@@ -1,10 +1,12 @@
 package com.zqt.crowd.mvc.config;
 
 import com.google.gson.Gson;
+import com.zqt.crowd.constant.CommonConstant;
 import com.zqt.crowd.exception.AccessForbiddenException;
 import com.zqt.crowd.exception.LoginAcctAlreadyInUseException;
 import com.zqt.crowd.util.JudgeRequestTypeUtil;
 import com.zqt.crowd.util.ResultEntity;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;
@@ -24,13 +26,13 @@ import java.io.IOException;
 public class BaseAnnotationExceptionResolver {
 
     // 基于注解的异常映射和基于 XML 的异常映射如果映射同一个异常类型，那么基于注解的方案优先。
-    @ExceptionHandler(value = Exception.class)
-    public ModelAndView resolveException(Exception exception,
-                                         HttpServletRequest request,
-                                         HttpServletResponse response) throws IOException {
-        String viewName = "system-error";
-        return commonResolve(viewName, exception, request, response);
-    }
+//    @ExceptionHandler(value = AccessDeniedException.class)
+//    public ModelAndView resolveException(Exception exception,
+//                                         HttpServletRequest request,
+//                                         HttpServletResponse response) throws IOException {
+//        String viewName = "system-error";
+//        return commonResolve(viewName, exception, request, response);
+//    }
 
     /**
      * 自定义账号重复异常注解处理器
@@ -90,6 +92,22 @@ public class BaseAnnotationExceptionResolver {
 
         String viewName = "system-error";
         return commonResolve(viewName, exception, request, response);
+    }
+
+    /**
+     * 捕获spring security 异常，主要是基于方法注解权限分配中抛出的异常
+     *
+     * @param exception AccessDeniedException
+     */
+    @ExceptionHandler(value = AccessDeniedException.class)
+    public ModelAndView resolveAccessDeniedException(
+            AccessDeniedException exception,
+            HttpServletRequest request,
+            HttpServletResponse response
+    ) throws IOException {
+
+        String viewName = "system-error";
+        return commonResolve(viewName, new Exception(CommonConstant.MESSAGE_ACCESS_DENIED_MVC_INTERCEPTOR), request, response);
     }
 
     /**

@@ -20,5 +20,6 @@ public class CommonConstant {
     public static final String ATTR_NAME_EXCEPTION = "exception";
     public static final String ATTR_NAME_LOGIN_ADMIN = "loginAdmin";
     public static final String ATTR_NAME_PAGE_INFO = "pageInfo";
-    public static final String MESSAGE_ACCESS_DENIED = "无权限访问";
+    public static final String MESSAGE_ACCESS_DENIED_MVC_INTERCEPTOR = "无权限访问";
+    public static final String MESSAGE_ACCESS_DENIED_SPRING_SECURITY_INTERCEPTOR = "无权限访问";
 }

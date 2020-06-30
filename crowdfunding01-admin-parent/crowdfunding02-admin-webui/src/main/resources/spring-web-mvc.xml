@@ -21,7 +21,7 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
-    <!-- 配置基于XML的异常映射 -->
+    <!-- 配置基于XML的异常映射 ，如果在基于注解的异常配置类中配合了相关异常，如果映射同一个异常类型，那么基于注解的方案优先-->
     <bean id="simpleMappingExceptionResolver"
           class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
         <!-- 配置异常类型和具体视图页面的对应关系 -->
@@ -30,7 +30,7 @@
                 <!-- key属性指定异常全类名 -->
                 <!-- 标签体中写对应的视图（这个值要拼前后缀得到具体路径） -->
                 <prop key="java.lang.Exception">system-error</prop>
-                <!-- 增加登录访问异常 ，有异常将试图转为登录页面 -->
+                <!-- 增加登录访问异常 ，有异常将视图转为登录页面 -->
                 <prop key="com.zqt.crowd.exception.AccessForbiddenException">admin-login</prop>
             </props>
         </property>

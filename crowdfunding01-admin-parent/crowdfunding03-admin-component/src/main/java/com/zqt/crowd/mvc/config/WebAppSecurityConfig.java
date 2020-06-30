@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.access.AccessDeniedHandler;
+import org.springframework.security.web.access.AccessDeniedHandlerImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -86,13 +87,13 @@ public class WebAppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .antMatchers("/zqtScript/**")    // 针对静态资源进行设置，无条件访问
                 .permitAll()
-//                .antMatchers("/admin/get/page.html")      // 针对用户分页显示页面，限制管理员访问，或者拥有 user:get权限
-//                .hasRole("管理员")
-//                .hasAuthority("user:get")
-//                .access("hasRole('管理员') OR hasAuthority('user:get')")
+                .antMatchers("/admin/to/edit/page.html") // 针对用户分页显示页面，限制管理员访问，或者拥有 user:get权限
+                .access("hasRole('管理员') OR hasAuthority('user:get')")
                 .anyRequest()                               // 其他任意请求
                 .authenticated()                            // 认证后访问
-                // 自定义异常拦截
+                // 自定义异常拦截，主要拦截在此方法中分配的权限
+                // 此拦截对于基于注解的方法分配权限无效。
+                // 被注解权限标注的方法，默认走的是spring-web-mvc.xml或者是基于注解的异常配置类中的异常拦截
                 .and()
                 .exceptionHandling()
                 .accessDeniedHandler(new AccessDeniedHandler() {
@@ -101,7 +102,7 @@ public class WebAppSecurityConfig extends WebSecurityConfigurerAdapter {
                                        HttpServletResponse response,
                                        AccessDeniedException e) throws IOException, ServletException {
                         // 配置异常抛出信息
-                        request.setAttribute("exception", new Exception(CommonConstant.MESSAGE_ACCESS_DENIED));
+                        request.setAttribute("exception", new Exception(CommonConstant.MESSAGE_ACCESS_DENIED_SPRING_SECURITY_INTERCEPTOR));
                         // 配置异常统一处理页面地址
                         request.getRequestDispatcher("/WEB-INF/system-error.jsp").forward(request, response);
                     }
