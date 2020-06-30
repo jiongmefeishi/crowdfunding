@@ -1,13 +1,21 @@
 package com.zqt.crowd.mvc.config;
 
+import com.zqt.crowd.constant.CommonConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.access.AccessDeniedHandler;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 /**
  * @author: zqtao
@@ -78,11 +86,26 @@ public class WebAppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .antMatchers("/zqtScript/**")    // 针对静态资源进行设置，无条件访问
                 .permitAll()
-//                .antMatchers("/admin/get/page.html")      // 针对用户分页显示页面，限制管理员访问
-//                .hasRole("管理员")                         // 此权限控制，使用 @preAuthorise("hasRole('管理员')) 注解，
-                                                            // 在方法上进行权限分配
+//                .antMatchers("/admin/get/page.html")      // 针对用户分页显示页面，限制管理员访问，或者拥有 user:get权限
+//                .hasRole("管理员")
+//                .hasAuthority("user:get")
+//                .access("hasRole('管理员') OR hasAuthority('user:get')")
                 .anyRequest()                               // 其他任意请求
                 .authenticated()                            // 认证后访问
+                // 自定义异常拦截
+                .and()
+                .exceptionHandling()
+                .accessDeniedHandler(new AccessDeniedHandler() {
+                    @Override
+                    public void handle(HttpServletRequest request,
+                                       HttpServletResponse response,
+                                       AccessDeniedException e) throws IOException, ServletException {
+                        // 配置异常抛出信息
+                        request.setAttribute("exception", new Exception(CommonConstant.MESSAGE_ACCESS_DENIED));
+                        // 配置异常统一处理页面地址
+                        request.getRequestDispatcher("/WEB-INF/system-error.jsp").forward(request, response);
+                    }
+                })
                 // 3.指定跨站请求伪造(csrf)的防护手段
                 .and()
                 .csrf()                                     // 防跨站请求伪造功能
