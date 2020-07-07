@@ -10,11 +10,8 @@ crowdfunding06-common-reverse/.idea/
 
 crowdfunding01-admin-parent/crowdfunding02-admin-webui/src/test/
 
-spring-cloud-parent/.idea
+spring-cloud01-parent/.idea
 
 *.iml
 
-spring-cloud01-parent/.idea/compiler.xml
-spring-cloud01-parent/.idea/jarRepositories.xml
-spring-cloud01-parent/.idea/misc.xml
-spring-cloud01-parent/.idea/vcs.xml
+
