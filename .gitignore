@@ -19,3 +19,5 @@ spring-cloud01-parent/spring-cloud03-provider/mvnw
 spring-cloud01-parent/spring-cloud03-provider/mvnw.cmd
 spring-cloud01-parent/spring-cloud03-provider/HELP.md
 spring-cloud01-parent/spring-cloud03-provider/src/test/*
+spring-cloud01-parent/spring-cloud03-provider/target/
+spring-cloud01-parent/spring-cloud02-common/target/
