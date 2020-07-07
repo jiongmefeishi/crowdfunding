@@ -1,3 +1,26 @@
 # server
 server:
   port: 1000
+
+# 自定义客户端和服务端交互主机名 如本地单击：localhost, 阿里云服务器 47.100.123.xx
+zqtao:
+  eureka:
+    server:
+      connection:
+        hostname: localhost
+        port: 5000
+# spring
+spring:
+  application:
+    name: spring-cloud-provider
+
+# eureka
+eureka:
+  instance:
+    # 服务名，默认取 spring.application.name 配置值，如果没有则为 unknown
+    hostname: eureka-client
+  client:
+    serviceUrl:
+      #Eureka客户端(如：consumer, provider)与 Eureka服务端的交互地址，高可用状态配置对方的地址，单机状态配置自己（如果不配置则默认本机8761端口）
+      defaultZone: http://${zqtao.eureka.server.connection.hostname}:${zqtao.eureka.server.connection.port}/eureka/
+

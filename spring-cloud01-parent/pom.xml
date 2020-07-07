@@ -8,9 +8,16 @@
     <artifactId>spring-cloud01-parent</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <!--父工程下子模块-->
     <modules>
+        <!--通用工程-->
         <module>spring-cloud02-common</module>
+        <!-- 接口提供者 ,也是eureka-client-->
         <module>spring-cloud03-provider</module>
+        <!-- 接口消费者 ,也是eureka-client -->
+        <module>spring-cloud04-consumer</module>
+        <!-- 注册服务中心 eureka-server -->
+        <module>spring-cloud05-eureka</module>
     </modules>
 
     <properties>

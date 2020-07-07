@@ -8,6 +8,11 @@ zqtao:
     connection:
       remotehostname: localhost
 
+# spring
+spring:
+  application:
+    name: spring-cloud-eureka-server
+
 # eureka
 eureka:
   instance:
@@ -23,6 +28,6 @@ eureka:
       defaultZone: http://${zqtao.eureka.connection.remotehostname}:${server.port}/eureka/
   server:
     #是否开启自我保护模式， 默认 true
-    enable‐self‐preservation: false
+    enable‐self‐preservation: true
     #服务注册表清理间隔（单位毫秒，默认是60*1000)
     eviction‐interval‐timer‐in‐ms: 60000
