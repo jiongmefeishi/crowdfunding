@@ -8,31 +8,25 @@
         <version>1.0-SNAPSHOT</version>
         <relativePath/>
     </parent>
-    <artifactId>spring-cloud04-consumer</artifactId>
+    <artifactId>spring-cloud05-eureka</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-cloud04-consumer</name>
-    <description>consumer</description>
+    <name>spring-cloud05-eureka</name>
+    <description>Eureka 注册中心</description>
 
     <properties>
         <java.version>1.8</java.version>
+        <spring-cloud.version>Hoxton.SR6</spring-cloud.version>
     </properties>
 
     <dependencies>
 
-        <!--引入web支持-->
+        <!--引入eureka 注册服务中心，加载 eureka-server -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
         </dependency>
 
-        <!--引入通用工程-->
-        <dependency>
-            <groupId>com.zqtao.cloud</groupId>
-            <artifactId>spring-cloud02-common</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-
-        <!--引入测试-->
+        <!--引入test 测试环境 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -45,6 +39,18 @@
             </exclusions>
         </dependency>
     </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
         <plugins>

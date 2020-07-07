@@ -29,3 +29,9 @@ spring-cloud01-parent/spring-cloud04-consumer/mvnw.cmd
 spring-cloud01-parent/spring-cloud04-consumer/src/test/
 spring-cloud01-parent/spring-cloud04-consumer/HELP.md
 spring-cloud01-parent/spring-cloud04-consumer/target/
+spring-cloud01-parent/spring-cloud05-eureka/mvnw
+spring-cloud01-parent/spring-cloud05-eureka/HELP.md
+spring-cloud01-parent/spring-cloud05-eureka/mvnw.cmd
+spring-cloud01-parent/spring-cloud05-eureka/target/
+spring-cloud01-parent/spring-cloud05-eureka/.mvn/
+spring-cloud01-parent/spring-cloud05-eureka/src/test/

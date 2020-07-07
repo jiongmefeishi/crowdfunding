@@ -10,6 +10,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>spring-cloud02-common</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>spring-cloud02-common</name>
+    <description>common</description>
 
     <dependencies>
         <!--lombok 代码简化工具，idea 需要安装 lombok 插件，才能识别 -->
