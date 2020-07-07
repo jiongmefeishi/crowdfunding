@@ -21,3 +21,11 @@ spring-cloud01-parent/spring-cloud03-provider/HELP.md
 spring-cloud01-parent/spring-cloud03-provider/src/test/*
 spring-cloud01-parent/spring-cloud03-provider/target/
 spring-cloud01-parent/spring-cloud02-common/target/
+
+
+spring-cloud01-parent/spring-cloud04-consumer/.mvn/
+spring-cloud01-parent/spring-cloud04-consumer/mvnw
+spring-cloud01-parent/spring-cloud04-consumer/mvnw.cmd
+spring-cloud01-parent/spring-cloud04-consumer/src/test/
+spring-cloud01-parent/spring-cloud04-consumer/HELP.md
+spring-cloud01-parent/spring-cloud04-consumer/target/

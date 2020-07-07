@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class EmployeeController {
 
-    @RequestMapping("get/employee")
+    @RequestMapping("provider/get/employee")
     public Employee getEmployee() {
         return new Employee(1, "张三", 222.2);
     }
