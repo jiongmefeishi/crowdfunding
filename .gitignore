@@ -11,7 +11,11 @@ crowdfunding06-common-reverse/.idea/
 crowdfunding01-admin-parent/crowdfunding02-admin-webui/src/test/
 
 spring-cloud01-parent/.idea
+spring-cloud01-parent/spring-cloud03-provider/.mvn/
 
 *.iml
 
-
+spring-cloud01-parent/spring-cloud03-provider/mvnw
+spring-cloud01-parent/spring-cloud03-provider/mvnw.cmd
+spring-cloud01-parent/spring-cloud03-provider/HELP.md
+spring-cloud01-parent/spring-cloud03-provider/src/test/*
