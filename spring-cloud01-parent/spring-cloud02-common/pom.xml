@@ -12,5 +12,12 @@
     <groupId>com.zqtao.cloud</groupId>
     <artifactId>spring-cloud02-common</artifactId>
 
+    <dependencies>
+        <!--lombok 代码简化工具，idea 需要安装 lombok 插件，才能识别 -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>
