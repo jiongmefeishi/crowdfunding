@@ -1,5 +1,6 @@
 package com.zqtao.cloud.consumer.config;
 
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
@@ -16,6 +17,8 @@ public class MyTemplate {
      * 提供 RestTemplate Bean
      * @return new RestTemplate();
      */
+    // 此注解开启 RestTemplate Bean 的负载均衡功能，可以通过调用ribbon访问provider 集群
+    @LoadBalanced
     @Bean
     public RestTemplate restTemplate(){
         return new RestTemplate();

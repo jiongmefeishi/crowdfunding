@@ -25,6 +25,14 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <!--引入ribbon, consumer通过 ribbon 访问 eureka,使用微服务名查询服务
+            Ribbon是一个基于HTTP和TCP的客户端负载均衡工具
+        -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+        </dependency>
+
         <!--引入 eureka client 注册客户端 -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>

@@ -11,6 +11,7 @@ zqtao:
 # spring
 spring:
   application:
+    # 服务名，默认取 spring.application.name 配置值，如果没有则为 unknown
     name: spring-cloud-eureka-server
 
 # eureka

@@ -12,13 +12,11 @@ zqtao:
 # spring
 spring:
   application:
+    # 服务名，默认取 spring.application.name 配置值，如果没有则为 unknown
     name: spring-cloud-provider
 
 # eureka
 eureka:
-  instance:
-    # 服务名，默认取 spring.application.name 配置值，如果没有则为 unknown
-    hostname: eureka-client
   client:
     serviceUrl:
       #Eureka客户端(如：consumer, provider)与 Eureka服务端的交互地址，高可用状态配置对方的地址，单机状态配置自己（如果不配置则默认本机8761端口）
