@@ -7,7 +7,7 @@ spring:
     # 服务名，默认取 spring.application.name 配置值，如果没有则为 unknown
     name: spring-cloud-consumer
 
-# 自定义客户端和服务端交互主机名 如本地单击：localhost, 阿里云服务器 47.100.123.xx
+# 自定义客户端和服务端交互主机名和端口号 如本地单击：localhost, 阿里云服务器 47.100.123.xx
 zqtao:
   eureka:
     server:

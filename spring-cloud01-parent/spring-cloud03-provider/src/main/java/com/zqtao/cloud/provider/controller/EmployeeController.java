@@ -4,6 +4,8 @@ import com.zqtao.cloud.common.entity.Employee;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * @author: zqtao
  * @description: 测试环境：生产者控制层
@@ -13,7 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class EmployeeController {
 
     @RequestMapping("provider/get/employee")
-    public Employee getEmployee() {
-        return new Employee(1, "张三", 222.2);
+    public Employee getEmployee(HttpServletRequest request) throws InterruptedException {
+        // 获取当前 web 应用的端口号
+        int serverPort = request.getServerPort();
+
+        wait(1000);
+
+        return new Employee(1, "张三 + port: " + serverPort, 222.2);
     }
 }

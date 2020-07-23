@@ -1,8 +1,8 @@
 # server
 server:
-  port: 1000
+  port: 2000
 
-# 自定义客户端和服务端交互主机名 如本地单击：localhost, 阿里云服务器 47.100.123.xx
+# 自定义客户端和服务端交互主机名和端口号 如本地单机：localhost, 阿里云服务器 47.100.123.xx
 zqtao:
   eureka:
     server:
