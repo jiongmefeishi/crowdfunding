@@ -23,4 +23,9 @@ public class EmployeeController {
 
         return new Employee(1, "张三 + port: " + serverPort, 222.2);
     }
+
+    @RequestMapping("provider/get/employee2/remote")
+    public Employee getEmployee2() {
+        return new Employee(1, "张三", 222.2);
+    }
 }

@@ -20,6 +20,13 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
+
+        <!-- 引入feign ,feign 是一个http请求调用的轻量级框架-->
+        <!-- consumer 工程依赖 common 工程，不需要导入此jar 包 -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
     </dependencies>
 
 </project>
