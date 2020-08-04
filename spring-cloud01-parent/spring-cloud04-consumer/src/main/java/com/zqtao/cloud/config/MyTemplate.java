@@ -1,4 +1,4 @@
-package com.zqtao.cloud.consumer.config;
+package com.zqtao.cloud.config;
 
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;

@@ -1,4 +1,4 @@
-package com.zqtao.cloud.common.entity;
+package com.zqtao.cloud.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

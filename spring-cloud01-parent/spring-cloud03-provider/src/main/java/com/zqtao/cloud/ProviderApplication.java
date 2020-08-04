@@ -1,4 +1,4 @@
-package com.zqtao.cloud.provider;
+package com.zqtao.cloud;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

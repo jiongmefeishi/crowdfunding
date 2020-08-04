@@ -1,19 +1,19 @@
-# server
 server:
-  port: 3000
+  port: 6000
 
-# 自定义客户端和服务端交互主机名和端口号 如本地单机：localhost, 阿里云服务器 47.100.123.xx
+# spring
+spring:
+  application:
+    # 服务名，默认取 spring.application.name 配置值，如果没有则为 unknown
+    name: spring-cloud-feign-consumer
+
+# 自定义客户端和服务端交互主机名和端口号 如本地单击：localhost, 阿里云服务器 47.100.123.xx
 zqtao:
   eureka:
     server:
       connection:
         hostname: localhost
         port: 5000
-# spring
-spring:
-  application:
-    # 服务名，默认取 spring.application.name 配置值，如果没有则为 unknown
-    name: spring-cloud-provider
 
 # eureka
 eureka:

@@ -18,6 +18,8 @@
         <module>spring-cloud04-consumer</module>
         <!-- 注册服务中心 eureka-server -->
         <module>spring-cloud05-eureka</module>
+        <!-- 接口消费者 ,也是eureka-client, 利用feign 进行远程调用-->
+        <module>spring-cloud06-feign-consumer</module>
     </modules>
 
     <properties>

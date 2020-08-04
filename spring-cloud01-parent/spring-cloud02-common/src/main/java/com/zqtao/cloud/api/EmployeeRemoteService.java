@@ -1,6 +1,6 @@
-package com.zqtao.cloud.common.api;
+package com.zqtao.cloud.api;
 
-import com.zqtao.cloud.common.entity.Employee;
+import com.zqtao.cloud.entity.Employee;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 

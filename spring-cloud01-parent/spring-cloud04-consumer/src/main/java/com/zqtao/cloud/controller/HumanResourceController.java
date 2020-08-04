@@ -1,6 +1,6 @@
-package com.zqtao.cloud.consumer.controller;
+package com.zqtao.cloud.controller;
 
-import com.zqtao.cloud.common.entity.Employee;
+import com.zqtao.cloud.entity.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

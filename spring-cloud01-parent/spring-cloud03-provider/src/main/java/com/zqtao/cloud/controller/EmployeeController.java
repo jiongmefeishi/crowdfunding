@@ -1,6 +1,6 @@
-package com.zqtao.cloud.provider.controller;
+package com.zqtao.cloud.controller;
 
-import com.zqtao.cloud.common.entity.Employee;
+import com.zqtao.cloud.entity.Employee;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,6 +26,6 @@ public class EmployeeController {
 
     @RequestMapping("provider/get/employee2/remote")
     public Employee getEmployee2() {
-        return new Employee(1, "张三", 222.2);
+        return new Employee(1, "张三，小名李四", 222.2);
     }
 }
