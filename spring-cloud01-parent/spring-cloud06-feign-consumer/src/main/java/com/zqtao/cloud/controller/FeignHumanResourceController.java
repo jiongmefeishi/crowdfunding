@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * @author: zqtao
  * @description: 使用 feign 进行 远程调用的 消费者
@@ -18,7 +20,7 @@ public class FeignHumanResourceController {
     private EmployeeRemoteService employeeRemoteService;
 
     @RequestMapping("/feign/consumer/get/employee")
-    public Employee getEmployee(){
+    public Employee getEmployeeRemote(){
 
         // 分析当前方法的调用过程
         // 宏观工程间数据传输过程
@@ -32,5 +34,10 @@ public class FeignHumanResourceController {
         // --> common 工程里面的 EmployeeRemoteService 的 getEmployee2() api方法
         // --> EmployeeRemoteService 利用 feign 远程调用 provider 提供的 getEmployee2() 方法
         return employeeRemoteService.getEmployee2();
+    }
+
+    @RequestMapping("feign/consumer/search")
+    public List<Employee> getEmployeeListRemote(String keyword){
+        return employeeRemoteService.getEmployeeList(keyword);
     }
 }

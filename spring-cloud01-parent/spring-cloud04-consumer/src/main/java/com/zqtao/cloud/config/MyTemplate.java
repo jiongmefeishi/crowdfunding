@@ -15,6 +15,8 @@ public class MyTemplate {
 
     /**
      * 提供 RestTemplate Bean
+     *
+     * @author: zqtao
      * @return new RestTemplate();
      */
     // 此注解开启 RestTemplate Bean 的负载均衡功能，可以通过调用ribbon访问provider 集群
