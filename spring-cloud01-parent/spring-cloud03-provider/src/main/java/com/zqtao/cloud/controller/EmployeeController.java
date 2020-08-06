@@ -1,23 +1,25 @@
 package com.zqtao.cloud.controller;
 
 import com.zqtao.cloud.entity.Employee;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
  * @author: zqtao
  * @description: 测试环境：生产者控制层
- * @Date: 2020/7/7
+ * @date: 2020/7/7
  */
 @RestController
 public class EmployeeController {
+
+    private final Logger logger = LoggerFactory.getLogger(EmployeeController.class);
 
     @RequestMapping("provider/get/employee")
     public Employee getEmployee(HttpServletRequest request) throws InterruptedException {
@@ -36,6 +38,9 @@ public class EmployeeController {
 
     @RequestMapping("provider/get/employee/remote")
     Employee getEmployeeByKeyword(@RequestParam("keyword") String keyword) {
+
+        logger.info("keyword: " + keyword);
+
         Map<String, Employee> list = new HashMap<String, Employee>(5);
         list.put("1", new Employee(1, "王五", (double) 111));
         list.put("2", new Employee(2, "张三", (double) 222));

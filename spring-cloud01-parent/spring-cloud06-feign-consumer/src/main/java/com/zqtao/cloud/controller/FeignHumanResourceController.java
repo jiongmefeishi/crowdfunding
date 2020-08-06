@@ -37,7 +37,7 @@ public class FeignHumanResourceController {
     }
 
     @RequestMapping("feign/consumer/search")
-    public List<Employee> getEmployeeListRemote(String keyword){
-        return employeeRemoteService.getEmployeeList(keyword);
+    public Employee getEmployeeListRemote(String keyword){
+        return employeeRemoteService.getEmployeeByKeyword(keyword);
     }
 }

@@ -9,7 +9,7 @@ import org.springframework.web.client.RestTemplate;
 /**
  * @author: zqtao
  * @description: 测试环境：消费者
- * @Date: 2020/7/7
+ * @date: 2020/7/7
  */
 @RestController
 public class HumanResourceController {
