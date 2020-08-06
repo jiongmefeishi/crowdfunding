@@ -9,43 +9,27 @@
         <relativePath/>
     </parent>
 
-    <artifactId>spring-cloud03-provider</artifactId>
+    <artifactId>spring-cloud07-dashboard</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-cloud03-provider</name>
+    <name>spring-cloud07-dashboard</name>
     <description>Demo project for Spring Boot</description>
 
-    <dependencies>
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
 
-        <!--引入web支持-->
+    <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <artifactId>spring-boot-starter</artifactId>
         </dependency>
 
-        <!--引入 eureka client 注册客户端 -->
+        <!-- 引入监控仪表盘依赖 ，提供浏览器可视化监控功能 -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+            <artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>
         </dependency>
 
-        <!--引入通用工程-->
-        <dependency>
-            <groupId>com.zqtao.cloud</groupId>
-            <artifactId>spring-cloud02-common</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-
-        <!--
-            引入 Hystrix 监控系统，可以在浏览器实时查看各个方法的情况
-            配置 application.yml management.endpoints.web.exposure.include:hystrix.stream
-         -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-
-
-        <!--引入测试-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>

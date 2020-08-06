@@ -41,3 +41,6 @@ spring-cloud01-parent/spring-cloud06-feign-consumer/target/
 spring-cloud01-parent/spring-cloud06-feign-consumer/.mvn/
 spring-cloud01-parent/spring-cloud06-feign-consumer/HELP.md
 spring-cloud01-parent/spring-cloud06-feign-consumer/mvnw.cmd
+spring-cloud01-parent/spring-cloud07-dashboard/target/
+spring-cloud01-parent/spring-cloud07-dashboard/src/test/
+spring-cloud01-parent/spring-cloud07-dashboard/.mvn/

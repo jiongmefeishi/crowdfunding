@@ -22,3 +22,9 @@ eureka:
       #Eureka客户端(如：consumer, provider)与 Eureka服务端的交互地址，高可用状态配置对方的地址，单机状态配置自己（如果不配置则默认本机8761端口）
       defaultZone: http://${zqtao.eureka.server.connection.hostname}:${zqtao.eureka.server.connection.port}/eureka/
 
+# 配置 Hystrix 监控系统监控功能
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream
