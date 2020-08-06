@@ -22,3 +22,8 @@ eureka:
       #Eureka客户端(如：consumer, provider)与 Eureka服务端的交互地址，高可用状态配置对方的地址，单机状态配置自己（如果不配置则默认本机8761端口）
       defaultZone: http://${zqtao.eureka.server.connection.hostname}:${zqtao.eureka.server.connection.port}/eureka/
 
+# 开启 Feign 的 Hystrix 功能
+feign:
+  hystrix:
+    enabled: true
+

@@ -79,6 +79,6 @@ public class EmployeeController {
     }
 
     public ResultEntity<Employee> getEmployeeByCircuitBreakerBackup(@RequestParam("signal") String signal) {
-        return ResultEntity.failed("熔断服务启动 - signal : " + signal);
+        return ResultEntity.failed("熔断服务机制启动 - signal : " + signal);
     }
 }

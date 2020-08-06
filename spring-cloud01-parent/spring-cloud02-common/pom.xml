@@ -27,6 +27,22 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
+
+        <!--
+        引入服务熔断降级机制
+        Hystrix 会监控微服务间调用的状况， 当失败的调用到一定阈值，缺省是 5 秒内 20 次调用失败就会启动熔断机制。
+        熔断机制的注解是@HystrixCommand，熔断在provider 使用，对被调用的服务提供备选方案
+
+
+        降级机制 在consumer 使用，当consumer调用provider 一直无响应，也没有熔断备选提供，
+        那么触发降级机制，consumer 自己提供一套备选方案，对服务进行降级。
+        例如，原服务是得到实时排行榜，备选服务是热点数据榜
+        -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+        </dependency>
+
     </dependencies>
 
 </project>
