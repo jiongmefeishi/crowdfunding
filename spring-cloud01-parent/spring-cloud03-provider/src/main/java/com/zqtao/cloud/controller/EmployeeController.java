@@ -1,6 +1,8 @@
 package com.zqtao.cloud.controller;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.zqtao.cloud.entity.Employee;
+import com.zqtao.cloud.util.ResultEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,7 +39,7 @@ public class EmployeeController {
     }
 
     @RequestMapping("provider/get/employee/remote")
-    Employee getEmployeeByKeyword(@RequestParam("keyword") String keyword) {
+    public Employee getEmployeeByKeyword(@RequestParam("keyword") String keyword) {
 
         logger.info("keyword: " + keyword);
 
@@ -47,5 +49,36 @@ public class EmployeeController {
         list.put("3", new Employee(3, "彭超", (double) 333));
 
         return list.get(keyword);
+    }
+
+    /**
+     * 测试 Hystrix 服务熔断功能
+     *
+     * @param signal 标识该方法是否进入异常模式（是否应该启用 Hystrix 熔断功能）
+     * @return ResultEntity<Employee> 数据
+     *
+     * 注解 @HystrixCommand 开启熔断机制，并使用 fallbackMethod 指定服务熔断后回调的备用方法
+     *
+     *
+     * 关于熔断，其实就是调用原来的服务出现了异常或者其他问题，
+     * 此时 Hystrix 会提供一个低配（替代品：原来是要一个 3 围都正点的妹子，当触发熔断机制，替换成如花也是 OK 的）
+     */
+    @HystrixCommand(fallbackMethod = "getEmployeeByCircuitBreakerBackup")
+    @RequestMapping("provider/hystrix/get/employee/circuit/breaker")
+    public ResultEntity<Employee> getEmployeeByCircuitBreaker(@RequestParam("signal") String signal) throws InterruptedException {
+
+        if (signal.equals("start")) { // start 开启熔断
+            throw new RuntimeException();
+        }
+
+        if (signal.equals("sleep")) {
+            Thread.sleep(5000); // 模仿超时
+        }
+
+        return ResultEntity.successWithData(new Employee(3, "彭超", (double) 345));
+    }
+
+    public ResultEntity<Employee> getEmployeeByCircuitBreakerBackup(@RequestParam("signal") String signal) {
+        return ResultEntity.failed("熔断服务启动 - signal : " + signal);
     }
 }

@@ -35,6 +35,17 @@
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
+        <!--
+        引入服务熔断机制
+        Hystrix 会监控微服务间调用的状况， 当失败的调用到一定阈值，缺省是 5 秒内 20 次调用失败就会启动熔断机制。
+        熔断机制的注 解是@HystrixCommand。
+        -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+        </dependency>
+
+
         <!--引入测试-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
