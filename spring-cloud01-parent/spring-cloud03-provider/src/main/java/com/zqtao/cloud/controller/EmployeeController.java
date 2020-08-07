@@ -67,12 +67,14 @@ public class EmployeeController {
     @RequestMapping("provider/hystrix/get/employee/circuit/breaker")
     public ResultEntity<Employee> getEmployeeByCircuitBreaker(@RequestParam("signal") String signal) throws InterruptedException {
 
-        if ("start".equals(signal)) {
+        String start = "start";
+        if (start.equals(signal)) {
             // start 开启熔断
             throw new RuntimeException();
         }
 
-        if ("sleep".equals(signal)) {
+        String sleep = "sleep";
+        if (sleep.equals(signal)) {
             // 模仿超时
             Thread.sleep(5000);
         }

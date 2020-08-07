@@ -32,7 +32,7 @@ zuul:
     - spring-cloud-feign-consumer
   # 给访问路径添加统一前缀
   # http://localhost:8000/zqtao/zuul-emp/feign/consumer/search?keyword=2
-  prefix: /zqtao
+  # prefix: /zqtao
   routes:
     # 使用指定地址代替微服务名称
     # 原请求: http://localhost:8000/spring-cloud-feign-consumer/feign/consumer/search?keyword=2
