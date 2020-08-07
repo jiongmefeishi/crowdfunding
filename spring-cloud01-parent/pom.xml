@@ -20,8 +20,10 @@
         <module>spring-cloud05-eureka</module>
         <!-- 接口消费者 ,也是eureka-client, 利用feign 进行远程调用-->
         <module>spring-cloud06-feign-consumer</module>
-        <!-- 监控系统，提供仪表盘 -->
+        <!-- 监控系统,提供仪表盘 -->
         <module>spring-cloud07-dashboard</module>
+        <!-- zuul 网关,也是eureka-client , 提供路由和过滤功能 -->
+        <module>spring-cloud08-zuul-gateway</module>
     </modules>
 
     <properties>

@@ -1,10 +1,10 @@
 crowdfunding01-admin-parent/crowdfunding02-admin-webui/target/
 crowdfunding01-admin-parent/crowdfunding03-admin-component/target/
 crowdfunding01-admin-parent/crowdfunding04-admin-entity/target/
+crowdfunding01-admin-parent/.idea/
+
 crowdfunding05-common-util/target/
 crowdfunding06-common-reverse/target/
-
-crowdfunding01-admin-parent/.idea/
 crowdfunding05-common-util/.idea/
 crowdfunding06-common-reverse/.idea/
 
@@ -44,3 +44,9 @@ spring-cloud01-parent/spring-cloud06-feign-consumer/mvnw.cmd
 spring-cloud01-parent/spring-cloud07-dashboard/target/
 spring-cloud01-parent/spring-cloud07-dashboard/src/test/
 spring-cloud01-parent/spring-cloud07-dashboard/.mvn/
+spring-cloud01-parent/spring-cloud08-zuul-gateway/mvnw
+spring-cloud01-parent/spring-cloud08-zuul-gateway/src/test/
+spring-cloud01-parent/spring-cloud08-zuul-gateway/target/
+spring-cloud01-parent/spring-cloud08-zuul-gateway/.mvn/
+spring-cloud01-parent/spring-cloud08-zuul-gateway/HELP.md
+spring-cloud01-parent/spring-cloud08-zuul-gateway/mvnw.cmd
