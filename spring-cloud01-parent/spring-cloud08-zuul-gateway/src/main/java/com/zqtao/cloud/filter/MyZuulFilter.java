@@ -3,6 +3,9 @@ package com.zqtao.cloud.filter;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import com.netflix.zuul.exception.ZuulException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.helpers.SubstituteLogger;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,10 +17,16 @@ import javax.servlet.http.HttpServletRequest;
 @Component
 public class MyZuulFilter extends ZuulFilter {
 
+    private Logger logger = LoggerFactory.getLogger(MyZuulFilter.class);
 
+
+    /**
+     * 返回当前过滤器的类型，决定过滤器在什么时候执行
+     * @return pre 表示在目标微服务之前执行
+     */
     @Override
     public String filterType() {
-        return null;
+        return "pre";
     }
 
     @Override
@@ -43,6 +52,8 @@ public class MyZuulFilter extends ZuulFilter {
     }
 
     public Object run() throws ZuulException {
+
+        logger.info("当前方法要进行过滤，执行 了run() 方法");
         return null;
     }
 }
