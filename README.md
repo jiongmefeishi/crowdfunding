@@ -26,13 +26,23 @@ Tomcat Server -> Deployment -> + Artificts -> **crowdfunding02-admin-webui:war**
 
 **【工程模块开发】**
 
-|   工程模块开发顺序   |                          关键时间点                          |
-| :------------------: | :----------------------------------------------------------: |
-| mybatis 逆向工程模块 | [mybatis逆向工程](https://github.com/zqtao2332/crowdfunding/tree/929ebd09e199977d7a7f72dc59f6a716e11f7896) |
-|    管理员管理模块    | [管理员管理模块](https://github.com/zqtao2332/crowdfunding/tree/40ce306d1552911a0adc50d334e7647c6ff3e1de) |
-|  权限之角色管理模块  | [权限之角色管理模块](https://github.com/zqtao2332/crowdfunding/tree/21f8e19ab9bee86318f45cc42174c735a8afe474) |
-|  权限之菜单管理模块  |                                                              |
-|                      |                                                              |
+**【管理员管理系统模块开发】**
+
+|            工程模块开发顺序            |                          关键时间点                          |
+| :------------------------------------: | :----------------------------------------------------------: |
+|          mybatis 逆向工程模块          | [mybatis逆向工程](https://github.com/zqtao2332/crowdfunding/tree/929ebd09e199977d7a7f72dc59f6a716e11f7896) |
+|             管理员管理模块             | [管理员管理模块](https://github.com/zqtao2332/crowdfunding/tree/40ce306d1552911a0adc50d334e7647c6ff3e1de) |
+|           权限之角色管理模块           | [权限之角色管理模块](https://github.com/zqtao2332/crowdfunding/tree/21f8e19ab9bee86318f45cc42174c735a8afe474) |
+|           权限之菜单管理模块           | [权限之菜单管理模块](https://github.com/zqtao2332/crowdfunding/tree/e9f21d0b8f9e345b1a06ab78daae9dd8e9445b25) |
+| 权限控制之spring security 权限分配功能 | [权限控制之spring security 权限分配功能](https://github.com/zqtao2332/crowdfunding/tree/53942ea28b73c012fd615f5af6aff65e71f0d673) |
+
+**【会员系统模块开发】**
+
+| 工程模块开发顺序 | 关键时间点 |
+| :--------------: | :--------: |
+|                  |            |
+
+
 
 **【工程关系说明】**
 
@@ -86,6 +96,26 @@ Tomcat Server -> Deployment -> + Artificts -> **crowdfunding02-admin-webui:war**
 负责mybatis的逆向工程
 
 **《更新》**
+
+**【2020/8/10】**
+
+| 更新内容操作 | 更新描述                            |
+| :----------: | ----------------------------------- |
+|     [+]      | 新增-会员系统父工程（spring-cloud） |
+
+**【2020/7/23】**
+
+| 更新内容操作 | 更新描述                            |
+| :----------: | ----------------------------------- |
+|     [+]      | 新增-spring-cloud微服务相关项目试验 |
+
+**【2020/6/9】**
+
+| 更新内容操作 | 更新描述               |
+| :----------: | ---------------------- |
+|     [+]      | 新增-菜单管理menu      |
+|     [*]      | 更新权限管理之角色分配 |
+|     [*]      | 更新权限管理之菜单分配 |
 
 **【2020/6/6】**
 
