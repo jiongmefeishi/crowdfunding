@@ -1,17 +1,17 @@
-package com.zqtao.crowd;
+package com.zqt.crowd;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * @author: zqtao
- * @description: API 模块微服务
+ * @description: 网关微服务
  */
 @SpringBootApplication
-public class MemberApiApplication {
+public class MemberZuulApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(MemberApiApplication.class, args);
+        SpringApplication.run(MemberZuulApplication.class, args);
     }
 
 }

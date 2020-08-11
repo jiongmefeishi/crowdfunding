@@ -1,17 +1,17 @@
-package com.zqtao.crowd;
+package com.zqt.crowd;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * @author: zqtao
- * @description: 注册中心微服务
+ * @description: API 模块微服务
  */
 @SpringBootApplication
-public class MemberEurekaApplication {
+public class MemberApiApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(MemberEurekaApplication.class, args);
+        SpringApplication.run(MemberApiApplication.class, args);
     }
 
 }

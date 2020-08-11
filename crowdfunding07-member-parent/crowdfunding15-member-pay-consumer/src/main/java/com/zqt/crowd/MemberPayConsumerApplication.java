@@ -1,17 +1,17 @@
-package com.zqtao.crowd;
+package com.zqt.crowd;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * @author: zqtao
- * @description: MySQL 数据微服务
+ * @description: 支付功能微服务
  */
 @SpringBootApplication
-public class MemberMysqlProviderApplication {
+public class MemberPayConsumerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(MemberMysqlProviderApplication.class, args);
+        SpringApplication.run(MemberPayConsumerApplication.class, args);
     }
 
 }

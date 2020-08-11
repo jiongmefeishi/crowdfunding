@@ -1,17 +1,17 @@
-package com.zqtao.crowd;
+package com.zqt.crowd;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * @author: zqtao
- * @description: 网关微服务
+ * @description: Redis 数据微服务
  */
 @SpringBootApplication
-public class MemberZuulApplication {
+public class MemberRedisProviderApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(MemberZuulApplication.class, args);
+        SpringApplication.run(MemberRedisProviderApplication.class, args);
     }
 
 }

@@ -44,6 +44,24 @@ Tomcat Server -> Deployment -> + Artificts -> **crowdfunding02-admin-webui:war**
 
 
 
+**【实体工程entity具体划分】**
+
+|               实体类型                | 实体作用                                        |
+| :-----------------------------------: | ----------------------------------------------- |
+|       VO：View Object 视图对象        | 用途1：封装**浏览器**发送到后端的数据           |
+|                                       | 用途2：后端数据封装为VO对象发送给**浏览器**显示 |
+|    PO：Persistent Object持久化对象    | 用途1：将数据封装到PO对象存入**数据库**         |
+|                                       | 用途2：将数据库数据查询出来存入PO对象           |
+|        DO：Data Object数据对象        | 用途1：从Redis查询数据封装为DO对象              |
+|                                       | 用途2：从ElasticSearch查询数据封装为DO对象      |
+|                                       | 用途3：从Solr查询数据封装为DO对象               |
+|                                       | ....  第三方中间件，接口等数据封装为 DO对象     |
+| DTO：Data Transfer Object数据传输对象 | 用途1：从Consumer发送数据到Provider             |
+|                                       | 用途2：Provider返回数据给Consumer               |
+|                                       |                                                 |
+
+
+
 **【工程关系说明】**
 
 **1、工程依赖关系说明**
