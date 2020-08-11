@@ -20,7 +20,7 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     url: jdbc:mysql://47.107.140.62:3306/db_crowdfunding?serverTimezone=UTC
     username: root
-    password: Zqtao!0203...
+    password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
 
 # 配置mybatis mapper 映射文件扫描位置
