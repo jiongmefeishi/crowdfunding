@@ -3,6 +3,10 @@ package com.zqtao.crowd;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * @author: zqtao
+ * @description: 订单维护微服务
+ */
 @SpringBootApplication
 public class MemberOrderConsumerApplication {
 
