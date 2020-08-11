@@ -1,1 +1,50 @@
+# server
+server:
+  port: 2000
+
+# 自定义客户端和服务端交互主机名和端口号 如本地单机：localhost, 阿里云服务器 47.100.123.xx
+zqtao:
+  eureka:
+    server:
+      connection:
+        hostname: localhost
+        port: 1000
+# spring
+spring:
+  application:
+    # 服务名，默认取 spring.application.name 配置值，如果没有则为 unknown
+    name: crowdfunding-member-mysql-provider
+  # 配置数据库信息
+  datasource:
+    name: mydb
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://47.107.140.62:3306/db_crowdfunding?serverTimezone=UTC
+    username: root
+    password: Zqtao!0203...
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+# 配置mybatis mapper 映射文件扫描位置
+mybatis:
+  mapper-locations: classpath*:/mybatis/mapper/*Mapper.xml
+
+# 配置日志级别
+logging:
+  level:
+    com.zqt.crowd.mapper: debug
+    com.zqt.crowd.test: debug
+
+# eureka
+eureka:
+  client:
+    serviceUrl:
+      #Eureka客户端(如：consumer, provider)与 Eureka服务端的交互地址，高可用状态配置对方的地址，单机状态配置自己（如果不配置则默认本机8761端口）
+      defaultZone: http://${zqtao.eureka.server.connection.hostname}:${zqtao.eureka.server.connection.port}/eureka/
+
+
+# 配置 Hystrix 监控系统监控功能
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: hystrix.stream
 
