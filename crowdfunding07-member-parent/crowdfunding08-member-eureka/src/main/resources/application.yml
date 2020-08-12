@@ -20,15 +20,15 @@ eureka:
     # 服务名，默认取 spring.application.name 配置值，如果没有则为 unknown
     hostname: eureka-server
   client:
-    #服务注册，是否将自己注册到Eureka服务中。(当前是eureka server 服务器，不需要自己注册自己)
+    # 服务注册，是否将自己注册到Eureka服务中。(当前是eureka server 服务器，不需要自己注册自己)
     registerWithEureka: false
-    #服务发现，是否从Eureka中获取注册信息。(当前是eureka server 服务器，不需要从服务器获取注册信息)
+    # 服务发现，是否从Eureka中获取注册信息。(当前是eureka server 服务器，不需要从服务器获取注册信息)
     fetchRegistry: false
     serviceUrl:
-      #Eureka客户端(如：consumer, provider)与 Eureka服务端的交互地址，高可用状态配置对方的地址，单机状态配置自己（如果不配置则默认本机8761端口）
+      # Eureka客户端(如：consumer, provider)与 Eureka服务端的交互地址，高可用状态配置对方的地址，单机状态配置自己（如果不配置则默认本机8761端口）
       defaultZone: http://${zqtao.eureka.connection.remotehostname}:${server.port}/eureka/
   server:
-    #是否开启自我保护模式， 默认 true
+    # 是否开启自我保护模式， 默认 true
     enable‐self‐preservation: true
-    #服务注册表清理间隔（单位毫秒，默认是60*1000)
+    # 服务注册表清理间隔（单位毫秒，默认是60*1000)
     eviction‐interval‐timer‐in‐ms: 60000

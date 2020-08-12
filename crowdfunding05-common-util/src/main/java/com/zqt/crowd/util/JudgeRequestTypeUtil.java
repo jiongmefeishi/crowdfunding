@@ -30,7 +30,7 @@ public class JudgeRequestTypeUtil {
 
                 ||
 
-                (xRequestHeader != null && xRequestHeader.equals("XMLHttpRequest"));
+                ("XMLHttpRequest".equals(xRequestHeader));
     }
 
 }

@@ -24,9 +24,10 @@ public class MD5Util {
     public static String md5(String source) {
 
         // 1、判断有效性
-        if (source == null || source.length() == 0)
+        if (source == null || source.length() == 0) {
             // 2、无效，抛异常
             throw new RuntimeException(CommonConstant.MESSAGE_STRING_INVALIDATE);
+        }
         try {
             // 3、获取MessageDigest对象
             String algorithm = "md5";
