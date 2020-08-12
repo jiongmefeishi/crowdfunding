@@ -6,14 +6,28 @@ import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
+/**
+ * @author zqtao
+ * @description: 会员实体类
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class MemberPO {
+
+    /**
+     * 数据库自增主键
+     */
     private Integer id;
 
+    /**
+     * 登录账户
+     */
     private String loginAcct;
 
+    /**
+     * 登录密码
+     */
     private String userPassword;
 
     private String userName;

@@ -18,7 +18,7 @@ spring:
   datasource:
     name: mydb
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://47.107.140.62:3306/db_crowdfunding?serverTimezone=UTC
+    url: jdbc:mysql://47.107.40.162:3306/db_crowdfunding?serverTimezone=UTC
     username: root
     password: Zqtao!0203...
     driver-class-name: com.mysql.cj.jdbc.Driver

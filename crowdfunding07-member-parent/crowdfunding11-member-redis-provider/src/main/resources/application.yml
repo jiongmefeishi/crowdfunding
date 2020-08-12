@@ -13,7 +13,9 @@ zqtao:
 spring:
   application:
     # 服务名，默认取 spring.application.name 配置值，如果没有则为 unknown
-    name: crowdfunding-member-mysql-provider
+    name: crowdfunding-member-redis-provider
+  redis:
+    host: 47.107.40.162
 
 # eureka
 eureka:
