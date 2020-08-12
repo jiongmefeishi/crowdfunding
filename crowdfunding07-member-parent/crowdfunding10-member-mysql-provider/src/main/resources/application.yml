@@ -1,6 +1,6 @@
 # server
 server:
-  port: 2000
+  port: 9010
 
 # 自定义客户端和服务端交互主机名和端口号 如本地单机：localhost, 阿里云服务器 47.100.123.xx
 zqtao:
@@ -8,7 +8,7 @@ zqtao:
     server:
       connection:
         hostname: localhost
-        port: 1000
+        port: 9008
 # spring
 spring:
   application:
@@ -20,7 +20,7 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     url: jdbc:mysql://47.107.140.62:3306/db_crowdfunding?serverTimezone=UTC
     username: root
-    password: root
+    password: Zqtao!0203...
     driver-class-name: com.mysql.cj.jdbc.Driver
 
 # 配置mybatis mapper 映射文件扫描位置

@@ -2,24 +2,24 @@ package com.zqt.crowd.util;
 
 /**
  * @author: zqtao
- * @description: 封装规范化 Ajax 请求返回的结果格式
- * @Date: 2020/5/21 16:09
- * @version: 1.0
+ * @description: 封装全局项目的 ajax 请求或者远程方法调用返回的响应的数据格式
  */
 public class ResultEntity<T> {
 
-    private static final String SUCCESS = "SUCCESS";
-    private static final String FAILED = "FAILED";
+    private static final Integer SUCCESS = 0;
+    private static final Integer FAILED = 500;
+
+    private static final String MESSAGE = "服务器错误";
 
     /**
-     * 用来封装当前的请求结果是success or error
+     * 用来封装当前的请求结果是 success or error
      */
-    private String result;
+    private Integer code;
 
     /**
      * 请求失败时返回的错误信息
      */
-    private String message;
+    private String msg;
 
     /**
      * 需要返回的数据
@@ -29,9 +29,9 @@ public class ResultEntity<T> {
     public ResultEntity() {
     }
 
-    public ResultEntity(String result, String message, T data) {
-        this.result = result;
-        this.message = message;
+    public ResultEntity(Integer code, String msg, T data) {
+        this.code = code;
+        this.msg = msg;
         this.data = data;
     }
 
@@ -57,30 +57,51 @@ public class ResultEntity<T> {
         return new ResultEntity<E>(SUCCESS, null, data);
     }
 
+
+    /**
+     * 请求处理成功，需要返回消息的工具方法
+     *
+     * @param msg 要返回的消息
+     * @param <E> 声明需要使用的泛型
+     */
+    public static <E> ResultEntity<E> successWithMessage(String msg) {
+        return new ResultEntity<E>(SUCCESS, msg, null);
+    }
+
+
     /**
      * 请求处理失败后的工具方法
+     *
      * @param message 请求失败要返回的错误信息
-     * @param <E> 声明需要使用的泛型
-     * @return
+     * @param <E>     声明需要使用的泛型
      */
     public static <E> ResultEntity<E> failed(String message) {
         return new ResultEntity<E>(FAILED, message, null);
     }
 
-    public String getResult() {
-        return result;
+    /**
+     * 请求处理失败后的工具方法
+     *
+     * @param <E> 声明需要使用的泛型
+     */
+    public static <E> ResultEntity<E> failedDefault() {
+        return new ResultEntity<E>(FAILED, MESSAGE, null);
     }
 
-    public void setResult(String result) {
-        this.result = result;
+    public Integer getCode() {
+        return code;
     }
 
-    public String getMessage() {
-        return message;
+    public void setCode(Integer code) {
+        this.code = code;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 
     public T getData() {
@@ -94,8 +115,8 @@ public class ResultEntity<T> {
     @Override
     public String toString() {
         return "ResultEntity{" +
-                "result='" + result + '\'' +
-                ", message='" + message + '\'' +
+                "code=" + code +
+                ", message='" + msg + '\'' +
                 ", data=" + data +
                 '}';
     }

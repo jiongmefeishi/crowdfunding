@@ -113,6 +113,24 @@ Tomcat Server -> Deployment -> + Artificts -> **crowdfunding02-admin-webui:war**
 
 负责mybatis的逆向工程
 
+
+
+统一微服务端口
+
+| 微服务                                                       | 端口号 |
+| :----------------------------------------------------------- | ------ |
+| 会员系统父工程：crowdfunding07-member-parent                 |        |
+| 注册中心微服务：crowdfunding08-member-eureka                 | 9008   |
+| 实体类模块：crowdfunding09-member-entity                     |        |
+| MySQL 数据微服务：crowdfunding10-member-mysql-provider       | 9010   |
+| Redis 数据微服务：crowdfunding11-member-redis-provider       | 9011   |
+| 会员中心微服务：crowdfunding12-member-authentication-consumer | 9012   |
+| 项目维护微服务：crowdfunding13-member-project-consumer       | 9013   |
+| 订单维护微服务：crowdfunding14-member-order-consumer         | 9014   |
+| 支付功能微服务：crowdfunding15-member-pay-consumer           | 9015   |
+| 网关微服务：crowdfunding16-member-zuul                       | 80     |
+| API 模块微服务：crowdfunding17-member-api                    | 9017   |
+
 **《更新》**
 
 **【2020/8/10】**

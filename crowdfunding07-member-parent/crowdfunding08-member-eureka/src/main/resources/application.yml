@@ -1,6 +1,6 @@
 # server
 server:
-  port: 1000
+  port: 9008
 
 # 自定义客户端和服务端交互主机名 如本地单击：localhost, 阿里云服务器 47.100.123.xx
 zqtao:
