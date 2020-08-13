@@ -1,2 +1,53 @@
 server:
   port: 80
+
+# 自定义客户端和服务端交互主机名和端口号 如本地单机：localhost, 阿里云服务器 47.100.123.xx
+zqtao:
+  eureka:
+    server:
+      connection:
+        hostname: localhost
+        port: 9008
+# spring
+spring:
+  application:
+    # 服务名，默认取 spring.application.name 配置值，如果没有则为 unknown
+    name: crowdfunding-member-zuul
+
+# eureka
+eureka:
+  client:
+    serviceUrl:
+      # Eureka客户端(如：consumer, provider)与 Eureka服务端的交互地址，高可用状态配置对方的地址，单机状态配置自己（如果不配置则默认本机8761端口）
+      defaultZone: http://${zqtao.eureka.server.connection.hostname}:${zqtao.eureka.server.connection.port}/eureka/
+
+# zuul 网关配置
+zuul:
+  # 让用户不能通过微服务名称访问
+  ignored-services: '*' # 忽略所有微服务名称
+  routes:
+    # 自定义会员系统网关
+    crowd-portal:
+      serviceId: crowdfunding-member-authentication-provider
+      path: /
+
+# 让用户不能通过微服务名称访问
+  # ignored-services: '*' # 忽略所有微服务名称
+
+  # 忽略指定微服务名称，让用户不能通过微服务名称访问  使用 - 指定忽略单个微服务名称
+  # ignored-services:
+  #  - spring-cloud-feign-consumer
+  # 给访问路径添加统一前缀
+  # http://localhost:8000/zqtao/zuul-emp/feign/consumer/search?keyword=2
+  # prefix: /zqtao
+  # routes:
+    # 使用指定地址代替微服务名称
+    # 原请求: http://localhost:8000/spring-cloud-feign-consumer/feign/consumer/search?keyword=2
+    # 现请求: http://localhost:8000/zuul-emp/feign/consumer/search?keyword=2
+    # employee 是自定义的属性，区分要替换的微服务
+    # employee:
+      # 需要进行替换的目标微服务服务名
+      # serviceId: spring-cloud-feign-consumer
+      # 设置请求匹配路径，使用 path属性设置的路径来进行替换 serviceId 属性中的微服务名称
+      # /**表示匹配多层路径，如果没有加/**则不能匹配后续的多层路径了
+      # path: /zuul-emp/**
