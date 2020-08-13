@@ -15,7 +15,7 @@ class RedisTest {
     @Test
     void testRedis(){
         ValueOperations<String, String> operations = redisTemplate.opsForValue();
-        operations.set("apple", "red");
+        operations.set("apple", "xiaoxiao");
     }
 
 }

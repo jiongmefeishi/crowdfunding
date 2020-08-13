@@ -16,6 +16,8 @@ spring:
     name: crowdfunding-member-redis-provider
   redis:
     host: 47.107.40.162
+    # 设置Redis 访问密码，阿里云必须设置访问密码，不然访问会失效
+    password: foobaredzqt
 
 # eureka
 eureka:
