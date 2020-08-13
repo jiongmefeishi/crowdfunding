@@ -1,2 +1,31 @@
 server:
   port: 9012
+
+# 自定义客户端和服务端交互主机名和端口号 如本地单机：localhost, 阿里云服务器 47.100.123.xx
+zqtao:
+  eureka:
+    server:
+      connection:
+        hostname: localhost
+        port: 9008
+# spring
+spring:
+  application:
+    # 服务名，默认取 spring.application.name 配置值，如果没有则为 unknown
+    name: crowdfunding-member-authentication-provider
+  # 配置前端模板
+  thymeleaf:
+    # 禁止模板缓存，默认开启缓存编译模板，避免因模板的重复解析而降低系统性能
+    # 开发环境下，不禁止需要不断重启
+    cache: false
+    # 配置前缀
+    prefix: classpath:/templates/
+    # 配置后缀
+    suffix: .html
+
+# eureka
+eureka:
+  client:
+    serviceUrl:
+      # Eureka客户端(如：consumer, provider)与 Eureka服务端的交互地址，高可用状态配置对方的地址，单机状态配置自己（如果不配置则默认本机8761端口）
+      defaultZone: http://${zqtao.eureka.server.connection.hostname}:${zqtao.eureka.server.connection.port}/eureka/
