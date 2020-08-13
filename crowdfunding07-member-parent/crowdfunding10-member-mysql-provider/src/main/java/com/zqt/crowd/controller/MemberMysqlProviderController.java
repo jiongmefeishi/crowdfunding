@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @description: Member 会员数据暴露控制层，向外暴露接口请求 Mysql 中会员信息
  */
 @RestController
-public class MemberProviderController {
+public class MemberMysqlProviderController {
 
     @Autowired
     private MemberService memberService;
@@ -32,7 +32,7 @@ public class MemberProviderController {
         } catch (Exception e) {
             e.printStackTrace();
 
-            return ResultEntity.failedDefault();
+            return ResultEntity.failed(e.getMessage());
         }
     }
 }
