@@ -29,7 +29,7 @@ zuul:
     # 自定义会员系统网关
     crowd-portal:
       serviceId: crowdfunding-member-authentication-provider
-      path: /
+      path: /**
 
 # 让用户不能通过微服务名称访问
   # ignored-services: '*' # 忽略所有微服务名称
