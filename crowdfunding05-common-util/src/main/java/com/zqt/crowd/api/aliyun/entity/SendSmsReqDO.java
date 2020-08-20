@@ -48,9 +48,22 @@ public class SendSmsReqDO {
     private String templateCode;
 
     /**
+     * 短信模板变量对应的实际值，JSON格式。
+     *
+     * 如果JSON中需要带换行符，请参照标准的JSON协议处理。
+     */
+    private String templateParam;
+
+    /**
      * 主账号AccessKey的ID
+     * AccessKeyId用于标识用户
      */
     private String accessKeyId;
+
+    /**
+     * AccessKeySecret是用来验证用户的密钥
+     */
+    private String accessSecret;
 
     /**
      * 系统规定参数。取值：SendSms。

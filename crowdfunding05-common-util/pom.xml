@@ -28,5 +28,35 @@
             <version>2.5</version>
             <scope>provided</scope>
         </dependency>
+
+        <!-- 发送短信时调用第三方API所需依赖-阿里 S -->
+        <dependency>
+            <groupId>com.aliyun</groupId>
+            <artifactId>aliyun-java-sdk-core</artifactId>
+            <version>4.5.3</version>
+        </dependency>
+        <!-- 发送短信时调用第三方API所需依赖-阿里 E -->
+
+        <!--第三方工具-->
+        <!--lombok 代码简化工具，idea 需要安装 lombok 插件，才能识别 -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.12</version>
+        </dependency>
+
+        <!-- 工具 hutool -->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.3.10</version>
+        </dependency>
+
+        <!-- 邮件 -->
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>1.4.7</version>
+        </dependency>
     </dependencies>
 </project>
