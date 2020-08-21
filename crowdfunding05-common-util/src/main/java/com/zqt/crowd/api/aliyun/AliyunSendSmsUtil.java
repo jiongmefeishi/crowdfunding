@@ -55,7 +55,7 @@ public class AliyunSendSmsUtil {
         request.putQueryParameter("TemplateCode", sendSmsReqDO.getTemplateCode());
 
         // 设置验证码, 随机6位数
-        Map<String, String> map = new HashMap<>();
+        Map<String, String> map = new HashMap<>(1);
         map.put("code", RandomUtil.randomNumbers(6));
         sendSmsReqDO.setTemplateParam(map);
         System.out.println(JSONUtil.toJsonStr(sendSmsReqDO.getTemplateParam()));
