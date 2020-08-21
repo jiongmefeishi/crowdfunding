@@ -1,7 +1,6 @@
 package com.zqt.crowd.api.tencent.entity;
 
 import cn.hutool.core.util.StrUtil;
-import cn.hutool.extra.mail.MailUtil;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -30,7 +29,7 @@ public class MailReqDO {
     /**
      * 是否是HTML
      */
-    private boolean isHtml;
+    private Boolean htmlOrNot;
 
     /**
      * 附件列表
