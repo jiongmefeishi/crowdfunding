@@ -34,12 +34,15 @@ public class CommonConstant {
 
 
     /**
-     * 短信存储在Redis中存储数据的key前缀
+     * 短信验证码存储在Redis中存储数据的key前缀
      */
     public static final String SMS_REDIS_CODE_PREFIX = "SMS_REDIS_CODE_PREFIX_";
 
     // 邮箱相关
 
     public static final String MAIL_NOT_ACTIVE_MESSAGE = "邮箱验证通道关闭，请使用短信验证";
-
+    /**
+     * 邮件验证码存储在Redis中存储数据的key前缀
+     */
+    public static final String MAIL_REDIS_CODE_PREFIX = "MAIL_REDIS_CODE_PREFIX_";
 }
