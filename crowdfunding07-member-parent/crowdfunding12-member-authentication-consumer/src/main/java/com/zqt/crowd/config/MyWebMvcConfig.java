@@ -11,6 +11,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class MyWebMvcConfig implements WebMvcConfigurer {
 
+    @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         // 浏览器访问的地址
         String urlPath = "/auth/member/to/reg/page";
