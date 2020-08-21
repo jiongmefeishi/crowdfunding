@@ -9,10 +9,16 @@ public class ResultEntity<T> {
     private static final Integer SUCCESS = 0;
     private static final Integer FAILED = 500;
 
+    private static final String RESULT_SUCCESS = "SUCCESS";
+    private static final String RESULT_FAILED = "FAILED";
+
+    // 用来封装当前请求处理的结果是成功还是失败
+    private String result;
+
     private static final String MESSAGE = "服务器错误";
 
     /**
-     * 用来封装当前的请求结果是 success or error
+     * 用来封装当前的请求结果 响应码
      */
     private Integer code;
 
@@ -29,7 +35,8 @@ public class ResultEntity<T> {
     public ResultEntity() {
     }
 
-    public ResultEntity(Integer code, String msg, T data) {
+    public ResultEntity(String result, Integer code, String msg, T data) {
+        this.result = result;
         this.code = code;
         this.msg = msg;
         this.data = data;
@@ -44,7 +51,7 @@ public class ResultEntity<T> {
      * @param <E> 声明需要使用的泛型
      */
     public static <E> ResultEntity<E> successWithoutData() {
-        return new ResultEntity<E>(SUCCESS, null, null);
+        return new ResultEntity<E>(RESULT_SUCCESS, SUCCESS, null, null);
     }
 
     /**
@@ -54,7 +61,7 @@ public class ResultEntity<T> {
      * @param <E>  声明需要使用的泛型
      */
     public static <E> ResultEntity<E> successWithData(E data) {
-        return new ResultEntity<E>(SUCCESS, null, data);
+        return new ResultEntity<E>(RESULT_SUCCESS, SUCCESS, null, data);
     }
 
 
@@ -65,7 +72,7 @@ public class ResultEntity<T> {
      * @param <E> 声明需要使用的泛型
      */
     public static <E> ResultEntity<E> successWithMessage(String msg) {
-        return new ResultEntity<E>(SUCCESS, msg, null);
+        return new ResultEntity<E>(RESULT_SUCCESS, SUCCESS, msg, null);
     }
 
 
@@ -76,7 +83,7 @@ public class ResultEntity<T> {
      * @param <E>     声明需要使用的泛型
      */
     public static <E> ResultEntity<E> failed(String message) {
-        return new ResultEntity<E>(FAILED, message, null);
+        return new ResultEntity<E>(RESULT_FAILED, FAILED, message, null);
     }
 
     /**
@@ -85,7 +92,7 @@ public class ResultEntity<T> {
      * @param <E> 声明需要使用的泛型
      */
     public static <E> ResultEntity<E> failedDefault() {
-        return new ResultEntity<E>(FAILED, MESSAGE, null);
+        return new ResultEntity<E>(RESULT_FAILED, FAILED, MESSAGE, null);
     }
 
     public Integer getCode() {
@@ -110,6 +117,10 @@ public class ResultEntity<T> {
 
     public void setData(T data) {
         this.data = data;
+    }
+
+    public String getResult() {
+        return result;
     }
 
     @Override

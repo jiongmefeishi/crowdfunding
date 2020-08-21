@@ -22,4 +22,17 @@ public class CommonConstant {
     public static final String ATTR_NAME_PAGE_INFO = "pageInfo";
     public static final String MESSAGE_ACCESS_DENIED_MVC_INTERCEPTOR = "无权限访问";
     public static final String MESSAGE_ACCESS_DENIED_SPRING_SECURITY_INTERCEPTOR = "无权限访问";
+
+    // 阿里云短信相关
+    // 阿里云短信发送状态
+    public static final String SMS_SEND_STATUS_SUCCESS = "OK";
+    public static final String SMS_NOT_ACTIVE_MESSAGE = "短信验证通道关闭，请使用邮箱验证";
+
+
+    // 短信存储在Redis中存储数据的key前缀
+    public static final String SMS_REDIS_CODE_PREFIX = "SMS_REDIS_CODE_PREFIX_";
+
+    // 邮箱相关
+    public static final String MAIL_NOT_ACTIVE_MESSAGE = "邮箱验证通道关闭，请使用短信验证";
+
 }

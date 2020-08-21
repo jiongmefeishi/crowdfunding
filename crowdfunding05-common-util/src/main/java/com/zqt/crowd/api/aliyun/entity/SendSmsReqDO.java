@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Map;
+
 /**
  * @author: zqtao
  * @description: 封装阿里云短信API 发送短信请求参数 数据对象
@@ -48,13 +50,6 @@ public class SendSmsReqDO {
     private String templateCode;
 
     /**
-     * 短信模板变量对应的实际值，JSON格式。
-     *
-     * 如果JSON中需要带换行符，请参照标准的JSON协议处理。
-     */
-    private String templateParam;
-
-    /**
      * 主账号AccessKey的ID
      * AccessKeyId用于标识用户
      */
@@ -69,4 +64,12 @@ public class SendSmsReqDO {
      * 系统规定参数。取值：SendSms。
      */
     private String action;
+
+    /**
+     * 短信模板变量对应的实际值，JSON格式。
+     *
+     * 如果JSON中需要带换行符，请参照标准的JSON协议处理。
+     */
+    private Map<String, String> templateParam;
+
 }

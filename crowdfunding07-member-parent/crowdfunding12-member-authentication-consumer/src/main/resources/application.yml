@@ -29,3 +29,31 @@ eureka:
     serviceUrl:
       # Eureka客户端(如：consumer, provider)与 Eureka服务端的交互地址，高可用状态配置对方的地址，单机状态配置自己（如果不配置则默认本机8761端口）
       defaultZone: http://${zqtao.eureka.server.connection.hostname}:${zqtao.eureka.server.connection.port}/eureka/
+
+# 配置短信发送参数
+sms:
+  # 是否开启短信发送功能
+  active: true
+  message:
+    # 阿里云短信服务器
+    sys-domain: dysmsapi.aliyuncs.com
+    # 版本
+    sys-version: 2017-05-25
+    # 服务器所在区域id，cn-hangzhou 表示华东（杭州）
+    region-id: cn-hangzhou
+    # 接收短信的手机号码
+    # phone-numbers: 15670255891
+    # 短信签名名称
+    sign-name: 怪兽营
+    # 短信模板ID
+    template-code: SMS_200190922
+    # 短信模板变量对应的实际值
+    # template-param:
+      # 验证码
+      # code:
+    # 主账号AccessKey的ID
+    access-key-id: LTAI4GFD8QwgVyBrvNJBGj8Jz
+    # AccessKeySecret是用来验证用户的密钥
+    access-secret: wwzImeidhhe3iWoZ2TCF17FiXGiARmz
+    # 系统规定参数。取值：SendSms
+    action: SendSms
