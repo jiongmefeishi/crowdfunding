@@ -2,10 +2,15 @@ package com.zqt.crowd.mapper.member;
 
 import com.zqt.crowd.entity.po.member.MemberPO;
 import com.zqt.crowd.entity.po.member.MemberPOExample;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
+/**
+ * @author: zqtao
+ * @description: 会员数据操作层
+ */
 public interface MemberPOMapper {
     int countByExample(MemberPOExample example);
 

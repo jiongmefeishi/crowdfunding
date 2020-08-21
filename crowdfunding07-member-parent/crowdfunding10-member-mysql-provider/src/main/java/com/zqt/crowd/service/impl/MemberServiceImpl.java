@@ -21,7 +21,7 @@ import java.util.List;
 public class MemberServiceImpl implements MemberService {
 
     @Autowired
-    private MemberPOMapper memberPOMapper;
+    private MemberPOMapper memberMapper;
 
 
     public MemberPO getMemberpoByLoginAcctRemote(String loginAcct) {
@@ -33,7 +33,7 @@ public class MemberServiceImpl implements MemberService {
         //3.封装查询条件
         criteria.andLoginAcctEqualTo(loginAcct);
         //4.执行查询
-        List<MemberPO> list = memberPOMapper.selectByExample(example);
+        List<MemberPO> list = memberMapper.selectByExample(example);
         //5.获取结果
         return list.get(0);
     }
