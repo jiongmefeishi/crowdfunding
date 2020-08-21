@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
  * @author: zqtao
  * @description: qq邮箱邮件发送工具
  */
-public class QQMailUtil {
+public class QqMailUtil {
 
     /**
      * 发送qq 邮件
@@ -18,7 +18,7 @@ public class QQMailUtil {
      */
     public static boolean qqMail(MailReqDO mail) {
 
-        Logger logger = LoggerFactory.getLogger(QQMailUtil.class);
+        Logger logger = LoggerFactory.getLogger(QqMailUtil.class);
 
         logger.info("发送qq 邮件");
         try {
