@@ -30,22 +30,53 @@ public class MemberPO {
      */
     private String userPassword;
 
+    /**
+     * 用户名
+     */
     private String userName;
 
+    /**
+     * 手机号
+     */
+    private String phoneNum;
+
+    /**
+     * 邮箱
+     */
     private String email;
 
+    /**
+     * 实名认证状态: 0- 未实名认证， 1- 实名认证申请中， 2- 已实名认证
+     */
     private Integer authStatus;
 
+    /**
+     * 用户类型
+     */
     private Integer userType;
 
+    /**
+     * 真实姓名
+     */
     private String realName;
 
+    /**
+     * 身份证
+     */
     private String cardNum;
 
+    /**
+     * 账户类型: 0- 企业， 1- 个体， 2- 个人， 3- 政府
+     */
     private Integer acctType;
 
+    /**
+     * 创建时间
+     */
     private Date gmtCreate;
 
+    /**
+     * 修改时间
+     */
     private Date gmtModified;
-
 }

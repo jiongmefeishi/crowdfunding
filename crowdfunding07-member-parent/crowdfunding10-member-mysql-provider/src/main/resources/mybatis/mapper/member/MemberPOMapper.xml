@@ -6,6 +6,7 @@
     <result column="login_acct" property="loginAcct" jdbcType="VARCHAR" />
     <result column="user_password" property="userPassword" jdbcType="CHAR" />
     <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="phone_num" property="phoneNum" jdbcType="CHAR" />
     <result column="email" property="email" jdbcType="VARCHAR" />
     <result column="auth_status" property="authStatus" jdbcType="INTEGER" />
     <result column="user_type" property="userType" jdbcType="INTEGER" />
@@ -114,7 +115,7 @@
       acct_type, gmt_create, gmt_modified
       )
     values (#{id,jdbcType=INTEGER}, #{loginAcct,jdbcType=VARCHAR}, #{userPassword,jdbcType=CHAR}, 
-      #{userName,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{authStatus,jdbcType=INTEGER}, 
+      #{userName,jdbcType=VARCHAR}, #{phoneNum,jdbcType=CHAR}, #{email,jdbcType=VARCHAR}, #{authStatus,jdbcType=INTEGER},
       #{userType,jdbcType=INTEGER}, #{realName,jdbcType=VARCHAR}, #{cardNum,jdbcType=CHAR}, 
       #{acctType,jdbcType=INTEGER}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}
       )
@@ -133,6 +134,9 @@
       </if>
       <if test="userName != null" >
         user_name,
+      </if>
+      <if test="phoneNum != null" >
+        phone_num,
       </if>
       <if test="email != null" >
         email,
@@ -171,6 +175,9 @@
       </if>
       <if test="userName != null" >
         #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNum != null" >
+        #{phoneNum,jdbcType=CHAR},
       </if>
       <if test="email != null" >
         #{email,jdbcType=VARCHAR},
@@ -219,6 +226,9 @@
       <if test="record.userName != null" >
         user_name = #{record.userName,jdbcType=VARCHAR},
       </if>
+      <if test="record.phoneNum != null" >
+        phone_num = #{record.phoneNum,jdbcType=CHAR},
+      </if>
       <if test="record.email != null" >
         email = #{record.email,jdbcType=VARCHAR},
       </if>
@@ -254,6 +264,7 @@
       login_acct = #{record.loginAcct,jdbcType=VARCHAR},
       user_password = #{record.userPassword,jdbcType=CHAR},
       user_name = #{record.userName,jdbcType=VARCHAR},
+      phone_num = #{record.phoneNum,jdbcType=CHAR},
       email = #{record.email,jdbcType=VARCHAR},
       auth_status = #{record.authStatus,jdbcType=INTEGER},
       user_type = #{record.userType,jdbcType=INTEGER},
@@ -277,6 +288,9 @@
       </if>
       <if test="userName != null" >
         user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNum != null" >
+        phone_num = #{phoneNum,jdbcType=CHAR},
       </if>
       <if test="email != null" >
         email = #{email,jdbcType=VARCHAR},
@@ -310,6 +324,7 @@
     set login_acct = #{loginAcct,jdbcType=VARCHAR},
       user_password = #{userPassword,jdbcType=CHAR},
       user_name = #{userName,jdbcType=VARCHAR},
+      phone_num = #{phoneNum,jdbcType=CHAR},
       email = #{email,jdbcType=VARCHAR},
       auth_status = #{authStatus,jdbcType=INTEGER},
       user_type = #{userType,jdbcType=INTEGER},
