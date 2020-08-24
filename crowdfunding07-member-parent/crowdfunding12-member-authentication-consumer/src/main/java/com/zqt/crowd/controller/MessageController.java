@@ -65,7 +65,11 @@ public class MessageController {
     @GetMapping("send/sms")
     public ResultEntity<String> sendSms(@RequestParam("phoneNum") String phoneNum) {
 
-        log.info("发送手机短信验证码");
+        log.info(
+                "执行方法: {} ，方法描述: {} \n",
+                "sendSms",
+                "发送短信验证码"
+        );
 
         // 查看是否开启短信发送功能
         if (!smsActive) {
@@ -102,7 +106,11 @@ public class MessageController {
     @ResponseBody
     @GetMapping("send/mail")
     public ResultEntity<String> sendMail(@RequestParam("to") String to) {
-        log.info("发送邮件验证码");
+        log.info(
+                "\n\n执行方法: {} ，方法描述: {} \n",
+                "sendMail",
+                "发送邮件验证码"
+        );
         // 查看是否开启邮箱发送功能
         if (!mailActive) {
             return ResultEntity.failed(CommonConstant.MAIL_NOT_ACTIVE_MESSAGE);
@@ -117,8 +125,7 @@ public class MessageController {
             // 发送成功，存入redis
             String key = CommonConstant.MAIL_REDIS_CODE_PREFIX + to;
             log.info("code: " + mail.getCode());
-            ResultEntity<String> redis = redisRemoteApi.setRedisKeyValueWithTimeoutRemote(key, mail.getCode(), 5, TimeUnit.MINUTES);
-            return redis;
+            return redisRemoteApi.setRedisKeyValueWithTimeoutRemote(key, mail.getCode(), 5, TimeUnit.MINUTES);
         }
         return ResultEntity.failedDefault();
     }

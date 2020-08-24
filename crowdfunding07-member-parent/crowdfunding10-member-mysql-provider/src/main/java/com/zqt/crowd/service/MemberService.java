@@ -13,5 +13,13 @@ public interface MemberService {
      * @param loginAcct 登录账户
      * @return 用户信息
      */
-    MemberPO getMemberpoByLoginAcctRemote(String loginAcct);
+    MemberPO getMemberPOByLoginAcctRemote(String loginAcct);
+
+    /**
+     * 新增一条会员记录
+     *
+     * @param memberPO 会员信息
+     * @return 影响行数
+     */
+    int saveMember(MemberPO memberPO);
 }

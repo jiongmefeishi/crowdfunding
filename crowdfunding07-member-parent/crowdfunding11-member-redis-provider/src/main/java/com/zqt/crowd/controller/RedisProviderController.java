@@ -1,6 +1,7 @@
 package com.zqt.crowd.controller;
 
 import com.zqt.crowd.util.ResultEntity;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
@@ -15,6 +16,7 @@ import java.util.concurrent.TimeUnit;
  * @author zqtao
  * @description: redis 操作控制层，向外提供暴露接口
  */
+@Slf4j
 @RestController
 public class RedisProviderController {
 
@@ -34,6 +36,11 @@ public class RedisProviderController {
             @RequestParam("key") String key,
             @RequestParam("value") String value
     ) {
+        log.info(
+                "执行方法: {} ，方法描述: {} \n",
+                "setRedisKeyValueRemote",
+                "向 redis 中存储键值对"
+        );
         ValueOperations<String, String> operations = redisTemplate.opsForValue();
 
         try {
@@ -61,6 +68,11 @@ public class RedisProviderController {
             @RequestParam("timeout") long timeout,
             @RequestParam("timeUnix") TimeUnit timeUnix
     ) {
+        log.info(
+                "执行方法: {} ，方法描述: {} \n",
+                "setRedisKeyValueWithTimeoutRemote",
+                "向 redis 中存储键值对"
+        );
         ValueOperations<String, String> operations = redisTemplate.opsForValue();
         try {
             operations.set(key, value, timeout, timeUnix);
@@ -80,6 +92,11 @@ public class RedisProviderController {
      */
     @GetMapping(value = "get/redis/string/value/by/key/remote")
     ResultEntity<String> getRedisStringValueByKeyRemote(@RequestParam("key") String key) {
+        log.info(
+                "执行方法: {} ，方法描述: {} \n",
+                "getRedisStringValueByKeyRemote",
+                "根据 key 获取 value"
+        );
         ValueOperations<String, String> operations = redisTemplate.opsForValue();
 
         try {
@@ -99,13 +116,21 @@ public class RedisProviderController {
      */
     @RequestMapping("remove/redis/key/remote")
     ResultEntity<String> removeRedisKeyRemote(@RequestParam("key") String key) {
+        log.info(
+                "执行方法: {} ，方法描述: {} \n",
+                "removeRedisKeyRemote",
+                "根据键值删除一条 redis 记录"
+        );
         try {
             Boolean delete = redisTemplate.delete(key);
-            return ResultEntity.successWithoutData();
+            if (delete != null && delete) {
+                return ResultEntity.successWithoutData();
+            }
         } catch (Exception e) {
             e.printStackTrace();
             return ResultEntity.failed(e.getMessage());
         }
+        return ResultEntity.failedDefault();
     }
 
 }

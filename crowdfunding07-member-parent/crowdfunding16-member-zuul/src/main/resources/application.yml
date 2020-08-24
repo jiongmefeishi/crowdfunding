@@ -24,7 +24,8 @@ eureka:
 # zuul 网关配置
 zuul:
   # 让用户不能通过微服务名称访问
-  ignored-services: '*' # 忽略所有微服务名称
+  # 忽略所有微服务名称
+  ignored-services: '*'
   routes:
     # 自定义会员系统网关
     crowd-portal:

@@ -47,8 +47,8 @@ sms:
     sign-name: 怪兽营
     # 短信模板ID
     template-code: SMS_200190922
-    # 短信模板变量对应的实际值
-    # template-param:
+      # 短信模板变量对应的实际值
+      # template-param:
       # 验证码
       # code:
     # 主账号AccessKey的ID
@@ -57,3 +57,23 @@ sms:
     access-secret: wwzImeidhhe3iWoZ2TCF17FiXGiARmz
     # 系统规定参数。取值：SendSms
     action: SendSms
+
+# 邮箱相关
+mail:
+  active: true
+  message:
+    # 收件人账号如：3455533@qq.com
+    # to:
+    # 主题
+    subject: 【怪兽营主题】
+    # 是否是HTML
+    htmlOrNot: false
+    # 附件列表
+    # files:
+    # 随机码(验证码), 系统生成6位随机数
+    # code:
+    # 签名名称
+    signName: 【怪兽营签名】
+    # 正文
+    # 签名名称 + 消息内容 + 验证码（有则带上）
+    content: 怪兽营邮件已成功发送
