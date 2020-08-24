@@ -64,6 +64,9 @@
         <!--<table tableName="t_menu" domainObjectName="Menu"/>-->
 
         <!-- 逆向工程：Auth-->
-        <table tableName="t_auth" domainObjectName="Auth"/>
+        <!--<table tableName="t_auth" domainObjectName="Auth"/>-->
+
+        <!-- 逆向工程：MemberPO-->
+        <table tableName="member" domainObjectName="MemberPO"/>
     </context>
 </generatorConfiguration>

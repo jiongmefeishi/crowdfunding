@@ -11,6 +11,8 @@ public class MemberPO {
 
     private String userName;
 
+    private String phoneNum;
+
     private String email;
 
     private Integer authStatus;
@@ -57,6 +59,14 @@ public class MemberPO {
 
     public void setUserName(String userName) {
         this.userName = userName == null ? null : userName.trim();
+    }
+
+    public String getPhoneNum() {
+        return phoneNum;
+    }
+
+    public void setPhoneNum(String phoneNum) {
+        this.phoneNum = phoneNum == null ? null : phoneNum.trim();
     }
 
     public String getEmail() {
