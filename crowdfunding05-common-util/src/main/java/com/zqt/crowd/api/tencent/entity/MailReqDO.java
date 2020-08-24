@@ -51,17 +51,4 @@ public class MailReqDO {
      * 签名名称 + 消息内容 + 验证码（有则带上）
      */
     private String content;
-
-    public String getContent() {
-
-        // 验证码是否存在
-        if (!StrUtil.hasEmpty(this.code)) {
-            this.content = this.signName
-                    + this.content
-                    + "，您的验证码为："
-                    + this.code
-                    + "。工作人员不会索取，请妥善保存！";
-        }
-        return this.content;
-    }
 }

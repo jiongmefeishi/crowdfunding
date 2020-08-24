@@ -16,8 +16,11 @@
     <script type="text/javascript" src="layer/layer.js"></script>
     <script type="text/javascript">
 
-        $(function(){
-            $("#sendBtn").click(function(){
+
+        $(function () {
+
+            // 发送短信验证码
+            $("#sendSmsBtn").click(function () {
 
                 // 1.获取接收短信的手机号
                 // [name=phoneNum] 表示 找到属性 name 值是 phoneNum 的标签
@@ -25,24 +28,57 @@
 
                 // 2.发送请求
                 $.ajax({
-                    "url":"auth/member/send/short/message",
-                    "type":"post",
-                    "data":{
-                        "phoneNum":phoneNum
+                    "url": "message/send/sms",
+                    "type": "get",
+                    "data": {
+                        "phoneNum": phoneNum
                     },
-                    "dataType":"json",
-                    "success":function(response){
+                    "dataType": "json",
+                    "success": function (response) {
 
                         var result = response.result;
-                        if(result == "SUCCESS") {
+                        if (result == "SUCCESS") {
                             layer.msg("发送成功！");
                         }
 
-                        if(result == "FAILED") {
-                            layer.msg("发送失败！请再试一次！");
+                        if (result == "FAILED") {
+                            layer.msg(response.msg);
                         }
                     },
-                    "error":function(response){
+                    "error": function (response) {
+                        layer.msg(response.status + " " + response.statusText);
+                    }
+                });
+
+            });
+
+            // 发送邮箱验证码
+            $("#sendMailBtn").click(function () {
+
+                // 1.获取接收邮件的邮箱
+                // [name=email] 表示 找到属性 name 值是 email 的标签
+                var email = $.trim($("[name=email]").val());
+
+                // 2.发送请求
+                $.ajax({
+                    "url": "message/send/mail",
+                    "type": "get",
+                    "data": {
+                        "to": email
+                    },
+                    "dataType": "json",
+                    "success": function (response) {
+
+                        var result = response.result;
+                        if (result == "SUCCESS") {
+                            layer.msg("发送成功！");
+                        }
+
+                        if (result == "FAILED") {
+                            layer.msg(response.msg);
+                        }
+                    },
+                    "error": function (response) {
                         layer.msg(response.status + " " + response.statusText);
                     }
                 });
@@ -57,7 +93,7 @@
     <div class="container">
         <div class="navbar-header">
             <div>
-                <a class="navbar-brand" href="index.html" style="font-size: 32px;">尚筹网-创意产品众筹平台</a>
+                <a class="navbar-brand" href="index.html" style="font-size: 32px;">爱众筹-创意产品众筹平台</a>
             </div>
         </div>
     </div>
@@ -87,7 +123,7 @@
         </div>
         <div class="form-group has-success has-feedback">
             <input type="text" name="email" class="form-control" id="inputSuccess4"
-                   placeholder="请输入邮箱地址" style="margin-top: 10px;"> <span
+                   placeholder="请输入邮箱地址" value="453395742@qq.com" style="margin-top: 10px;"> <span
                 class="glyphicon glyphicon glyphicon-envelope form-control-feedback"></span>
         </div>
         <div class="form-group has-success has-feedback">
@@ -100,7 +136,8 @@
                    placeholder="请输入验证码" style="margin-top: 10px;"> <span
                 class="glyphicon glyphicon glyphicon-comment form-control-feedback"></span>
         </div>
-        <button type="button" id="sendBtn" class="btn btn-lg btn-success btn-block">获取验证码</button>
+        <button type="button" id="sendSmsBtn" class="btn btn-lg btn-success btn-block">获取短信验证码</button>
+        <button type="button" id="sendMailBtn" class="btn btn-lg btn-success btn-block">获取邮箱验证码</button>
         <button type="submit" class="btn btn-lg btn-success btn-block">注册</button>
     </form>
 </div>

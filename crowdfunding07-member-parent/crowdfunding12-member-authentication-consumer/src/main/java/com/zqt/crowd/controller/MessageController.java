@@ -9,6 +9,7 @@ import com.zqt.crowd.config.MailMessageProperties;
 import com.zqt.crowd.config.SmsMessageProperties;
 import com.zqt.crowd.constant.CommonConstant;
 import com.zqt.crowd.util.ResultEntity;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +20,7 @@ import java.util.concurrent.TimeUnit;
  * @author: zqtao
  * @description: 处理短信发送，邮箱发送控制层
  */
+@Slf4j
 @RequestMapping("message")
 @RestController
 public class MessageController {
@@ -63,6 +65,8 @@ public class MessageController {
     @GetMapping("send/sms")
     public ResultEntity<String> sendSms(@RequestParam("phoneNum") String phoneNum) {
 
+        log.info("发送手机短信验证码");
+
         // 查看是否开启短信发送功能
         if (!smsActive) {
             return ResultEntity.failed(CommonConstant.SMS_NOT_ACTIVE_MESSAGE);
@@ -98,20 +102,23 @@ public class MessageController {
     @ResponseBody
     @GetMapping("send/mail")
     public ResultEntity<String> sendMail(@RequestParam("to") String to) {
+        log.info("发送邮件验证码");
         // 查看是否开启邮箱发送功能
         if (!mailActive) {
             return ResultEntity.failed(CommonConstant.MAIL_NOT_ACTIVE_MESSAGE);
         }
-
         // 设置邮件接收人
         mail.setTo(to);
         // 设置验证码
         mail.setCode(RandomUtil.randomNumbers(6));
+        // 设置邮件具体内容
         boolean success = QqMailUtil.qqMail(mail);
         if (success) {
             // 发送成功，存入redis
             String key = CommonConstant.MAIL_REDIS_CODE_PREFIX + to;
-            return redisRemoteApi.setRedisKeyValueWithTimeoutRemote(key, mail.getTo(), 5, TimeUnit.MINUTES);
+            log.info("code: " + mail.getCode());
+            ResultEntity<String> redis = redisRemoteApi.setRedisKeyValueWithTimeoutRemote(key, mail.getCode(), 5, TimeUnit.MINUTES);
+            return redis;
         }
         return ResultEntity.failedDefault();
     }
