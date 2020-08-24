@@ -11,10 +11,7 @@ import com.zqt.crowd.constant.CommonConstant;
 import com.zqt.crowd.util.ResultEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.concurrent.TimeUnit;
 
@@ -22,7 +19,8 @@ import java.util.concurrent.TimeUnit;
  * @author: zqtao
  * @description: 处理短信发送，邮箱发送控制层
  */
-@RestController("message")
+@RequestMapping("message")
+@RestController
 public class MessageController {
 
     /**
@@ -99,7 +97,7 @@ public class MessageController {
      */
     @ResponseBody
     @GetMapping("send/mail")
-    public ResultEntity<String> sendMail(@RequestParam("mail") String to) {
+    public ResultEntity<String> sendMail(@RequestParam("to") String to) {
         // 查看是否开启邮箱发送功能
         if (!mailActive) {
             return ResultEntity.failed(CommonConstant.MAIL_NOT_ACTIVE_MESSAGE);
