@@ -12,7 +12,9 @@ public class ResultEntity<T> {
     private static final String RESULT_SUCCESS = "SUCCESS";
     private static final String RESULT_FAILED = "FAILED";
 
-    // 用来封装当前请求处理的结果是成功还是失败
+    /**
+     * 用来封装当前请求处理的结果是成功还是失败
+     */
     private String result;
 
     private static final String MESSAGE = "服务器错误";
