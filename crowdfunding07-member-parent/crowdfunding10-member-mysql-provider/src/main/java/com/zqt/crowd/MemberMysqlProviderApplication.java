@@ -16,9 +16,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class MemberMysqlProviderApplication {
 
     public static void main(String[] args) {
-        log.info("MysqlProvider 数据库开始加载 ===>>>");
+        log.info("{} 开始加载 ===>>>", "MySQL 数据微服务");
         SpringApplication.run(MemberMysqlProviderApplication.class, args);
-        log.info("MysqlProvider 数据库加载完毕 ===>>>");
+        log.info("{} 加载完毕 ===>>>", "MySQL 数据微服务");
     }
 
 }

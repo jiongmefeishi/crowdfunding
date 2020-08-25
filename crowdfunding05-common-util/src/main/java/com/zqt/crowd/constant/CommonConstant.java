@@ -45,6 +45,12 @@ public class CommonConstant {
      * pageInfo
      */
     public static final String ATTR_NAME_PAGE_INFO = "pageInfo";
+
+    /**
+     * message
+     */
+    public static final String ATTR_NAME_MESSAGE = "message";
+
     /**
      * Spring MVC无权限访问提示
      */
@@ -53,6 +59,11 @@ public class CommonConstant {
      * Spring Security 无权限访问提示
      */
     public static final String MESSAGE_ACCESS_DENIED_SPRING_SECURITY_INTERCEPTOR = "无权限访问";
+
+    /**
+     * 短信或者邮箱 无法获取到验证码提示
+     */
+    public static final String MESSAGE_REDIS_NOT_FIND_CODE = "验证码错误，请重新获取";
 
     // 阿里云短信相关
     /**
@@ -80,4 +91,5 @@ public class CommonConstant {
      * 邮件验证码存储在Redis中存储数据的key前缀
      */
     public static final String MAIL_REDIS_CODE_PREFIX = "MAIL_REDIS_CODE_PREFIX_";
+
 }

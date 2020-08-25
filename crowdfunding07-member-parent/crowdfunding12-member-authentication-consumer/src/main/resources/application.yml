@@ -65,7 +65,7 @@ mail:
     # 收件人账号如：3455533@qq.com
     # to:
     # 主题
-    subject: 【怪兽营主题】
+    subject: 【怪兽营】
     # 是否是HTML
     htmlOrNot: false
     # 附件列表
@@ -73,7 +73,7 @@ mail:
     # 随机码(验证码), 系统生成6位随机数
     # code:
     # 签名名称
-    signName: 【怪兽营签名】
+    signName: 【怪兽营】
     # 正文
     # 签名名称 + 消息内容 + 验证码（有则带上）
     content: 怪兽营邮件已成功发送

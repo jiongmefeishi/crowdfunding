@@ -9,8 +9,8 @@ public class ResultEntity<T> {
     private static final Integer SUCCESS = 0;
     private static final Integer FAILED = 500;
 
-    private static final String RESULT_SUCCESS = "SUCCESS";
-    private static final String RESULT_FAILED = "FAILED";
+    public static final String RESULT_SUCCESS = "SUCCESS";
+    public static final String RESULT_FAILED = "FAILED";
 
     /**
      * 用来封装当前请求处理的结果是成功还是失败

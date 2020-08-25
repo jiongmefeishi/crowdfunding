@@ -31,6 +31,12 @@ zuul:
     crowd-portal:
       serviceId: crowdfunding-member-authentication-provider
       path: /**
+    # 设置 ribbon 超时时间
+    ribbon:
+      #请求连接的超时时长
+      ConnectTimeout: 8000
+      #请求处理的超时时长
+      ReadTimeout: 8000
 
 # 让用户不能通过微服务名称访问
   # ignored-services: '*' # 忽略所有微服务名称

@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>项目遗留问题统计</title>
+</head>
+<body>
+遗留问题1：redis验证码删除操作可能会失败，虽然不影响后续操作，但是会带来恶意注册风险，所以需要处理，涉及分布式操作，现在暂时不处理
+文件路径：redisRemoteApi.removeRedisKeyRemote(key);crowdfunding07-member-parent/crowdfunding12-member-authentication-consumer/src/main/java/com/zqt/crowd/controller/MemberController.java
+
+</body>
+</html>

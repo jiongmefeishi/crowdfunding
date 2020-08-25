@@ -101,24 +101,24 @@
 
 <div class="container">
 
-    <form action="/auth/do/member/register" method="post" class="form-signin" role="form">
+    <form action="/member/auth/do/register" method="post" class="form-signin" role="form">
         <h2 class="form-signin-heading">
             <i class="glyphicon glyphicon-log-in"></i> 用户注册
         </h2>
         <p th:text="${message}">这里显示从请求域取出的提示消息</p>
         <div class="form-group has-success has-feedback">
-            <input type="text" name="loginacct" class="form-control" id="inputSuccess4"
+            <input type="text" name="loginAcct" value="fdsa" class="form-control" id="inputSuccess4"
                    placeholder="请输入登录账号" autofocus> <span
                 class="glyphicon glyphicon-user form-control-feedback"></span>
         </div>
         <div class="form-group has-success has-feedback">
-            <input type="text" name="userpswd" class="form-control" id="inputSuccess4"
-                   placeholder="请输入登录密码" style="margin-top: 10px;"> <span
+            <input type="text" name="userPassword" class="form-control" id="inputSuccess4"
+                   placeholder="请输入登录密码" value="fdsa" style="margin-top: 10px;"> <span
                 class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
         <div class="form-group has-success has-feedback">
-            <input type="text" name="username" class="form-control" id="inputSuccess4"
-                   placeholder="请输入用户昵称" style="margin-top: 10px;"> <span
+            <input type="text" name="userName" class="form-control" id="inputSuccess4"
+                   placeholder="请输入用户昵称" value="测试者1号" style="margin-top: 10px;"> <span
                 class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
         <!-- 临时写死，方便测试 -->

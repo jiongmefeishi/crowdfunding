@@ -31,7 +31,7 @@ public class MemberPO {
     private String userPassword;
 
     /**
-     * 用户名
+     * 用户昵称
      */
     private String userName;
 

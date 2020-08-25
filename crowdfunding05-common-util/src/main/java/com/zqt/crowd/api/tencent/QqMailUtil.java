@@ -23,7 +23,7 @@ public class QqMailUtil {
             // 拼接消息正文
             String content = mail.getContent();
             // 如果有验证码
-            if (!StrUtil.hasEmpty()) {
+            if (!StrUtil.hasEmpty(mail.getCode())) {
                 content = mail.getSignName()
                         + mail.getContent()
                         + "，您的验证码为："
