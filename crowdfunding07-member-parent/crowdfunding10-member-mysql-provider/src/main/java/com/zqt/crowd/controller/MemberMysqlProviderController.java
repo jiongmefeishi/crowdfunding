@@ -2,6 +2,7 @@ package com.zqt.crowd.controller;
 
 import com.zqt.crowd.constant.CommonConstant;
 import com.zqt.crowd.entity.po.member.MemberPO;
+import com.zqt.crowd.entity.vo.member.MemberLoginVO;
 import com.zqt.crowd.service.MemberService;
 import com.zqt.crowd.util.ResultEntity;
 import lombok.extern.slf4j.Slf4j;
@@ -26,7 +27,7 @@ public class MemberMysqlProviderController {
      * @param loginAcct 登录账号
      * @return MemberPO 会员信息
      */
-    @GetMapping("get/memberpo/by/login/acct/remote")
+    @GetMapping("get/member/po/by/login/acct/remote")
     ResultEntity<MemberPO> getMemberPOByLoginAcctRemote(@RequestParam("loginAcct") String loginAcct) {
         log.info(
                 "\n\n执行方法: {}  ，方法描述: {} \n",

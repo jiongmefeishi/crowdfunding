@@ -6,19 +6,19 @@ import com.zqt.crowd.api.MysqlRemoteApi;
 import com.zqt.crowd.api.RedisRemoteApi;
 import com.zqt.crowd.constant.CommonConstant;
 import com.zqt.crowd.entity.po.member.MemberPO;
-import com.zqt.crowd.entity.vo.MemberRegisterVO;
+import com.zqt.crowd.entity.vo.member.MemberLoginVO;
+import com.zqt.crowd.entity.vo.member.MemberRegisterVO;
 import com.zqt.crowd.util.ResultEntity;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.Objects;
-
-import static com.zqt.crowd.constant.CommonConstant.MAIL_REDIS_CODE_PREFIX;
+import javax.servlet.http.HttpSession;
 
 /**
  * @author: zqtao
@@ -41,9 +41,66 @@ public class MemberController {
     @Autowired
     private MysqlRemoteApi mysqlRemoteApi;
 
+    /**
+     * 会员登录
+     *
+     * @param loginAcct    登录账户
+     * @param userPassword 登录密码
+     * @param modelMap     返回值存储 map
+     * @param session      session
+     */
+    @PostMapping("/auth/do/login")
+    public String login(@RequestParam("loginAcct") String loginAcct,
+                        @RequestParam("userPassword") String userPassword,
+                        ModelMap modelMap,
+                        HttpSession session) {
 
-    @RequestMapping("/auth/do/register")
+        log.info(
+                "执行方法: {} ，方法描述: {} \n",
+                "login",
+                "会员登录"
+        );
+        // 1.验证账号
+        ResultEntity<MemberPO> mysql = mysqlRemoteApi.getMemberPOByLoginAcctRemote(loginAcct);
+
+        MemberPO memberPO = mysql.getData();
+        if (memberPO == null) {
+            // 账号不存在
+            modelMap.put(CommonConstant.ATTR_NAME_MESSAGE, CommonConstant.MESSAGE_LOGIN_ACCT_INVALID);
+            return "member-reg";
+        }
+
+        // 2.验证密码
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        boolean matches = passwordEncoder.matches(userPassword, memberPO.getUserPassword());
+
+        if (!matches) {
+            // 密码错误
+            modelMap.put(CommonConstant.ATTR_NAME_MESSAGE, CommonConstant.MESSAGE_LOGIN_FAILED);
+            return "member-login";
+        }
+
+        // 创建MemberLoginVO对象存入Session域
+        MemberLoginVO loginVO = new MemberLoginVO(memberPO.getId(), memberPO.getUserName(), memberPO.getEmail());
+        session.setAttribute(CommonConstant.MESSAGE_LOGIN_USER_MEMBER, loginVO);
+
+        return "member-center";
+    }
+
+
+    /**
+     * 会员注册
+     *
+     * @param memberVO 注册信息
+     * @return 注册成功跳转登录页
+     */
+    @PostMapping("/auth/do/register")
     public String register(MemberRegisterVO memberVO, ModelMap modelMap) {
+        log.info(
+                "执行方法: {} ，方法描述: {} \n",
+                "register",
+                "会员注册"
+        );
 
         // 1.验证码验证，优先考虑使用短信验证
         // 1.1 获取手机号,组装redis key

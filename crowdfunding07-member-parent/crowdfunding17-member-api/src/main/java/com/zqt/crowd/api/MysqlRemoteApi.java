@@ -26,8 +26,8 @@ public interface MysqlRemoteApi {
      * @param loginAcct 登录账号
      * @return MemberPO 会员信息
      */
-    @GetMapping("/get/memberpo/by/login/acct/remote")
-    ResultEntity<MemberPO> getMemberpoByLoginAcctRemote(@RequestParam("loginAcct") String loginAcct);
+    @GetMapping("/get/member/po/by/login/acct/remote")
+    ResultEntity<MemberPO> getMemberPOByLoginAcctRemote(@RequestParam("loginAcct") String loginAcct);
 
     /**
      * 新增一条会员记录

@@ -1,4 +1,4 @@
-package com.zqt.crowd.entity.vo;
+package com.zqt.crowd.entity.vo.member;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

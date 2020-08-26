@@ -18,6 +18,10 @@ public class CommonConstant {
      */
     public static final String MESSAGE_LOGIN_ACCT_ALREADY_IN_USE = "抱歉！该账号已注册";
     /**
+     * 注册失败提示
+     */
+    public static final String MESSAGE_LOGIN_ACCT_INVALID = "抱歉！该账号未注册";
+    /**
      * 资源访问提示
      */
     public static final String MESSAGE_ACCESS_FORBIDEN = "请先登录再访问";
@@ -92,4 +96,5 @@ public class CommonConstant {
      */
     public static final String MAIL_REDIS_CODE_PREFIX = "MAIL_REDIS_CODE_PREFIX_";
 
+    public static final String MESSAGE_LOGIN_USER_MEMBER = "loginMember";
 }
