@@ -67,7 +67,7 @@ public class MemberController {
         if (memberPO == null) {
             // 账号不存在
             modelMap.put(CommonConstant.ATTR_NAME_MESSAGE, CommonConstant.MESSAGE_LOGIN_ACCT_INVALID);
-            return "member-reg";
+            return "member-login";
         }
 
         // 2.验证密码
@@ -84,7 +84,7 @@ public class MemberController {
         MemberLoginVO loginVO = new MemberLoginVO(memberPO.getId(), memberPO.getUserName(), memberPO.getEmail());
         session.setAttribute(CommonConstant.MESSAGE_LOGIN_USER_MEMBER, loginVO);
 
-        return "member-center";
+        return "redirect:/auth/member/to/center/page";
     }
 
 
@@ -142,7 +142,8 @@ public class MemberController {
             // 失败返回注册页面
             return "member-reg";
         }
-        return "member-login";
+        // 使用重定向避免刷新浏览器导致重新执行注册流程
+        return "redirect:/auth/member/to/login/page";
     }
 
 }

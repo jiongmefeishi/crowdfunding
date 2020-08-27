@@ -46,6 +46,9 @@ public class MemberServiceImpl implements MemberService {
         criteria.andLoginAcctEqualTo(loginAcct);
         //4.执行查询
         List<MemberPO> list = memberMapper.selectByExample(example);
+        if (list == null || list.isEmpty()) {
+            return null;
+        }
         //5.获取结果
         return list.get(0);
     }
