@@ -18,7 +18,7 @@ spring:
   datasource:
     name: mydb
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://47.107.140.62:3306/db_crowdfunding?characterEncoding=utf-8&serverTimezone=UTC
+    url: jdbc:mysql://47.107.40.162:3306/db_crowdfunding?characterEncoding=utf-8&serverTimezone=UTC
     username: root
     password: Ztao!0203...
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -26,6 +26,9 @@ spring:
 # 配置mybatis mapper 映射文件扫描位置
 mybatis:
   mapper-locations: classpath*:/mybatis/mapper/**/*Mapper.xml
+  configuration:
+    # 打印查询结果到控制台
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 # 配置日志级别
 logging:

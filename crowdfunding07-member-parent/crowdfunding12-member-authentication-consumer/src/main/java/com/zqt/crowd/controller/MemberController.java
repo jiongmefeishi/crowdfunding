@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -42,6 +43,25 @@ public class MemberController {
     private MysqlRemoteApi mysqlRemoteApi;
 
     /**
+     * 退出登录
+     * @param session session
+     * @return 重定向到门户
+     */
+    @GetMapping("auth/logout")
+    public String logout(HttpSession session) {
+
+        log.info(
+                "执行方法: {} ，方法描述: {} \n",
+                "logout",
+                "退出登录"
+        );
+
+        session.invalidate();
+
+        return "redirect:/";
+    }
+
+    /**
      * 会员登录
      *
      * @param loginAcct    登录账户
@@ -49,7 +69,7 @@ public class MemberController {
      * @param modelMap     返回值存储 map
      * @param session      session
      */
-    @PostMapping("/auth/do/login")
+    @PostMapping("auth/do/login")
     public String login(@RequestParam("loginAcct") String loginAcct,
                         @RequestParam("userPassword") String userPassword,
                         ModelMap modelMap,
@@ -94,7 +114,7 @@ public class MemberController {
      * @param memberVO 注册信息
      * @return 注册成功跳转登录页
      */
-    @PostMapping("/auth/do/register")
+    @PostMapping("auth/do/register")
     public String register(MemberRegisterVO memberVO, ModelMap modelMap) {
         log.info(
                 "执行方法: {} ，方法描述: {} \n",
