@@ -13,6 +13,12 @@ spring:
   application:
     # 服务名，默认取 spring.application.name 配置值，如果没有则为 unknown
     name: crowdfunding-member-zuul
+  # 配置spring-session 共享，存储在redis
+  redis:
+    host: 47.107.140.162
+  # 指定存储方式类型是 redis
+  session:
+    store-type: redis
 
 # eureka
 eureka:
