@@ -1,2 +1,51 @@
 server:
   port: 9013
+
+# 自定义客户端和服务端交互主机名和端口号 如本地单机：localhost, 阿里云服务器 47.100.123.xx
+zqtao:
+  eureka:
+    server:
+      connection:
+        hostname: localhost
+        port: 9008
+# spring
+spring:
+  application:
+    # 服务名，默认取 spring.application.name 配置值，如果没有则为 unknown
+    name: crowdfunding-member-project-consumer
+  # 配置spring-session 共享，存储在redis
+  redis:
+    host: 47.107.40.162
+    # 设置Redis 访问密码，阿里云必须设置访问密码，不然访问会失效
+    password: fooaredzqt
+  # 指定存储方式类型是 redis
+  session:
+    store-type: redis
+  # 配置前端模板
+  thymeleaf:
+    # 禁止模板缓存，默认开启缓存编译模板，避免因模板的重复解析而降低系统性能
+    # 开发环境下，不禁止需要不断重启
+    cache: false
+    # 配置前缀
+    prefix: classpath:/templates/
+    # 配置后缀
+    suffix: .html
+
+# eureka
+eureka:
+  client:
+    serviceUrl:
+      # Eureka客户端(如：consumer, provider)与 Eureka服务端的交互地址，高可用状态配置对方的地址，单机状态配置自己（如果不配置则默认本机8761端口）
+      defaultZone: http://${zqtao.eureka.server.connection.hostname}:${zqtao.eureka.server.connection.port}/eureka/
+
+# 七牛云存储
+oss:
+  qiniu:
+    # 访问域名(默认使用七牛云测试域名)
+    domain: qfwvdz814.hn-bkt.clouddn.com
+    # 公钥
+    access-key: zHH75Qn6rwVjCZCi7J-bmIlDrnWW__6FSTrCWb2OP
+    # 私钥
+    secret-key: zE2yllMLaRW5Y3N6nKh8ZKtQSGst42kll11h2ZueZ
+    #存储空间名称
+    bucket-name: zqt-crowdfunding

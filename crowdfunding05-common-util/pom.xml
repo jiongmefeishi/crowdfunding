@@ -37,6 +37,14 @@
         </dependency>
         <!-- 发送短信时调用第三方API所需依赖-阿里 E -->
 
+        <!-- OSS 七牛云对象存储 -->
+        <!-- https://mvnrepository.com/artifact/com.qiniu/qiniu-java-sdk -->
+        <dependency>
+            <groupId>com.qiniu</groupId>
+            <artifactId>qiniu-java-sdk</artifactId>
+            <version>7.2.28</version>
+        </dependency>
+
         <!--第三方工具-->
         <!--lombok 代码简化工具，idea 需要安装 lombok 插件，才能识别 -->
         <dependency>
