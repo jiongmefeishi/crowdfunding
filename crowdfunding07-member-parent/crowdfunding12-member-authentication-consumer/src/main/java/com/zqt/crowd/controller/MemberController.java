@@ -104,6 +104,7 @@ public class MemberController {
         MemberLoginVO loginVO = new MemberLoginVO(memberPO.getId(), memberPO.getUserName(), memberPO.getEmail());
         session.setAttribute(CommonConstant.MESSAGE_LOGIN_USER_MEMBER, loginVO);
 
+        log.info("\n\n{} : " + loginVO.getUsername(), "登录成功，当前登录用户");
         return "redirect:/auth/member/to/center/page";
     }
 

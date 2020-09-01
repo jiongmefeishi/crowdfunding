@@ -24,6 +24,9 @@ public class GatewayZuulNotFilterResourceConstant {
         PASS_RES_SET.add("/member/auth/do/register");
         PASS_RES_SET.add("/message/send/mail");
         PASS_RES_SET.add("/message/send/sms");
+
+        PASS_RES_SET.add("/favicon.ico");
+        PASS_RES_SET.add("/error");
     }
 
     /**

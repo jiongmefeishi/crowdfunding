@@ -15,7 +15,9 @@ spring:
     name: crowdfunding-member-zuul
   # 配置spring-session 共享，存储在redis
   redis:
-    host: 47.107.140.162
+    host: 47.107.40.162
+    # 设置Redis 访问密码，阿里云必须设置访问密码，不然访问会失效
+    password: foobaredzqt
   # 指定存储方式类型是 redis
   session:
     store-type: redis
@@ -43,12 +45,6 @@ zuul:
       service-id: crowdfunding-member-project-consumer
       path: /project/**
 
-    # 设置 ribbon 超时时间
-    ribbon:
-      #请求连接的超时时长
-      ConnectTimeout: 8000
-      #请求处理的超时时长
-      ReadTimeout: 8000
 
 # 让用户不能通过微服务名称访问
   # ignored-services: '*' # 忽略所有微服务名称
@@ -70,3 +66,10 @@ zuul:
       # 设置请求匹配路径，使用 path属性设置的路径来进行替换 serviceId 属性中的微服务名称
       # /**表示匹配多层路径，如果没有加/**则不能匹配后续的多层路径了
       # path: /zuul-emp/**
+
+# 设置 ribbon 超时时间
+#ribbon:
+#  #请求连接的超时时长
+#  ConnectTimeout: 10000
+#  #请求处理的超时时长
+#  ReadTimeout: 10000
