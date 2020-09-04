@@ -55,6 +55,13 @@
             <artifactId>spring-session-data-redis</artifactId>
         </dependency>
 
+        <!-- zuul 网关 session 加载需要entity -->
+        <dependency>
+            <groupId>com.zqt.crowd</groupId>
+            <artifactId>crowdfunding09-member-entity</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
         <!--工具-->
         <dependency>
             <groupId>org.projectlombok</groupId>

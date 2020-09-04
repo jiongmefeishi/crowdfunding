@@ -17,6 +17,7 @@
             border-top: 1px solid #ddd;
             text-align: center;
         }
+
         #topcontrol {
             color: #fff;
             z-index: 99;
@@ -61,12 +62,15 @@
                 <div id="navbar" class="navbar-collapse collapse" style="float:right;">
                     <ul class="nav navbar-nav">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> [[${session.loginMember.username}]]<span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
+                                    class="glyphicon glyphicon-user"></i> [[${session.loginMember.username}]]<span
+                                    class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="member.html"><i class="glyphicon glyphicon-scale"></i> 会员中心</a></li>
                                 <li><a href="#"><i class="glyphicon glyphicon-comment"></i> 消息</a></li>
                                 <li class="divider"></li>
-                                <li><a href="index.html" th:href="@{/member/auth/logout}"><i class="glyphicon glyphicon-off"></i> 退出系统</a></li>
+                                <li><a href="index.html" th:href="@{/member/auth/logout}"><i
+                                        class="glyphicon glyphicon-off"></i> 退出系统</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -87,7 +91,8 @@
                             <h3>
                                 [[${session.loginMember.username}]]
                             </h3>
-                            <span class="label label-danger" style="cursor:pointer;" onclick="window.location.href='accttype.html'">未实名认证</span>
+                            <span class="label label-danger" style="cursor:pointer;"
+                                  onclick="window.location.href='accttype.html'">未实名认证</span>
                         </div>
                     </div>
                 </div>
@@ -96,8 +101,9 @@
                 <div class="list-group-item active">
                     资产总览<span class="badge"><i class="glyphicon glyphicon-chevron-right"></i></span>
                 </div>
-                <div class="list-group-item " style="cursor:pointer;" onclick="window.location.href='minecrowdfunding.html'">
-                    我的众筹<span class="badge"><i class="glyphicon glyphicon-chevron-right"></i></span>
+                <div class="list-group-item " style="cursor:pointer;">
+                    <a th:href="@{/member/my/crowd}">我的众筹</a><span class="badge"><i
+                        class="glyphicon glyphicon-chevron-right"></i></span>
                 </div>
             </div>
         </div>
@@ -128,7 +134,11 @@
         <div class="col-md-12 column">
             <div id="footer">
                 <div class="footerNav">
-                    <a rel="nofollow" href="http://www.atguigu.com">关于我们</a> | <a rel="nofollow" href="http://www.atguigu.com">服务条款</a> | <a rel="nofollow" href="http://www.atguigu.com">免责声明</a> | <a rel="nofollow" href="http://www.atguigu.com">网站地图</a> | <a rel="nofollow" href="http://www.atguigu.com">联系我们</a>
+                    <a rel="nofollow" href="http://www.atguigu.com">关于我们</a> | <a rel="nofollow"
+                                                                                  href="http://www.atguigu.com">服务条款</a>
+                    | <a rel="nofollow" href="http://www.atguigu.com">免责声明</a> | <a rel="nofollow"
+                                                                                    href="http://www.atguigu.com">网站地图</a>
+                    | <a rel="nofollow" href="http://www.atguigu.com">联系我们</a>
                 </div>
                 <div class="copyRight">
                     Copyright ?2017-2017atguigu.com 版权所有
@@ -164,7 +174,7 @@
             trigger: 'axis'
         },
         legend: {
-            data:['基金','股票']
+            data: ['基金', '股票']
         },
         toolbox: {
             show: false,
@@ -178,10 +188,10 @@
                 saveAsImage: {}
             }
         },
-        xAxis:  {
+        xAxis: {
             type: 'category',
             boundaryGap: false,
-            data: ['2017-05-16','2017-05-17','2017-05-18','2017-05-19','2017-05-20','2017-05-21','2017-05-22']
+            data: ['2017-05-16', '2017-05-17', '2017-05-18', '2017-05-19', '2017-05-20', '2017-05-21', '2017-05-22']
         },
         yAxis: {
             type: 'value',
@@ -191,9 +201,9 @@
         },
         series: [
             {
-                name:'基金',
-                type:'line',
-                data:[1, 1, 5, 3, 2, 3, 2],
+                name: '基金',
+                type: 'line',
+                data: [1, 1, 5, 3, 2, 3, 2],
                 markPoint: {
                     data: [
                         {type: 'max', name: '最大值'},
@@ -207,9 +217,9 @@
                 }
             },
             {
-                name:'股票',
-                type:'line',
-                data:[1, -2, 2, 5, 3, 2, 4],
+                name: '股票',
+                type: 'line',
+                data: [1, -2, 2, 5, 3, 2, 4],
                 markPoint: {
                     data: [
                         {name: '周最低', value: -2, xAxis: 1, yAxis: -1.5}
@@ -244,10 +254,10 @@
     // 指定图表的配置项和数据
     option1 = {
         color: ['#3398DB'],
-        tooltip : {
+        tooltip: {
             trigger: 'axis',
-            axisPointer : {            // 坐标轴指示器，坐标轴触发有效
-                type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+            axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
             }
         },
         grid: {
@@ -256,26 +266,26 @@
             bottom: '3%',
             containLabel: true
         },
-        xAxis : [
+        xAxis: [
             {
-                type : 'category',
-                data : ['基金', '票据', '定期理财', '变现贷'],
+                type: 'category',
+                data: ['基金', '票据', '定期理财', '变现贷'],
                 axisTick: {
                     alignWithLabel: true
                 }
             }
         ],
-        yAxis : [
+        yAxis: [
             {
-                type : 'value'
+                type: 'value'
             }
         ],
-        series : [
+        series: [
             {
-                name:'直接访问',
-                type:'bar',
+                name: '直接访问',
+                type: 'bar',
                 barWidth: '60%',
-                data:[10, 52, 200, 334, 390, 330, 220]
+                data: [10, 52, 200, 334, 390, 330, 220]
             }
         ]
     };
@@ -287,32 +297,32 @@
 
     // 指定图表的配置项和数据
     option2 = {
-        title : {
+        title: {
             text: '某站点用户访问来源',
             subtext: '纯属虚构',
-            x:'center'
+            x: 'center'
         },
-        tooltip : {
+        tooltip: {
             trigger: 'item',
             formatter: "{a} <br/>{b} : {c} ({d}%)"
         },
         legend: {
             orient: 'vertical',
             left: 'left',
-            data: ['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
+            data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎']
         },
-        series : [
+        series: [
             {
                 name: '访问来源',
                 type: 'pie',
-                radius : '55%',
+                radius: '55%',
                 center: ['50%', '60%'],
-                data:[
-                    {value:335, name:'直接访问'},
-                    {value:310, name:'邮件营销'},
-                    {value:234, name:'联盟广告'},
-                    {value:135, name:'视频广告'},
-                    {value:1548, name:'搜索引擎'}
+                data: [
+                    {value: 335, name: '直接访问'},
+                    {value: 310, name: '邮件营销'},
+                    {value: 234, name: '联盟广告'},
+                    {value: 135, name: '视频广告'},
+                    {value: 1548, name: '搜索引擎'}
                 ],
                 itemStyle: {
                     emphasis: {

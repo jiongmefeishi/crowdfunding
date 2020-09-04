@@ -38,6 +38,13 @@ eureka:
       # Eureka客户端(如：consumer, provider)与 Eureka服务端的交互地址，高可用状态配置对方的地址，单机状态配置自己（如果不配置则默认本机8761端口）
       defaultZone: http://${zqtao.eureka.server.connection.hostname}:${zqtao.eureka.server.connection.port}/eureka/
 
+# 设置 ribbon 超时时间
+ribbon:
+  #请求连接的超时时长
+  ConnectTimeout: 10000
+  #请求处理的超时时长
+  ReadTimeout: 10000
+
 # 配置短信发送参数
 sms:
   # 是否开启短信发送功能
@@ -85,3 +92,9 @@ mail:
     # 正文
     # 签名名称 + 消息内容 + 验证码（有则带上）
     content: 怪兽营邮件已成功发送
+
+# 全局配置项目重定向到 zuul 网关层
+# 不然进行在不同微服务进行重定向时会导致异常（前后端分离项目请忽略）
+my:
+  redirect:
+    path: www.fuck.com

@@ -11,6 +11,7 @@ import com.zqt.crowd.entity.vo.member.MemberRegisterVO;
 import com.zqt.crowd.util.ResultEntity;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -29,6 +30,9 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("member")
 @Controller
 public class MemberController {
+
+    @Value("${my.redirect.path}")
+    private String REDIRECT_PATH;
 
     /**
      * 加载redis 微服务 api
@@ -58,7 +62,7 @@ public class MemberController {
 
         session.invalidate();
 
-        return "redirect:/";
+        return "redirect:" + REDIRECT_PATH + "/";
     }
 
     /**
@@ -105,7 +109,10 @@ public class MemberController {
         session.setAttribute(CommonConstant.MESSAGE_LOGIN_USER_MEMBER, loginVO);
 
         log.info("\n\n{} : " + loginVO.getUsername(), "登录成功，当前登录用户");
-        return "redirect:/auth/member/to/center/page";
+//        return "redirect:" + REDIRECT_PATH + "/auth/member/to/center/page";
+//        String redirect = "redirect:" + REDIRECT_PATH + "/auth/member/to/center/page";
+//        return redirect;
+        return "redirect:http://www.fuck.com/auth/member/to/center/page";
     }
 
 
@@ -164,7 +171,7 @@ public class MemberController {
             return "member-reg";
         }
         // 使用重定向避免刷新浏览器导致重新执行注册流程
-        return "redirect:/auth/member/to/login/page";
+        return "redirect:" + REDIRECT_PATH + "/auth/member/to/login/page";
     }
 
 }

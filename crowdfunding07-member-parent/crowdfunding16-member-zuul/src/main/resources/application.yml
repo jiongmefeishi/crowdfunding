@@ -68,8 +68,8 @@ zuul:
       # path: /zuul-emp/**
 
 # 设置 ribbon 超时时间
-#ribbon:
-#  #请求连接的超时时长
-#  ConnectTimeout: 10000
-#  #请求处理的超时时长
-#  ReadTimeout: 10000
+ribbon:
+  #请求连接的超时时长
+  ConnectTimeout: 10000
+  #请求处理的超时时长
+  ReadTimeout: 10000
