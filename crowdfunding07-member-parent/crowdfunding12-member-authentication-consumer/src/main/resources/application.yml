@@ -97,4 +97,4 @@ mail:
 # 不然进行在不同微服务进行重定向时会导致异常（前后端分离项目请忽略）
 my:
   redirect:
-    path: www.fuck.com
+    path: http://www.fuck.com

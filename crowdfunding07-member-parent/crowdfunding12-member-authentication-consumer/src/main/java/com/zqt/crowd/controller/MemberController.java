@@ -109,10 +109,7 @@ public class MemberController {
         session.setAttribute(CommonConstant.MESSAGE_LOGIN_USER_MEMBER, loginVO);
 
         log.info("\n\n{} : " + loginVO.getUsername(), "登录成功，当前登录用户");
-//        return "redirect:" + REDIRECT_PATH + "/auth/member/to/center/page";
-//        String redirect = "redirect:" + REDIRECT_PATH + "/auth/member/to/center/page";
-//        return redirect;
-        return "redirect:http://www.fuck.com/auth/member/to/center/page";
+        return "redirect:" + REDIRECT_PATH + "/auth/member/to/center/page";
     }
 
 
