@@ -9,6 +9,7 @@ import java.util.Date;
 /**
  * @author zqtao
  * @description: 会员实体类
+ * @database_table: member
  */
 @Data
 @NoArgsConstructor
