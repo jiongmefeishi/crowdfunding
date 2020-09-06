@@ -1,9 +1,8 @@
-package com.zqt.crowd.controller;
+package com.zqt.crowd.controller.member;
 
 import com.zqt.crowd.constant.CommonConstant;
 import com.zqt.crowd.entity.po.member.MemberPO;
-import com.zqt.crowd.entity.vo.member.MemberLoginVO;
-import com.zqt.crowd.service.MemberService;
+import com.zqt.crowd.service.member.MemberService;
 import com.zqt.crowd.util.ResultEntity;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.zqt.crowd.service;
+package com.zqt.crowd.service.member;
 
 import com.zqt.crowd.entity.po.member.MemberPO;
 

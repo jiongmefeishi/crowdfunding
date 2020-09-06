@@ -30,12 +30,12 @@ public class ProjectPO {
     private String projectDescription;
 
     /**
-     * 筹集金额
+     * 计划筹集的金额
      */
     private Long money;
 
     /**
-     * 筹集天数
+     * 筹集资金的天数
      */
     private Integer day;
 
@@ -70,7 +70,7 @@ public class ProjectPO {
     private Integer memberId;
 
     /**
-     * 项目创建时间
+     * 创建项目的日期
      */
     private String createDate;
 

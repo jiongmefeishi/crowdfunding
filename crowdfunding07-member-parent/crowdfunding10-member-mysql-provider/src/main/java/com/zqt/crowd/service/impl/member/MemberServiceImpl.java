@@ -1,9 +1,9 @@
-package com.zqt.crowd.service.impl;
+package com.zqt.crowd.service.impl.member;
 
 import com.zqt.crowd.entity.po.member.MemberPO;
 import com.zqt.crowd.entity.po.member.MemberPOExample;
 import com.zqt.crowd.mapper.member.MemberPOMapper;
-import com.zqt.crowd.service.MemberService;
+import com.zqt.crowd.service.member.MemberService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

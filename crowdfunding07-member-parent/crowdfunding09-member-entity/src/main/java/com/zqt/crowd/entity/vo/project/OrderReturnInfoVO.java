@@ -1,28 +1,21 @@
-package com.zqt.crowd.entity.po.project;
+package com.zqt.crowd.entity.vo.project;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 /**
- * @author zqtao
- * @description: 回报信息实体类
- * @database_table: order_return_info
+ * @author: zqtao
+ * @description: 回报信息封装
+ * @date: 2020/9/6
  */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class OrderReturnInfoPO {
-    /**
-     * 主键
-     */
-    private Integer id;
-
-    /**
-     * 项目 id
-     */
-    private Integer projectId;
-
+public class OrderReturnInfoVO implements Serializable {
+    private static final long serialVersionUID = -3303549361826084703L;
     /**
      * 回报类型：0 - 实物回报， 1 虚拟物品回报
      */
@@ -65,7 +58,7 @@ public class OrderReturnInfoPO {
 
     /**
      * 项目结束后多少天向支持者发送回报
-     *
+     * <p>
      * 众筹结束后返还回报物品天数
      */
     private Integer returnDate;
@@ -74,4 +67,5 @@ public class OrderReturnInfoPO {
      * 说明图片路径
      */
     private String describePicPath;
+
 }
