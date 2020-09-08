@@ -27,6 +27,9 @@ import java.io.IOException;
 @RestController
 public class CloudStorageController {
 
+    /**
+     * 加载云存储配置
+     */
     @Autowired
     private CloudStorageProperties CloudStorageProperties;
 
@@ -47,13 +50,9 @@ public class CloudStorageController {
         // 获取文件的名称
         String fileName = file.getOriginalFilename();
 
-        // 使用工具类根据上传文件生成唯一图片名称
-        String imgName = FilePathRandomUtil.getRandomImgName(fileName);
-
         if (!file.isEmpty()) {
-            FileInputStream inputStream = (FileInputStream) file.getInputStream();
             // 上传文件
-            String path = CloudStorageUtil.uploadImg(inputStream, imgName, CloudStorageProperties);
+            String path = CloudStorageUtil.uploadImg((FileInputStream) file.getInputStream(), fileName, CloudStorageProperties);
             if (!StrUtil.hasEmpty(path)) {
                 log.info("\n\n{} : " + path, "文件上传成功，七牛云外链");
                 return ResultEntity.successWithData(path);

@@ -49,3 +49,10 @@ oss:
     secret-key: zE2yllMLaRW5Y3N6nKh8ZKtQSGst42kll11h2ZueZ
     #存储空间名称
     bucket-name: zqt-crowdfunding
+
+# 全局配置项目重定向到 zuul 网关层
+# 不然进行在不同微服务进行重定向时会导致异常（前后端分离项目请忽略）
+my:
+  redirect:
+    # 网关统一重定向地址
+    path: http://www.fuck.com

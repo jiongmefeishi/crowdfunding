@@ -9,6 +9,7 @@ import com.qiniu.storage.UploadManager;
 import com.qiniu.storage.model.DefaultPutRet;
 import com.qiniu.util.Auth;
 import com.zqt.crowd.api.qiniu.entity.CloudStorageReqDO;
+import com.zqt.crowd.util.FilePathRandomUtil;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.FileInputStream;
@@ -24,7 +25,7 @@ public class CloudStorageUtil {
      * 将图片上传到七牛云，并返回外链
      *
      * @param file              文件
-     * @param fileName               文件名
+     * @param fileName          文件名
      * @param cloudStorageReqDO 七牛云配置参数实体
      * @return 文件外链
      */
@@ -35,6 +36,11 @@ public class CloudStorageUtil {
                 "CloudStorageUtil uploadImg",
                 "将图片上传到七牛云，并返回外链"
         );
+
+        // 使用工具类根据上传文件生成唯一图片名称
+        String imgName = FilePathRandomUtil.getRandomImgName(fileName);
+
+        log.info("\n\n{} : " + imgName, "上传文件生成唯一图片名称");
 
         // 构造一个带指定Zone对象的配置类, 注意这里的 Region.region2需要根据主机选择
         // 具体参见 https://developer.qiniu.com/kodo/manual/1671/region-endpoint
@@ -47,7 +53,7 @@ public class CloudStorageUtil {
             Auth auth = Auth.create(cloudStorageReqDO.getAccessKey(), cloudStorageReqDO.getSecretKey());
             String upToken = auth.uploadToken(cloudStorageReqDO.getBucketName());
             try {
-                Response response = uploadManager.put(file, fileName, upToken, null, null);
+                Response response = uploadManager.put(file, imgName, upToken, null, null);
                 // 解析上传成功的结果
                 DefaultPutRet putRet = new Gson().fromJson(response.bodyString(), DefaultPutRet.class);
 

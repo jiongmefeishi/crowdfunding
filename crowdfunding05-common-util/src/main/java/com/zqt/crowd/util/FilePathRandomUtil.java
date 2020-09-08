@@ -2,11 +2,13 @@ package com.zqt.crowd.util;
 
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.lang.UUID;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author: zqtao
  * @description: 文件上传名称随机工具
  */
+@Slf4j
 public class FilePathRandomUtil {
 
     /**
@@ -16,9 +18,17 @@ public class FilePathRandomUtil {
      */
     public static String getRandomImgName(String fileName) {
 
-        int index = fileName.lastIndexOf(".");
+        log.debug(
+                "执行方法: {} ，方法描述: {} \n",
+                "FilePathRandomUtil: getRandomImgName",
+                "文件上传名称随机工具, 生成云服务器 存储的 fileName"
+        );
 
-        if ((fileName == null || fileName.isEmpty()) || index == -1) {
+        if (fileName == null || fileName.isEmpty()) {
+            throw new IllegalArgumentException();
+        }
+        int index = fileName.lastIndexOf(".");
+        if (index == -1) {
             throw new IllegalArgumentException();
         }
         // 获取文件后缀
@@ -26,8 +36,7 @@ public class FilePathRandomUtil {
         // 生成UUID
         String uuid = UUID.randomUUID().toString().replaceAll("-", "");
         // 生成上传至云服务器的路径
-        String path = "code/duck/" + DateUtil.today() + "-" + uuid + suffix;
-        return path;
+        return "code/duck/" + DateUtil.today() + "-" + uuid + suffix;
     }
 
 }

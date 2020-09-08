@@ -28,4 +28,12 @@ public interface ProjectItemImgPOMapper {
     int updateByPrimaryKeySelective(ProjectItemImgPO record);
 
     int updateByPrimaryKey(ProjectItemImgPO record);
+
+    /**
+     * 保存项目中详情图片路径信息
+     *
+     * @param projectId 项目id
+     * @param detailPicturePathList 项目详情图片存储路径
+     */
+    void insertImgPathList(@Param("projectId") Integer projectId, @Param("detailPicturePathList") List<String> detailPicturePathList);
 }

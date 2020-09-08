@@ -97,4 +97,5 @@ mail:
 # 不然进行在不同微服务进行重定向时会导致异常（前后端分离项目请忽略）
 my:
   redirect:
+    # 网关统一重定向地址
     path: http://www.fuck.com

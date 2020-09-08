@@ -95,6 +95,11 @@ public class CommonConstant {
      * 邮件验证码存储在Redis中存储数据的key前缀
      */
     public static final String MAIL_REDIS_CODE_PREFIX = "MAIL_REDIS_CODE_PREFIX_";
-
     public static final String MESSAGE_LOGIN_USER_MEMBER = "loginMember";
+    public static final String MESSAGE_HEADER_PIC_EMPTY = "未上传头像";
+    public static final String MESSAGE_HEADER_PIC_UPLOAD_FAILED = "头像上传失败";
+    public static final String MESSAGE_DETAIL_PIC_EMPTY = "未上传图片";
+    public static final String MESSAGE_DETAIL_PIC_UPLOAD_FAILED = "图片上传失败";
+    public static final String ATTR_NAME_TEMPLE_PROJECT = "projectVO";
+    public static final String MESSAGE_TEMPLE_PROJECT_MISSING = "临时存储的ProjectVO对象丢失！";
 }

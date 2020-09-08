@@ -19,7 +19,6 @@ import static org.springframework.cloud.netflix.zuul.filters.support.FilterConst
  * @author: zqtao
  * @description: zuul 网关请求过滤器，打印所有走网关的请求信息
  */
-// 暂时停用，有bug 待解决
 @Component
 @Slf4j
 public class ZuulQueryPreFilter extends ZuulFilter {

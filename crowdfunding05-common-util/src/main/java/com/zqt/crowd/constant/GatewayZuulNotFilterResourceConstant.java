@@ -6,7 +6,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * 网关请求不过滤资源
+ * @author: zqtao
+ * @description: 网关请求不过滤资源
  */
 public class GatewayZuulNotFilterResourceConstant {
 

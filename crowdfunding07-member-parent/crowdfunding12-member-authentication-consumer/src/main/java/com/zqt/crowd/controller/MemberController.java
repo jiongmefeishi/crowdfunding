@@ -31,6 +31,9 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class MemberController {
 
+    /**
+     * 网关统一重定向地址
+     */
     @Value("${my.redirect.path}")
     private String REDIRECT_PATH;
 

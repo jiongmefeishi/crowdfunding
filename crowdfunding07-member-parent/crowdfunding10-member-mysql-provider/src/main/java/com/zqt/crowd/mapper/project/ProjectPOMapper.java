@@ -28,4 +28,20 @@ public interface ProjectPOMapper {
     int updateByPrimaryKeySelective(ProjectPO record);
 
     int updateByPrimaryKey(ProjectPO record);
+
+    /**
+     * 保存项目、分类的关联关系信息
+     *
+     * @param typeIdList 项目分类 id 集合
+     * @param projectId  项目id
+     */
+    void insertInnerTypeAndProject(@Param("typeIdList") List<Integer> typeIdList, @Param("projectId") Integer projectId);
+
+    /**
+     * 保存项目、标签的关联关系信息
+     *
+     * @param tagIdList 项目标签 id 集合
+     * @param projectId 项目id
+     */
+    void insertInnerTagAndProject(@Param("tagIdList") List<Integer> tagIdList, @Param("projectId") Integer projectId);
 }
