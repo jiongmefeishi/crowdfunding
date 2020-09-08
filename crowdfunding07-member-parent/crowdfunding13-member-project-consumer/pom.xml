@@ -50,10 +50,23 @@
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
-        <!-- 整合Redis -->
+        <!-- 引入springboot&redis整合依赖 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+
+        <!-- 引入springboot&spring-session整合依赖 -->
+        <dependency>
+            <groupId>org.springframework.session</groupId>
+            <artifactId>spring-session-data-redis</artifactId>
+        </dependency>
+
+        <!-- 加载实体类 -->
+        <dependency>
+            <groupId>com.zqt.crowd</groupId>
+            <artifactId>crowdfunding09-member-entity</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
         <!-- 对外暴露服务 -->
@@ -91,6 +104,14 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>6</source>
+                    <target>6</target>
+                </configuration>
             </plugin>
         </plugins>
     </build>

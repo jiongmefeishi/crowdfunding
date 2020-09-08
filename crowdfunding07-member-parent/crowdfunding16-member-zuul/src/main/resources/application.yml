@@ -43,7 +43,8 @@ zuul:
       path: /**
     crowd-project:
       service-id: crowdfunding-member-project-consumer
-      path: /project/**
+      # 设置访问前缀，pj 为 project 简写，前端访问，走zuul 网关层需要携带 pj
+      path: /pj/**
 
 
 # 让用户不能通过微服务名称访问

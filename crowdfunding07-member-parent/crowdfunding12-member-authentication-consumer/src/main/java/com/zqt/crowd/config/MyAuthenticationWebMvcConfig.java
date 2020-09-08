@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * @description: MVC配置类
  */
 @Configuration
-public class MyWebMvcConfig implements WebMvcConfigurer {
+public class MyAuthenticationWebMvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {

@@ -1,5 +1,6 @@
 package com.zqt.crowd.config;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -8,12 +9,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * @author: zqtao
  * @description: MVC配置类
  */
+@Slf4j
 @Configuration
-public class MyWebMvcConfig implements WebMvcConfigurer {
+public class MyProjectWebMvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-
         // view-controller是在project-consumer内部定义的，所以这里是一个不经过Zuul访问的地址，所以这个路径前面不加路由规则中定义的前缀：“/project”
         registry.addViewController("/agree/protocol/page").setViewName("project-agree");
         registry.addViewController("/launch/project/page").setViewName("project-launch");
