@@ -135,7 +135,7 @@
     <insert id="insertImgPathList">
         insert into project_item_img (project_id, item_img_path) values
         <foreach collection="detailPicturePathList" item="item" separator=",">
-            (#{project_id}, #{item})
+            (#{projectId}, #{item})
         </foreach>
     </insert>
     <select id="countByExample" parameterType="com.zqt.crowd.entity.po.project.ProjectItemImgPOExample"

@@ -36,6 +36,13 @@ public interface MysqlRemoteApi {
     @RequestMapping("save/member/remote")
     ResultEntity<String> saveMember(@RequestBody MemberPO memberPO);
 
-    @RequestMapping("save/project/vo/remote")
+
+    /**
+     * 新增一条项目信息
+     *
+     * @param projectVO 项目信息
+     * @param memberId 会员id
+     */
+    @RequestMapping("project/save/project/vo/remote")
     ResultEntity<String> saveProjectVORemote(@RequestBody ProjectVO projectVO, @RequestParam("memberId") Integer memberId);
 }

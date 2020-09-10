@@ -378,7 +378,7 @@
                                 onclick="window.location.href='start-step-1.html'">上一步</button>
                         <!-- <button type="button" class="btn  btn-warning btn-lg"
                             onclick="window.location.href='start-step-3.html'">下一步</button> -->
-                        <a th:href="@{/project/create/confirm/page}" class="btn btn-warning btn-lg">下一步</a>
+                        <a th:href="@{/pj/create/confirm/page}" class="btn btn-warning btn-lg">下一步</a>
                         <a class="btn"> 预览 </a>
                     </div>
                 </div>
@@ -462,7 +462,7 @@
 
         // 发送Ajax请求上传文件
         $.ajax({
-            "url":"[[@{/project/create/upload/return/picture.json}]]",
+            "url":"[[@{/pj/project/save/return/picture}]]",
             "type":"post",
             "data":formData,
             "contentType":false,
@@ -476,7 +476,7 @@
                     alert("上传成功！");
 
                     // 如果上传成功，则从响应体数据中获取图片的访问路径
-                    returnObj.describPicPath = response.data;
+                    returnObj.describePicPath = response.data;
                 }
 
                 if(result == "FAILED") {
@@ -510,7 +510,7 @@
 
         // 2.发送Ajax请求
         $.ajax({
-            "url" : "[[@{/project/create/save/return.json}]]",
+            "url" : "[[@{/pj/project/save/return/info}]]",
             "type": "post",
             "dataType": "json",
             "data": returnObj,

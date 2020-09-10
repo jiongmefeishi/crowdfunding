@@ -18,6 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
@@ -63,6 +64,7 @@ public class ProjectServiceImpl implements ProjectService {
     @Autowired
     private ProjectItemImgPOMapper projectItemImgPOMapper;
 
+    @Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     @Override
     public void saveProject(ProjectVO projectVO, Integer memberId) {
         // 一、保存ProjectPO对象

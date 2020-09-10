@@ -221,7 +221,13 @@ public class ProjectConsumerController {
         return ResultEntity.failedDefault();
     }
 
-    @PostMapping("save/confirm/info")
+    /**
+     * 填充确认信息
+     *
+     * @param session             session
+     * @param memberConfirmInfoVO 确认信息
+     */
+    @RequestMapping("save/confirm/info")
     public String saveConfirmInfo(HttpSession session, MemberConfirmInfoVO memberConfirmInfoVO, ModelMap modelMap) {
 
         log.info(

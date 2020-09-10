@@ -205,32 +205,32 @@
     <insert id="insertOrderReturnInfoPOBatch">
         insert into order_return_info
         (
-        projectid,
+        project_id,
         type,
-        supportmoney,
+        support_money,
         content,
         count,
-        signalpurchase,
+        signal_purchase,
         purchase,
         freight,
         invoice,
-        returndate,
-        describ_pic_path
+        return_date,
+        describe_pic_path
         )
         values
         <foreach collection="returnPOList" item="returnPO" separator=",">
             (
             #{projectId},
             #{returnPO.type},
-            #{returnPO.supportmoney},
+            #{returnPO.supportMoney},
             #{returnPO.content},
             #{returnPO.count},
-            #{returnPO.signalpurchase},
+            #{returnPO.signalPurchase},
             #{returnPO.purchase},
             #{returnPO.freight},
             #{returnPO.invoice},
-            #{returnPO.returndate},
-            #{returnPO.describPicPath}
+            #{returnPO.returnDate},
+            #{returnPO.describePicPath}
             )
         </foreach>
     </insert>

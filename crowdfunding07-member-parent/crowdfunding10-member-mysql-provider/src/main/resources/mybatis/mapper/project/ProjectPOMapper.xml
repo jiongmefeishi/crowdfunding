@@ -217,14 +217,14 @@
     </insert>
     <!--保存项目、分类的关联关系信息-->
     <insert id="insertInnerTypeAndProject">
-        insert into project_type (project_id, type_id) values
+        insert into inner_project_type (project_id, type_id) values
         <foreach collection="typeIdList" item="item" separator=",">
             (#{projectId}, #{item})
         </foreach>
     </insert>
     <!--保存项目、标签的关联关系信息-->
     <insert id="insertInnerTagAndProject">
-        insert into project_tag (project_id, tag_id) values
+        insert into inner_project_tag (project_id, tag_id) values
         <foreach collection="tagIdList" item="item" separator=",">
             (#{projectId}, #{item})
         </foreach>
