@@ -51,12 +51,6 @@ public class ProjectConsumerController {
     @Autowired
     private CloudStorageProperties CloudStorageProperties;
 
-    @ResponseBody
-    @RequestMapping("test")
-    public String test() {
-        return "test fuck.";
-    }
-
     /**
      * 保存用户基本信息，上传头像和项目详情图片
      *

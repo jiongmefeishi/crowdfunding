@@ -88,7 +88,7 @@
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="index.html" style="font-size: 32px;">尚筹网-创意产品众筹平台</a>
+                    <a class="navbar-brand" href="index.html" style="font-size: 32px;">爱众筹-创意产品众筹平台</a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse"
                      style="float: right;">
@@ -140,7 +140,7 @@
     <div class="container">
         <div class="row clearfix">
             <div class="col-md-12 column">
-                <form id="projectForm" th:action="@{/project/create/project/information}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                <form id="projectForm" th:action="@{/pj/project/save/basic/info}" method="post" enctype="multipart/form-data" class="form-horizontal">
                     <p th:text="${message}"></p>
                     <div class="panel panel-default">
                         <div class="panel-heading" style="text-align: center;">
@@ -314,28 +314,28 @@
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">自我介绍</label>
                                             <div class="col-sm-10">
-                                                <input type="text" name="memberLauchInfoVO.descriptionSimple" value="i am mao" class="form-control"
+                                                <input type="text" name="memberLaunchInfoVO.descriptionSimple" value="i am mao" class="form-control"
                                                        placeholder="一句话自我介绍，不超过40字">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">详细自我介绍</label>
                                             <div class="col-sm-10">
-													<textarea name="memberLauchInfoVO.descriptionDetail" class="form-control" rows="5"
+													<textarea name="memberLaunchInfoVO.descriptionDetail" class="form-control" rows="5"
                                                               placeholder="向支持者详细介绍你自己或你的团队及项目背景，让支持者在最短时间内了解你，不超过160字">我是猫哥</textarea>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">联系电话</label>
                                             <div class="col-sm-10">
-                                                <input type="text" name="memberLauchInfoVO.phoneNum" value="123456" class="form-control"
+                                                <input type="text" name="memberLaunchInfoVO.phoneNum" value="123456" class="form-control"
                                                        placeholder="此信息不会显示在项目页面">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">客服电话</label>
                                             <div class="col-sm-10">
-                                                <input type="text" name="memberLauchInfoVO.serviceNum" value="654321" class="form-control"
+                                                <input type="text" name="memberLaunchInfoVO.serviceNum" value="654321" class="form-control"
                                                        placeholder="此信息显示在项目页面">
                                             </div>
                                         </div>
