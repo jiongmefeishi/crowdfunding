@@ -1,9 +1,9 @@
 package com.zqt.crowd.controller;
 
 import cn.hutool.core.util.StrUtil;
-import com.netflix.discovery.converters.Auto;
 import com.zqt.crowd.api.MysqlRemoteApi;
 import com.zqt.crowd.api.qiniu.CloudStorageUtil;
+import com.zqt.crowd.config.CloudStorageProperties;
 import com.zqt.crowd.constant.CommonConstant;
 import com.zqt.crowd.entity.vo.member.MemberConfirmInfoVO;
 import com.zqt.crowd.entity.vo.member.MemberLoginVO;
@@ -13,11 +13,9 @@ import com.zqt.crowd.util.ResultEntity;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
@@ -26,8 +24,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author: zqtao
+ * @description: 项目管控层
+ */
 @RequestMapping("project")
 @Slf4j
+@Controller
 public class ProjectConsumerController {
 
     /**
@@ -46,7 +49,13 @@ public class ProjectConsumerController {
      * 加载云存储配置
      */
     @Autowired
-    private com.zqt.crowd.config.CloudStorageProperties CloudStorageProperties;
+    private CloudStorageProperties CloudStorageProperties;
+
+    @ResponseBody
+    @RequestMapping("test")
+    public String test() {
+        return "test fuck.";
+    }
 
     /**
      * 保存用户基本信息，上传头像和项目详情图片
