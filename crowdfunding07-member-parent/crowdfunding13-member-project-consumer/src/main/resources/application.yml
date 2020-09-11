@@ -56,3 +56,15 @@ my:
   redirect:
     # 网关统一重定向地址
     path: http://www.fuck.com
+
+# 配置超时熔断，在消费者中需要配置超时熔断机制
+hystrix:
+  command:
+    default:  #default全局有效，service id指定应用有效
+      execution:
+        timeout:
+          #如果enabled设置为false，则请求超时交给ribbon控制,为true,则超时作为熔断根据
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000 #断路器超时时间，默认1000ms

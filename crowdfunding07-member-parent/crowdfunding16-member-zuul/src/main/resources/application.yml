@@ -68,9 +68,22 @@ zuul:
       # /**表示匹配多层路径，如果没有加/**则不能匹配后续的多层路径了
       # path: /zuul-emp/**
 
-# 设置 ribbon 超时时间
+# 配置超时机制重试机制
 ribbon:
-  #请求连接的超时时长
-  ConnectTimeout: 10000
-  #请求处理的超时时长
-  ReadTimeout: 10000
+  OkToRetryOnAllOperations: false #对所有操作请求都进行重试,默认false
+  ReadTimeout: 3000   #负载均衡超时时间，默认值5000
+  ConnectTimeout: 1000 #ribbon请求连接的超时时间，默认值2000
+  MaxAutoRetries: 0     #对当前实例的重试次数，默认0
+  MaxAutoRetriesNextServer: 1 #对切换实例的重试次数，默认1
+
+# 配置超时熔断，在消费者中需要配置超时熔断机制
+hystrix:
+  command:
+    default:  #default全局有效，service id指定应用有效
+      execution:
+        timeout:
+          #如果enabled设置为false，则请求超时交给ribbon控制,为true,则超时作为熔断根据
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000 #断路器超时时间，默认1000ms
