@@ -124,7 +124,8 @@
       #{completion,jdbcType=INTEGER}, #{memberId,jdbcType=INTEGER}, #{createDate,jdbcType=VARCHAR}, 
       #{follower,jdbcType=INTEGER}, #{headerPicturePath,jdbcType=VARCHAR})
   </insert>
-    <insert id="insertSelective" parameterType="com.zqt.crowd.entity.po.project.ProjectPO">
+    <insert id="insertSelective" parameterType="com.zqt.crowd.entity.po.project.ProjectPO"
+            useGeneratedKeys="true" keyProperty="id">
         insert into project
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
