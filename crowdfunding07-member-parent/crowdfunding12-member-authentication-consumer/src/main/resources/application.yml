@@ -17,7 +17,7 @@ spring:
   redis:
     host: 47.107.40.162
     # 设置Redis 访问密码，阿里云必须设置访问密码，不然访问会失效
-    password: fooaredzqt
+    password: foobaredzqt
   # 指定存储方式类型是 redis
   session:
     store-type: redis
@@ -37,13 +37,6 @@ eureka:
     serviceUrl:
       # Eureka客户端(如：consumer, provider)与 Eureka服务端的交互地址，高可用状态配置对方的地址，单机状态配置自己（如果不配置则默认本机8761端口）
       defaultZone: http://${zqtao.eureka.server.connection.hostname}:${zqtao.eureka.server.connection.port}/eureka/
-
-# 设置 ribbon 超时时间
-ribbon:
-  #请求连接的超时时长
-  ConnectTimeout: 10000
-  #请求处理的超时时长
-  ReadTimeout: 10000
 
 # 配置短信发送参数
 sms:
@@ -99,6 +92,14 @@ my:
   redirect:
     # 网关统一重定向地址
     path: http://www.fuck.com
+
+# 配置超时机制重试机制
+ribbon:
+  OkToRetryOnAllOperations: false #对所有操作请求都进行重试,默认false
+  ReadTimeout: 3000   #负载均衡超时时间，默认值5000
+  ConnectTimeout: 1000 #ribbon请求连接的超时时间，默认值2000
+  MaxAutoRetries: 0     #对当前实例的重试次数，默认0
+  MaxAutoRetriesNextServer: 1 #对切换实例的重试次数，默认1
 
 # 配置超时熔断，在消费者中需要配置超时熔断机制
 hystrix:
