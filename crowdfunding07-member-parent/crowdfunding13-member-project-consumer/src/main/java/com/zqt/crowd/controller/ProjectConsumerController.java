@@ -268,6 +268,6 @@ public class ProjectConsumerController {
         session.removeAttribute(CommonConstant.ATTR_NAME_TEMPLE_PROJECT);
 
         // 8.如果远程保存成功则跳转到最终完成页面
-        return "redirect:" + REDIRECT_PATH + "project/create/success";
+        return "redirect:" + REDIRECT_PATH + "/pj/create/success";
     }
 }
