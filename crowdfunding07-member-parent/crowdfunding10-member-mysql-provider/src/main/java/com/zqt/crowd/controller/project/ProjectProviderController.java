@@ -43,7 +43,7 @@ public class ProjectProviderController {
      * @param projectVO 众筹项目信息实体
      * @param memberId 会员 id
      */
-    @RequestMapping("/save/project/vo/remote")
+    @RequestMapping("save/project/vo/remote")
     public ResultEntity<String> saveProjectVORemote(
             @RequestBody ProjectVO projectVO,
             @RequestParam("memberId") Integer memberId) {

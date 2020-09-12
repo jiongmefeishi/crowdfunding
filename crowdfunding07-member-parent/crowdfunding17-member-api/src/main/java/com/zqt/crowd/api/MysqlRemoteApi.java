@@ -23,8 +23,8 @@ public interface MysqlRemoteApi {
     /**
      * 获取首页展示数据列表
      */
-    @GetMapping("get/portal/type/project/data/remote")
-    public ResultEntity<List<PortalTypeVO>> getPortalTypeProjectDataRemote();
+    @GetMapping("project/get/portal/type/project/data/remote")
+    ResultEntity<List<PortalTypeVO>> getPortalTypeProjectDataRemote();
 
     /**
      * 根据登录账号获取会员信息
