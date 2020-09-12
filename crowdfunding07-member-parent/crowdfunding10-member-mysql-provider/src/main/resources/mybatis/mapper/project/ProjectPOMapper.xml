@@ -1,6 +1,56 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.zqt.crowd.mapper.project.ProjectPOMapper">
+
+    <!-- 查询首页项目展示数据 S -->
+    <!--
+        1、查询首页数据封装的信息，需要resultMap : loadPortalProjectListResultMap
+        PortalTypeVO 中包含 PortalProjectVO， 所以需要查询 PortalProjectVO 的信息
+     -->
+    <select id="selectPortalTypeVOList" resultMap="loadPortalProjectListResultMap">
+		select t.id, t.name, t.remark from project_type t
+	</select>
+
+    <!--
+        2、封装selectPortalTypeVOList 查询返回的Map，同时调用 selectPortalProjectVOList 查询语句
+        查询 PortalProjectVO 信息，用来封装进PortalTypeVO 中作为返回结果
+    -->
+    <resultMap type="com.zqt.crowd.entity.vo.portal.PortalTypeVO" id="loadPortalProjectListResultMap">
+
+        <!-- 分类数据的常规属性 -->
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="remark" property="remark"/>
+
+        <!-- 分类数据中包含的项目数据的List -->
+        <!-- property属性：指定对应方法中返回的属性，对应PortalTypeVO中分类数据中的项目数据的List属性 -->
+        <!-- column属性：指定查询注入参数，接下来查询项目具体信息（PortalProjectVO）时需要用到分类id，就是通过column属性把值传入 -->
+        <!-- ofType属性：指定返回类型，项目数据的实体类型PortalProjectVO -->
+        <collection
+                property="portalProjectVOList"
+                column="id"
+                ofType="com.zqt.crowd.entity.vo.portal.PortalProjectVO"
+                select="com.zqt.crowd.mapper.project.ProjectPOMapper.selectPortalProjectVOList"/>
+    </resultMap>
+
+    <!-- 3、查询项目展示的具体信息 PortalProjectVO -->
+    <select id="selectPortalProjectVOList" resultType="com.zqt.crowd.entity.vo.portal.PortalProjectVO">
+        select
+            a.id as projectId,
+            a.project_name projectName,
+            money,
+            deploy_date as deployDate,
+            support_money / money * 100 as percentage,
+            supporter as supporter,
+            header_picture_path as headerPicturePath
+            from project a left join inner_project_type b on a.id=b.project_id
+        where b.type_id=#{id}
+        order by
+                a.id desc
+        limit 0, 4
+	</select>
+    <!-- 查询首页项目展示数据 E -->
+
     <resultMap id="BaseResultMap" type="com.zqt.crowd.entity.po.project.ProjectPO">
         <id column="id" property="id" jdbcType="INTEGER"/>
         <result column="project_name" property="projectName" jdbcType="VARCHAR"/>

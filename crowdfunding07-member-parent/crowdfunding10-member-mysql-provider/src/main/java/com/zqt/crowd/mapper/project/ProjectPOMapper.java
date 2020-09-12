@@ -2,10 +2,15 @@ package com.zqt.crowd.mapper.project;
 
 import com.zqt.crowd.entity.po.project.ProjectPO;
 import com.zqt.crowd.entity.po.project.ProjectPOExample;
+import com.zqt.crowd.entity.vo.portal.PortalTypeVO;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
+/**
+ * @author tao
+ * @description: 项目数据层
+ */
 public interface ProjectPOMapper {
     int countByExample(ProjectPOExample example);
 
@@ -44,4 +49,10 @@ public interface ProjectPOMapper {
      * @param projectId 项目id
      */
     void insertInnerTagAndProject(@Param("tagIdList") List<Integer> tagIdList, @Param("projectId") Integer projectId);
+
+    /**
+     * 查询首页项目展示数据列表
+     * @return 首页项目展示数据列表
+     */
+    List<PortalTypeVO> selectPortalTypeVOList();
 }
