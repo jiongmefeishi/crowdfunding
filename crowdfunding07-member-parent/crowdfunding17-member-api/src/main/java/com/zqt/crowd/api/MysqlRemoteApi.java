@@ -1,10 +1,13 @@
 package com.zqt.crowd.api;
 
 import com.zqt.crowd.entity.po.member.MemberPO;
+import com.zqt.crowd.entity.vo.portal.PortalTypeVO;
 import com.zqt.crowd.entity.vo.project.ProjectVO;
 import com.zqt.crowd.util.ResultEntity;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * @author: zqtao
@@ -17,6 +20,11 @@ import org.springframework.web.bind.annotation.*;
  */
 @FeignClient(value = "crowdfunding-member-mysql-provider")
 public interface MysqlRemoteApi {
+    /**
+     * 获取首页展示数据列表
+     */
+    @GetMapping("get/portal/type/project/data/remote")
+    public ResultEntity<List<PortalTypeVO>> getPortalTypeProjectDataRemote();
 
     /**
      * 根据登录账号获取会员信息
@@ -41,7 +49,7 @@ public interface MysqlRemoteApi {
      * 新增一条项目信息
      *
      * @param projectVO 项目信息
-     * @param memberId 会员id
+     * @param memberId  会员id
      */
     @RequestMapping("project/save/project/vo/remote")
     ResultEntity<String> saveProjectVORemote(@RequestBody ProjectVO projectVO, @RequestParam("memberId") Integer memberId);

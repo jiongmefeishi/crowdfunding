@@ -6,6 +6,7 @@ import com.zqt.crowd.entity.po.member.MemberLaunchInfoPO;
 import com.zqt.crowd.entity.po.project.ProjectPO;
 import com.zqt.crowd.entity.vo.member.MemberConfirmInfoVO;
 import com.zqt.crowd.entity.vo.member.MemberLaunchInfoVO;
+import com.zqt.crowd.entity.vo.portal.PortalTypeVO;
 import com.zqt.crowd.entity.vo.project.OrderReturnInfoVO;
 import com.zqt.crowd.entity.vo.project.ProjectVO;
 import com.zqt.crowd.mapper.member.MemberConfirmInfoPOMapper;
@@ -64,6 +65,12 @@ public class ProjectServiceImpl implements ProjectService {
     @Autowired
     private ProjectItemImgPOMapper projectItemImgPOMapper;
 
+    /**
+     * 新增一条众筹项目信息
+     *
+     * @param projectVO 众筹项目信息实体
+     * @param memberId  会员 id
+     */
     @Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     @Override
     public void saveProject(ProjectVO projectVO, Integer memberId) {
@@ -135,5 +142,13 @@ public class ProjectServiceImpl implements ProjectService {
         BeanUtils.copyProperties(memberConfirmInfoVO, memberConfirmInfoPO);
         memberConfirmInfoPO.setMemberId(memberId);
         memberConfirmInfoPOMapper.insert(memberConfirmInfoPO);
+    }
+
+    /**
+     * 获取首页展示数据列表
+     */
+    @Override
+    public List<PortalTypeVO> getPortalTypeVO() {
+        return projectPOMapper.selectPortalTypeVOList();
     }
 }
