@@ -15,7 +15,7 @@ spring:
     name: crowdfunding-member-project-consumer
   # 配置spring-session 共享，存储在redis
   redis:
-    host: 47.107.140.62
+    host: 47.107.40.162
     # 设置Redis 访问密码，阿里云必须设置访问密码，不然访问会失效
     password: foobaredzqt
   # 指定存储方式类型是 redis
@@ -60,9 +60,9 @@ my:
 # 配置超时机制重试机制
 ribbon:
   OkToRetryOnAllOperations: false #对所有操作请求都进行重试,默认false
-  ReadTimeout: 3000   #负载均衡超时时间，默认值5000
-  ConnectTimeout: 1000 #ribbon请求连接的超时时间，默认值2000
-  MaxAutoRetries: 0     #对当前实例的重试次数，默认0
+  ReadTimeout: 5000   #负载均衡超时时间，默认值5000
+  ConnectTimeout: 3000 #ribbon请求连接的超时时间，默认值2000
+  MaxAutoRetries: 1     #对当前实例的重试次数，默认0
   MaxAutoRetriesNextServer: 1 #对切换实例的重试次数，默认1
 
 # 配置超时熔断，在消费者中需要配置超时熔断机制
@@ -71,8 +71,8 @@ hystrix:
     default:  #default全局有效，service id指定应用有效
       execution:
         timeout:
-          #如果enabled设置为false，则请求超时交给ribbon控制,为true,则超时作为熔断根据
-          enabled: true
+        #如果enabled设置为false，则请求超时交给ribbon控制,为true,则超时作为熔断根据
+        enabled: true
         isolation:
           thread:
-            timeoutInMilliseconds: 5000 #断路器超时时间，默认1000ms
+            timeoutInMilliseconds: 9000 #断路器超时时间，默认1000ms
