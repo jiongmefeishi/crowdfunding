@@ -4,6 +4,7 @@ import com.zqt.crowd.api.MysqlRemoteApi;
 import com.zqt.crowd.constant.CommonConstant;
 import com.zqt.crowd.entity.vo.portal.PortalTypeVO;
 import com.zqt.crowd.util.ResultEntity;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +16,7 @@ import java.util.List;
  * @author: zqtao
  * @description: 前端首页访问控制层
  */
+@Slf4j
 @Controller
 public class PortalController {
 
@@ -28,6 +30,12 @@ public class PortalController {
      */
     @RequestMapping("/")
     public String showPortalPage(Model model) {
+
+        log.info(
+                "执行方法: {} ，方法描述: {} \n",
+                "PortalController : showPortalPage",
+                "浏览器访问 域名 如： www.test.com 进入门户首页"
+        );
 
         // 1、调用 mysqlRemoteApi 提供的方法查询首页要显示的数据
         ResultEntity<List<PortalTypeVO>> resultEntity =

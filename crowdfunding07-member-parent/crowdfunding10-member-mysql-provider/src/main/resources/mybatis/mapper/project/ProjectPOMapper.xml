@@ -33,7 +33,7 @@
                 select="com.zqt.crowd.mapper.project.ProjectPOMapper.selectPortalProjectVOList"/>
     </resultMap>
 
-    <!-- 3、查询项目展示的具体信息 PortalProjectVO -->
+    <!-- 3、根据项目id查询项目展示的具体信息 PortalProjectVO -->
     <select id="selectPortalProjectVOList" resultType="com.zqt.crowd.entity.vo.portal.PortalProjectVO">
         select
             a.id as projectId,
