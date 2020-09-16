@@ -29,7 +29,7 @@ public class ProjectProviderController {
      *
      * @param projectId 项目id
      */
-    @RequestMapping("/get/project/detail/remote/{projectId}")
+    @GetMapping("/get/project/detail/remote/{projectId}")
     public ResultEntity<DetailProjectVO> getDetailProjectVORemote(@PathVariable("projectId") Integer projectId) {
 
         try {

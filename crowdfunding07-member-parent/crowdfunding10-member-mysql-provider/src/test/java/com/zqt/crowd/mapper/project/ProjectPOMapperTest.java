@@ -22,7 +22,7 @@ class ProjectPOMapperTest {
 
     @Test
     void testSelectDetailProjectVO() {
-        String projectId = "17";
+        Integer projectId = 17;
 
         DetailProjectVO detailProjectVO = projectPOMapper.selectDetailProjectVO(projectId);
 

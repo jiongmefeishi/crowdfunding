@@ -7,6 +7,7 @@ import com.zqt.crowd.config.CloudStorageProperties;
 import com.zqt.crowd.constant.CommonConstant;
 import com.zqt.crowd.entity.vo.member.MemberConfirmInfoVO;
 import com.zqt.crowd.entity.vo.member.MemberLoginVO;
+import com.zqt.crowd.entity.vo.portal.DetailProjectVO;
 import com.zqt.crowd.entity.vo.project.OrderReturnInfoVO;
 import com.zqt.crowd.entity.vo.project.ProjectVO;
 import com.zqt.crowd.util.ResultEntity;
@@ -14,6 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -50,6 +52,20 @@ public class ProjectConsumerController {
      */
     @Autowired
     private CloudStorageProperties CloudStorageProperties;
+
+    @GetMapping("get/project/detail/{projectId}")
+    public String getProjectDetail(@PathVariable("projectId") Integer projectId, Model model) {
+
+        ResultEntity<DetailProjectVO> resultEntity = mysqlRemoteApi.getDetailProjectVORemote(projectId);
+
+        if(ResultEntity.RESULT_SUCCESS.equals(resultEntity.getResult())) {
+            DetailProjectVO detailProjectVO = resultEntity.getData();
+
+            model.addAttribute(CommonConstant.ATTR_NAME_DETAIL_PROJECT, detailProjectVO);
+        }
+
+        return "project-detail-show";
+    }
 
     /**
      * 保存用户基本信息，上传头像和项目详情图片

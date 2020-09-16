@@ -103,4 +103,5 @@ public class CommonConstant {
     public static final String ATTR_NAME_TEMPLE_PROJECT = "projectVO";
     public static final String MESSAGE_TEMPLE_PROJECT_MISSING = "临时存储的ProjectVO对象丢失！";
     public static final String ATTR_NAME_PORTAL_DATA = "portal_data";
+    public static final String ATTR_NAME_DETAIL_PROJECT = "detailProjectVO";
 }

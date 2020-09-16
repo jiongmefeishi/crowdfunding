@@ -1,6 +1,7 @@
 package com.zqt.crowd.api;
 
 import com.zqt.crowd.entity.po.member.MemberPO;
+import com.zqt.crowd.entity.vo.portal.DetailProjectVO;
 import com.zqt.crowd.entity.vo.portal.PortalTypeVO;
 import com.zqt.crowd.entity.vo.project.ProjectVO;
 import com.zqt.crowd.util.ResultEntity;
@@ -53,4 +54,12 @@ public interface MysqlRemoteApi {
      */
     @RequestMapping("project/save/project/vo/remote")
     ResultEntity<String> saveProjectVORemote(@RequestBody ProjectVO projectVO, @RequestParam("memberId") Integer memberId);
+
+    /**
+     * 根据项目id查询项目详情
+     *
+     * @param projectId 项目id
+     */
+    @GetMapping("project/get/project/detail/remote/{projectId}")
+    public ResultEntity<DetailProjectVO> getDetailProjectVORemote(@PathVariable("projectId") Integer projectId);
 }
