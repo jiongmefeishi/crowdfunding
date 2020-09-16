@@ -1,5 +1,6 @@
 package com.zqt.crowd.service.project;
 
+import com.zqt.crowd.entity.vo.portal.DetailProjectVO;
 import com.zqt.crowd.entity.vo.portal.PortalTypeVO;
 import com.zqt.crowd.entity.vo.project.ProjectVO;
 
@@ -25,4 +26,9 @@ public interface ProjectService {
      */
     List<PortalTypeVO> getPortalTypeVO();
 
+    /**
+     * 根据项目id查询项目详情
+     * @param projectId 项目id
+     */
+    DetailProjectVO getDetailProjectVO(Integer projectId);
 }

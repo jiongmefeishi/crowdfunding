@@ -1,5 +1,6 @@
 package com.zqt.crowd.controller.project;
 
+import com.zqt.crowd.entity.vo.portal.DetailProjectVO;
 import com.zqt.crowd.entity.vo.portal.PortalTypeVO;
 import com.zqt.crowd.entity.vo.project.ProjectVO;
 import com.zqt.crowd.service.project.ProjectService;
@@ -23,6 +24,31 @@ public class ProjectProviderController {
     @Autowired
     private ProjectService projectService;
 
+    /**
+     * 根据项目id查询项目详情
+     *
+     * @param projectId 项目id
+     */
+    @RequestMapping("/get/project/detail/remote/{projectId}")
+    public ResultEntity<DetailProjectVO> getDetailProjectVORemote(@PathVariable("projectId") Integer projectId) {
+
+        try {
+            DetailProjectVO detailProjectVO = projectService.getDetailProjectVO(projectId);
+
+            return ResultEntity.successWithData(detailProjectVO);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+            return ResultEntity.failed(e.getMessage());
+        }
+
+    }
+
+
+    /**
+     * 获取首页展示数据列表
+     */
     @GetMapping("get/portal/type/project/data/remote")
     public ResultEntity<List<PortalTypeVO>> getPortalTypeProjectDataRemote() {
 
@@ -40,8 +66,9 @@ public class ProjectProviderController {
 
     /**
      * 新增一条众筹项目信息
+     *
      * @param projectVO 众筹项目信息实体
-     * @param memberId 会员 id
+     * @param memberId  会员 id
      */
     @RequestMapping("save/project/vo/remote")
     public ResultEntity<String> saveProjectVORemote(

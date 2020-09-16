@@ -63,6 +63,6 @@ public interface ProjectPOMapper {
      *
      * @param projectId 项目id
      */
-    DetailProjectVO selectDetailProjectVO(String projectId);
+    DetailProjectVO selectDetailProjectVO(Integer projectId);
 
 }
