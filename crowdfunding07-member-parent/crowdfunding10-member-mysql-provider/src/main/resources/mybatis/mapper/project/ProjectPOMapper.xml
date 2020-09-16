@@ -2,6 +2,77 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.zqt.crowd.mapper.project.ProjectPOMapper">
 
+    <!-- 查询首页项目详情数据 S -->
+
+    <!-- 查询项目详情数据信息，封装进 DetailProjectVO 对象，映射map：loadProjectDetailResultMap -->
+    <select id="selectDetailProjectVO" resultMap="loadProjectDetailResultMap">
+		select
+			id,
+			project_name,
+			project_description ,
+			money,
+			status,
+			day,
+			deploy_date,
+			support_money,
+			supporter,
+			support_money / money * 100 as percentage,
+			follower,
+			header_picture_path
+		from
+			project
+		where id=#{projectId}
+	</select>
+
+    <!-- 项目详情查询映射结果 Map -->
+    <resultMap id="loadProjectDetailResultMap" type="com.zqt.crowd.entity.vo.portal.DetailProjectVO">
+        <id column="id" property="projectId"/>
+        <result column="project_name" property="projectName"/>
+        <result column="project_description" property="projectDescription"/>
+        <result column="money" property="money"/>
+        <result column="status" property="status"/>
+        <result column="day" property="day"/>
+        <result column="deploy_date" property="deployDate"/>
+        <result column="support_money" property="supportMoney"/>
+        <result column="follower" property="followerCount"/>
+        <result column="supporter" property="supporterCount"/>
+        <result column="header_picture_path" property="headerPicturePath"/>
+        <!-- 映射  List<String> detailPicturePathList 项目详情图片列表 -->
+        <!-- select 属性指定额外调用查询方法 selectDetailPicturePath 查询图片信息 -->
+        <collection
+                property="detailPicturePathList"
+                select="com.zqt.crowd.mapper.project.ProjectPOMapper.selectDetailPicturePath"
+                column="id"/>
+
+        <!-- 映射 List<DetailReturnVO> detailReturnVOList 项目回报信息列表-->
+        <!-- select 属性指定额外调用查询方法 selectDetailReturnVO 查询项目回报信息 -->
+        <collection
+                property="detailReturnVOList"
+                select="com.zqt.crowd.mapper.project.ProjectPOMapper.selectDetailReturnVO"
+                column="id"/>
+    </resultMap>
+
+    <!-- 查询图片信息 -->
+    <select id="selectDetailPicturePath" resultType="string">
+		select item_img_path from project_item_img where project_id=#{id}
+	</select>
+
+    <!-- 查询项目回报信息 -->
+    <select id="selectDetailReturnVO" resultType="com.zqt.crowd.entity.vo.portal.DetailReturnVO">
+		select
+			id as returnId,
+			support_money as supportMoney,
+			content,
+			signal_purchase as signalPurchase,
+			purchase,
+			freight,
+			return_date as returnDate
+		from order_return_info
+		where project_id=#{id}
+	</select>
+
+    <!-- 查询首页项目详情数据 E -->
+
     <!-- 查询首页项目展示数据 S -->
     <!--
         1、查询首页数据封装的信息，需要resultMap : loadPortalProjectListResultMap

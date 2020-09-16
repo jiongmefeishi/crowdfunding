@@ -1,5 +1,6 @@
 package com.zqt.crowd.mapper.project;
 
+import com.zqt.crowd.entity.vo.portal.DetailProjectVO;
 import com.zqt.crowd.entity.vo.portal.PortalProjectVO;
 import com.zqt.crowd.entity.vo.portal.PortalTypeVO;
 import lombok.extern.slf4j.Slf4j;
@@ -17,6 +18,13 @@ class ProjectPOMapperTest {
 
     @Autowired
     private ProjectPOMapper projectPOMapper;
+
+    @Test
+    void testSelectDetailProjectVO() {
+        String projectId = "17";
+        DetailProjectVO detailProjectVO = projectPOMapper.selectDetailProjectVO(projectId);
+        log.info(detailProjectVO.toString());
+    }
 
 
     @Test

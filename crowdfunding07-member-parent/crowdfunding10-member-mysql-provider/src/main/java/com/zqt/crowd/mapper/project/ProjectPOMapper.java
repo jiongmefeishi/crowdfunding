@@ -2,6 +2,7 @@ package com.zqt.crowd.mapper.project;
 
 import com.zqt.crowd.entity.po.project.ProjectPO;
 import com.zqt.crowd.entity.po.project.ProjectPOExample;
+import com.zqt.crowd.entity.vo.portal.DetailProjectVO;
 import com.zqt.crowd.entity.vo.portal.PortalTypeVO;
 import org.apache.ibatis.annotations.Param;
 
@@ -52,7 +53,16 @@ public interface ProjectPOMapper {
 
     /**
      * 查询首页项目展示数据列表
+     *
      * @return 首页项目展示数据列表
      */
     List<PortalTypeVO> selectPortalTypeVOList();
+
+    /**
+     * 首页查询项目详情数据信息，封装进 DetailProjectVO 对象
+     *
+     * @param projectId 项目id
+     */
+    DetailProjectVO selectDetailProjectVO(String projectId);
+
 }
