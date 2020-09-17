@@ -114,7 +114,7 @@
             support_money / money * 100 as percentage,
             supporter as supporter,
             header_picture_path as headerPicturePath
-            from project a left join inner_project_type b on a.id=b.project_id
+            from project a left join project_type_inner b on a.id=b.project_id
         where b.type_id=#{id}
         order by
                 a.id desc
@@ -339,14 +339,14 @@
     </insert>
     <!--保存项目、分类的关联关系信息-->
     <insert id="insertInnerTypeAndProject">
-        insert into inner_project_type (project_id, type_id) values
+        insert into project_type_inner (project_id, type_id) values
         <foreach collection="typeIdList" item="item" separator=",">
             (#{projectId}, #{item})
         </foreach>
     </insert>
     <!--保存项目、标签的关联关系信息-->
     <insert id="insertInnerTagAndProject">
-        insert into inner_project_tag (project_id, tag_id) values
+        insert into project_tag_inner (project_id, tag_id) values
         <foreach collection="tagIdList" item="item" separator=",">
             (#{projectId}, #{item})
         </foreach>
