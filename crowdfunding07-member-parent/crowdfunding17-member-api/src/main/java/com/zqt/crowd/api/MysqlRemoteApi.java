@@ -1,6 +1,7 @@
 package com.zqt.crowd.api;
 
 import com.zqt.crowd.entity.po.member.MemberPO;
+import com.zqt.crowd.entity.vo.order.OrderAddressVO;
 import com.zqt.crowd.entity.vo.order.OrderProjectVO;
 import com.zqt.crowd.entity.vo.portal.DetailProjectVO;
 import com.zqt.crowd.entity.vo.portal.PortalTypeVO;
@@ -73,4 +74,19 @@ public interface MysqlRemoteApi {
     @RequestMapping("order/get/order/project/vo/remote")
     ResultEntity<OrderProjectVO> getOrderProjectVORemote(@RequestParam("projectId") Integer projectId, @RequestParam("returnId") Integer returnId);
 
+    /**
+     * 查询收货地址
+     *
+     * @param memberId 会员id
+     */
+    @RequestMapping("order/get/address/vo/remote")
+    ResultEntity<List<OrderAddressVO>> getOrderAddressVORemote(@RequestParam("memberId") Integer memberId);
+
+    /**
+     * 保存收货地址
+     *
+     * @param orderAddressVO 收货地址信息
+     */
+    @RequestMapping("order/save/address/remote")
+    ResultEntity<String> saveOrderAddressRemote(@RequestBody OrderAddressVO orderAddressVO);
 }
