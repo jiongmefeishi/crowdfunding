@@ -1,7 +1,7 @@
-package com.zqt.crowd.mapper;
+package com.zqt.crowd.mapper.order;
 
-import com.zqt.crowd.entity.OrderProjectPO;
-import com.zqt.crowd.entity.OrderProjectPOExample;
+import com.zqt.crowd.entity.po.order.OrderProjectPO;
+import com.zqt.crowd.entity.po.order.OrderProjectPOExample;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

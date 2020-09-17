@@ -1,4 +1,4 @@
-package com.zqt.crowd.entity;
+package com.zqt.crowd.entity.po.order;
 
 public class OrderPO {
     private Integer id;
