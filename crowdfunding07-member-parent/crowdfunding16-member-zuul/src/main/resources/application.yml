@@ -37,6 +37,11 @@ zuul:
   # 设置 zuul 向其他微服务重定向时，保持原本头信息（请求头，响应头）
   sensitive-headers: '*'
   routes:
+    # 自定义订单系统网关
+    crowd-order:
+      serviceId: crowdfunding-member-order-consumer
+      # od 为order简写 做为访问前缀
+      path: /od/**
     # 自定义会员系统网关
     crowd-portal:
       serviceId: crowdfunding-member-authentication-consumer

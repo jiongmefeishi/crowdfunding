@@ -208,7 +208,7 @@
                                         <p th:if="${return.freight==0}">配送费用：包邮</p>
                                         <p th:if="${return.freight>0}">配送费用：[[${return.freight}]]</p>
                                         <p>预计发放时间：项目筹款成功后的[[${return.returnDate}]]天内</p>
-                                        <a th:href="'http://www.fuck.com/order/confirm/return/info/'
+                                        <a th:href="'http://www.fuck.com/od/order/confirm/return/info/'
                                             +${detailProjectVO.projectId}+'/'+${return.returnId}"
                                            class="btn btn-warning btn-lg">支持</a>
                                         <br>

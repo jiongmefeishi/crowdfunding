@@ -2,6 +2,7 @@ package com.zqt.crowd.mapper.order;
 
 import com.zqt.crowd.entity.po.order.OrderProjectPO;
 import com.zqt.crowd.entity.po.order.OrderProjectPOExample;
+import com.zqt.crowd.entity.vo.order.OrderProjectVO;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -28,4 +29,6 @@ public interface OrderProjectPOMapper {
     int updateByPrimaryKeySelective(OrderProjectPO record);
 
     int updateByPrimaryKey(OrderProjectPO record);
+
+    OrderProjectVO selectOrderProjectVO(Integer returnId);
 }
