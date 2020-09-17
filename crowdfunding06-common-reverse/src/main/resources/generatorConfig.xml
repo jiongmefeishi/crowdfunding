@@ -15,9 +15,9 @@
         <!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
         <jdbcConnection
                 driverClass="com.mysql.jdbc.Driver"
-                connectionURL="jdbc:mysql://47.107.40.162:3306/db_crowdfunding"
+                connectionURL="jdbc:mysql://47.107.140.62:3306/db_crowdfunding"
                 userId="root"
-                password="Zao!3...">
+                password="Zqtao!0203...">
         </jdbcConnection>
 
         <!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL
@@ -88,7 +88,17 @@
         <!--<table tableName="order_return_info" domainObjectName="OrderReturnInfoPO"/>-->
 
         <!-- 逆向工程：MemberConfirmInfoPO-->
-        <table tableName="member_confirm_info" domainObjectName="MemberConfirmInfoPO"/>
+        <!--<table tableName="member_confirm_info" domainObjectName="MemberConfirmInfoPO"/>-->
+
+        <!-- 逆向工程：OrderPO-->
+        <!--<table tableName="order" domainObjectName="OrderPO"/>-->
+
+        <!-- 逆向工程：OrderAddressPO-->
+        <!--<table tableName="order_address" domainObjectName="OrderAddressPO"/>-->
+
+        <!-- 逆向工程：OrderProjectPO-->
+        <table tableName="order_project" domainObjectName="OrderProjectPO"/>
+
 
 
     </context>
