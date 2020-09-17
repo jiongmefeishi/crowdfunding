@@ -1,83 +1,55 @@
 package com.zqt.crowd.entity.po.order;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+/**
+ * @author: zqtao
+ * @description: 订单信息封装
+ */
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class OrderPO {
+
+    /**
+     * 主键
+     */
     private Integer id;
 
+    /**
+     * 订单号
+     */
     private String orderNum;
 
+    /**
+     * 支付宝流水单号
+     */
     private String payOrderNum;
 
+    /**
+     * 订单金额
+     */
     private Double orderAmount;
 
+    /**
+     * 是否开发票（0 不开，1 开）
+     */
     private Integer invoice;
 
+    /**
+     * 发票抬头
+     */
     private String invoiceTitle;
 
+    /**
+     * 订单备注
+     */
     private String orderRemark;
 
+    /**
+     * 订单收货地址 id
+     */
     private String addressId;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getOrderNum() {
-        return orderNum;
-    }
-
-    public void setOrderNum(String orderNum) {
-        this.orderNum = orderNum == null ? null : orderNum.trim();
-    }
-
-    public String getPayOrderNum() {
-        return payOrderNum;
-    }
-
-    public void setPayOrderNum(String payOrderNum) {
-        this.payOrderNum = payOrderNum == null ? null : payOrderNum.trim();
-    }
-
-    public Double getOrderAmount() {
-        return orderAmount;
-    }
-
-    public void setOrderAmount(Double orderAmount) {
-        this.orderAmount = orderAmount;
-    }
-
-    public Integer getInvoice() {
-        return invoice;
-    }
-
-    public void setInvoice(Integer invoice) {
-        this.invoice = invoice;
-    }
-
-    public String getInvoiceTitle() {
-        return invoiceTitle;
-    }
-
-    public void setInvoiceTitle(String invoiceTitle) {
-        this.invoiceTitle = invoiceTitle == null ? null : invoiceTitle.trim();
-    }
-
-    public String getOrderRemark() {
-        return orderRemark;
-    }
-
-    public void setOrderRemark(String orderRemark) {
-        this.orderRemark = orderRemark == null ? null : orderRemark.trim();
-    }
-
-    public String getAddressId() {
-        return addressId;
-    }
-
-    public void setAddressId(String addressId) {
-        this.addressId = addressId == null ? null : addressId.trim();
-    }
 }
