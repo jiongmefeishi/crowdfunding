@@ -30,9 +30,9 @@ public class OrderConsumerController {
      * 获取订单确认信息
      *
      * @param returnCount 项目回报数量
-     * @param session 共享session
+     * @param session     共享session
      */
-    @RequestMapping("/confirm/order/{returnCount}")
+    @RequestMapping("confirm/order/{returnCount}")
     public String showConfirmOrderInfo(
             @PathVariable("returnCount") Integer returnCount,
             HttpSession session) {

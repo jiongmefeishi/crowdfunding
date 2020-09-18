@@ -53,12 +53,23 @@ public class ProjectConsumerController {
     @Autowired
     private CloudStorageProperties CloudStorageProperties;
 
+    /**
+     * 获取项目详情信息
+     *
+     * @param projectId 项目id
+     */
     @GetMapping("get/project/detail/{projectId}")
     public String getProjectDetail(@PathVariable("projectId") Integer projectId, Model model) {
 
+        log.info(
+                "执行方法: {} ，方法描述: {} \n",
+                "getProjectDetail",
+                "获取项目详情信息"
+        );
+
         ResultEntity<DetailProjectVO> resultEntity = mysqlRemoteApi.getDetailProjectVORemote(projectId);
 
-        if(ResultEntity.RESULT_SUCCESS.equals(resultEntity.getResult())) {
+        if (ResultEntity.RESULT_SUCCESS.equals(resultEntity.getResult())) {
             DetailProjectVO detailProjectVO = resultEntity.getData();
 
             model.addAttribute(CommonConstant.ATTR_NAME_DETAIL_PROJECT, detailProjectVO);
