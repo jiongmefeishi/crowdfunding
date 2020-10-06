@@ -44,7 +44,7 @@ public class CloudStorageUtil {
 
         // 构造一个带指定Zone对象的配置类, 注意这里的 Region.region2需要根据主机选择
         // 具体参见 https://developer.qiniu.com/kodo/manual/1671/region-endpoint
-        Configuration configuration = new Configuration(Region.region2());
+        Configuration configuration = new Configuration(Region.region0());
         // 其他参数参考类注释
         UploadManager uploadManager = new UploadManager(configuration);
 

@@ -15,7 +15,7 @@ spring:
     name: crowdfunding-member-project-consumer
   # 配置spring-session 共享，存储在redis
   redis:
-    host: 47.107.40.162
+    host: 47.101.140.62
     # 设置Redis 访问密码，阿里云必须设置访问密码，不然访问会失效
     password: foobaredzqt
   # 指定存储方式类型是 redis
@@ -42,13 +42,13 @@ eureka:
 oss:
   qiniu:
     # 访问域名(默认使用七牛云测试域名)
-    domain: qfwvdz814.hn-bkt.clouddn.com
+    domain: resource.zqtaotao.cn
     # 公钥
-    access-key: zHH75Qn6rwVjCZCi7J-bmIlDrnWW__6FSTrCWb2OP
+    access-key: zk9BxkaaayC7owcikDEkp3Qvf4DvOm2Wo_fPKnxoL
     # 私钥
-    secret-key: zE2yllMLaRW5Y3N6nKh8ZKtQSGst42kll11h2ZueZ
+    secret-key: zyftU-LRv81IW4Zc_b_MdFd8WO4GyI-BvQ75maEzk
     #存储空间名称
-    bucket-name: zqt-crowdfunding
+    bucket-name: zqtao23_qiniu_bucket
 
 # 全局配置项目重定向到 zuul 网关层
 # 不然进行在不同微服务进行重定向时会导致异常（前后端分离项目请忽略）
