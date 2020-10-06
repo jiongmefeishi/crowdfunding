@@ -89,4 +89,5 @@ public interface MysqlRemoteApi {
      */
     @RequestMapping("order/save/address/remote")
     ResultEntity<String> saveOrderAddressRemote(@RequestBody OrderAddressVO orderAddressVO);
+
 }

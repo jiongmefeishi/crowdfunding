@@ -27,6 +27,35 @@ public class OrderConsumerController {
     private MysqlRemoteApi mysqlRemoteApi;
 
     /**
+     * 保存收货地址
+     *
+     * @param orderAddressVO 收货地址信息
+     * @param session        session
+     */
+    @RequestMapping("save/address")
+    public String saveAddress(OrderAddressVO orderAddressVO, HttpSession session) {
+
+        log.info(
+                "执行方法: {} ，方法描述: {} \n",
+                "OrderConsumerController saveAddress",
+                "保存收货地址"
+        );
+
+        // 1.执行地址信息的保存
+        ResultEntity<String> resultEntity = mysqlRemoteApi.saveOrderAddressRemote(orderAddressVO);
+
+        log.debug("地址保存处理结果：" + resultEntity.getResult());
+
+        // 2.从Session域获取orderProjectVO对象
+        OrderProjectVO orderProjectVO = (OrderProjectVO) session.getAttribute(CommonConstant.ATTR_NAME_ORDER_PROJECT);
+
+        // 3.从orderProjectVO对象中获取returnCount
+        Integer returnCount = orderProjectVO.getReturnCount();
+        // 4.重定向到指定地址，重新进入确认订单页面
+        return "redirect:http://www.fuck.com/od/order/confirm/order/" + returnCount;
+    }
+
+    /**
      * 获取订单确认信息
      *
      * @param returnCount 项目回报数量
@@ -51,7 +80,7 @@ public class OrderConsumerController {
         session.setAttribute("orderProjectVO", orderProjectVO);
 
         // 2.获取当前已登录用户的id
-        MemberLoginVO memberLoginVO = (MemberLoginVO) session.getAttribute(CommonConstant.ATTR_NAME_LOGIN_ADMIN);
+        MemberLoginVO memberLoginVO = (MemberLoginVO) session.getAttribute(CommonConstant.MESSAGE_LOGIN_USER_MEMBER);
 
         Integer memberId = memberLoginVO.getId();
 

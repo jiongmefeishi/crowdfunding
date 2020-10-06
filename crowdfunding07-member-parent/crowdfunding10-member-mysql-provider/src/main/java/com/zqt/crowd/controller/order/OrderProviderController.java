@@ -25,11 +25,11 @@ public class OrderProviderController {
      * @param orderAddressVO 收货地址信息
      */
     @PostMapping("save/address/remote")
-    public ResultEntity<String> saveAddressRemote(@RequestBody OrderAddressVO orderAddressVO) {
+    public ResultEntity<String> saveOrderAddressRemote(@RequestBody OrderAddressVO orderAddressVO) {
 
         log.info(
                 "执行方法: {} ，方法描述: {} \n",
-                "api : saveAddressRemote",
+                "api : saveOrderAddressRemote",
                 "保存收货地址"
         );
 
@@ -52,11 +52,11 @@ public class OrderProviderController {
      * @param memberId 会员id
      */
     @GetMapping("get/address/vo/remote")
-    ResultEntity<List<OrderAddressVO>> getAddressVORemote(@RequestParam("memberId") Integer memberId) {
+    ResultEntity<List<OrderAddressVO>> getOrderAddressVORemote(@RequestParam("memberId") Integer memberId) {
 
         log.info(
                 "执行方法: {} ，方法描述: {} \n",
-                "api : getAddressVORemote",
+                "api : getOrderAddressVORemote",
                 "查询收货地址"
         );
 
