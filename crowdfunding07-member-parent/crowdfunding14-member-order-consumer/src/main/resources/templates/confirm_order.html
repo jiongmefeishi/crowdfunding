@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <base th:href="@{/}" />
+    <base th:href="@{/}"/>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/theme.css">
@@ -56,7 +56,7 @@
             border: 1px #f60 solid;
         }
 
-        #typeList  :not (:first-child ) {
+        #typeList :not (:first-child ) {
             margin-top: 20px;
         }
 
@@ -98,7 +98,8 @@
                                 <li class="divider"></li>
                                 <li><a href="http://www.fuck.com/auth/member/logout"><i
                                         class="glyphicon glyphicon-off"></i> 退出系统</a></li>
-                            </ul></li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -122,7 +123,8 @@
                                              role="progressbar" aria-valuenow="60" aria-valuemin="0"
                                              aria-valuemax="100" style="width: 100%; height: 50px;">
                                             <div style="font-size: 16px; margin-top: 15px;">1.
-                                                确认回报内容</div>
+                                                确认回报内容
+                                            </div>
                                         </div>
                                     </div>
                                     <div
@@ -136,7 +138,8 @@
                                              role="progressbar" aria-valuenow="60" aria-valuemin="0"
                                              aria-valuemax="100" style="width: 100%; height: 50px;">
                                             <div style="font-size: 16px; margin-top: 15px;">2.
-                                                确认订单</div>
+                                                确认订单
+                                            </div>
                                         </div>
                                     </div>
                                     <div
@@ -175,8 +178,10 @@
                                     <div class="alert alert-warning alert-dismissable"
                                          style="color: red;">
                                         <button type="button" class="close" data-dismiss="alert"
-                                                aria-hidden="true">×</button>
-                                        <i class="glyphicon glyphicon-info-sign"></i> <strong>请在下单后15分钟内付款，否则您的订单会被自动关闭。</strong>
+                                                aria-hidden="true">×
+                                        </button>
+                                        <i class="glyphicon glyphicon-info-sign"></i>
+                                        <strong>请在下单后15分钟内付款，否则您的订单会被自动关闭。</strong>
                                     </div>
                                 </div>
                             </div>
@@ -211,8 +216,10 @@
                                          style="border-style: dashed; background-color: #eceeef">
                                         <div class="panel-body">
                                             <div class="col-md-12 column">
-                                                <form action="od/order/save/address" method="post" class="form-horizontal">
-                                                    <input type="hidden" name="memberId" th:value="${session.loginMember.id}" />
+                                                <form action="od/order/save/address" method="post"
+                                                      class="form-horizontal">
+                                                    <input type="hidden" name="memberId"
+                                                           th:value="${session.loginMember.id}"/>
                                                     <div class="form-group">
                                                         <label class="col-sm-2 control-label">收货人（*）</label>
                                                         <div class="col-sm-10">
@@ -224,20 +231,23 @@
                                                         <label class="col-sm-2 control-label">手机（*）</label>
                                                         <div class="col-sm-10">
                                                             <input class="form-control" name="phoneNum" type="text"
-                                                                   style="width: 200px;" placeholder="请填写11位手机号码"></input>
+                                                                   style="width: 200px;"
+                                                                   placeholder="请填写11位手机号码"></input>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-sm-2 control-label">地址（*）</label>
                                                         <div class="col-sm-10">
                                                             <input class="form-control" name="address" type="text"
-                                                                   style="width: 400px;" placeholder="请填写11位手机号码"></input>
+                                                                   style="width: 400px;"
+                                                                   placeholder="请填写11位手机号码"></input>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="inputEmail3" class="col-sm-2 control-label"></label>
                                                         <div class="col-sm-10">
-                                                            <button type="submit" class="btn btn-primary">确认配送信息</button>
+                                                            <button type="submit" class="btn btn-primary">确认配送信息
+                                                            </button>
                                                         </div>
                                                     </div>
                                                 </form>
@@ -314,11 +324,17 @@
                                         <tr>
                                             <td th:text="${session.orderProjectVO.projectName}">活性富氢净水直饮机</td>
                                             <td th:text="${session.orderProjectVO.launchName}">深圳市博实永道电子商务有限公司</td>
-                                            <td th:text="${session.orderProjectVO.returnContent}">每满1750人抽取一台活性富氢净水直饮机，至少抽取一台。抽取名额（小数点后一位四舍五入）=参与人数÷1750人，由苏宁官方抽取。</td>
+                                            <td th:text="${session.orderProjectVO.returnContent}">
+                                                每满1750人抽取一台活性富氢净水直饮机，至少抽取一台。抽取名额（小数点后一位四舍五入）=参与人数÷1750人，由苏宁官方抽取。
+                                            </td>
                                             <td th:text="${session.orderProjectVO.returnCount}">55</td>
-                                            <td style="color: #F60" th:text="${session.orderProjectVO.supportPrice}">￥ 1.00</td>
+                                            <td style="color: #F60" th:text="${session.orderProjectVO.supportPrice}">￥
+                                                1.00
+                                            </td>
                                             <td th:if="${session.orderProjectVO.freight == 0}">免运费</td>
-                                            <td th:if="${session.orderProjectVO.freight != 0}" th:text="${session.orderProjectVO.freight}">免运费</td>
+                                            <td th:if="${session.orderProjectVO.freight != 0}"
+                                                th:text="${session.orderProjectVO.freight}">免运费
+                                            </td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -344,9 +360,11 @@
                                          style="text-align: right; border: 2px solid #ffc287;">
                                         <ul style="list-style: none;">
                                             <li style="margin-top: 10px;">支持金额：<span
-                                                    style="color: red;">￥[[${session.orderProjectVO.returnCount*session.orderProjectVO.supportPrice}]]</span></li>
+                                                    style="color: red;">￥[[${session.orderProjectVO.returnCount*session.orderProjectVO.supportPrice}]]</span>
+                                            </li>
                                             <li style="margin-top: 10px;">配送费用：<span
-                                                    style="color: red;">￥[[${session.orderProjectVO.freight}]]</span></li>
+                                                    style="color: red;">￥[[${session.orderProjectVO.freight}]]</span>
+                                            </li>
                                             <li style="margin-top: 10px; margin-bottom: 10px;"><h2>
                                                 支付总金额：<span style="color: red;">￥[[${session.orderProjectVO.returnCount*session.orderProjectVO.supportPrice+session.orderProjectVO.freight}]]</span>
                                             </h2></li>
@@ -357,7 +375,8 @@
                                             </strong>
                                             </li>
                                             <li style="margin-top: 10px;">
-                                                请在下单后15分钟内付款，否则您的订单会被自动关闭。</li>
+                                                请在下单后15分钟内付款，否则您的订单会被自动关闭。
+                                            </li>
                                             <li style="margin-top: 10px;">
                                                 <button id="payButton" disabled="disabled" type="button"
                                                         class="btn btn-warning btn-lg"
@@ -434,15 +453,15 @@
 <script src="script/docs.min.js"></script>
 <script src="script/back-to-top.js"></script>
 <script>
-    $("#knowRoleCheckBox").click(function(){
+    $("#knowRoleCheckBox").click(function () {
         var currentStatus = this.checked;
-        if(currentStatus) {
+        if (currentStatus) {
             $("#payButton").prop("disabled", "");
-        }else{
-            $("#payButton").prop("disabled","disabled");
+        } else {
+            $("#payButton").prop("disabled", "disabled");
         }
     });
-    $('#myTab a').click(function(e) {
+    $('#myTab a').click(function (e) {
         e.preventDefault()
         $(this).tab('show')
     })
