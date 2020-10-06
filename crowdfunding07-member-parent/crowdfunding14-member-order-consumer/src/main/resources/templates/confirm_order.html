@@ -191,9 +191,9 @@
                                     </blockquote>
                                 </div>
                                 <div class="col-md-12 column" style="padding: 0 120px;">
-                                    <div th:if="${#strings.isEmpty(session.addressVOList)}">尚未创建收货地址</div>
-                                    <div th:if="${not #strings.isEmpty(session.addressVOList)}">
-                                        <div th:each="address : ${session.addressVOList}" class="radio">
+                                    <div th:if="${#strings.isEmpty(session.orderAddressVOList)}">尚未创建收货地址</div>
+                                    <div th:if="${not #strings.isEmpty(session.orderAddressVOList)}">
+                                        <div th:each="address : ${session.orderAddressVOList}" class="radio">
                                             <label> <input type="radio" name="addressId" th:value="${address.id}"
                                                            id="optionsRadios1"/> [[${address.receiveName}]]
                                                 [[${address.phoneNum}]] [[${address.address}]]
