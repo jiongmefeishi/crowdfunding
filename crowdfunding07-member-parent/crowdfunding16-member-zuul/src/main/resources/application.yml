@@ -15,7 +15,7 @@ spring:
     name: crowdfunding-member-zuul
   # 配置spring-session 共享，存储在redis
   redis:
-    host: 47.107.40.162
+    host: 47.101.140.62
     # 设置Redis 访问密码，阿里云必须设置访问密码，不然访问会失效
     password: foobaredzqt
   # 指定存储方式类型是 redis
@@ -37,6 +37,10 @@ zuul:
   # 设置 zuul 向其他微服务重定向时，保持原本头信息（请求头，响应头）
   sensitive-headers: '*'
   routes:
+    # 自定义支付系统网关
+    crowd-pay:
+      serviceId: crowdfunding-member-pay-consumer
+      path: /pay/**
     # 自定义订单系统网关
     crowd-order:
       serviceId: crowdfunding-member-order-consumer

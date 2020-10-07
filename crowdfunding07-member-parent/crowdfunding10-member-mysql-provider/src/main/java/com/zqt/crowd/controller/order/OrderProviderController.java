@@ -2,6 +2,7 @@ package com.zqt.crowd.controller.order;
 
 import com.zqt.crowd.entity.vo.order.OrderAddressVO;
 import com.zqt.crowd.entity.vo.order.OrderProjectVO;
+import com.zqt.crowd.entity.vo.order.OrderVO;
 import com.zqt.crowd.service.order.OrderService;
 import com.zqt.crowd.util.ResultEntity;
 import lombok.extern.slf4j.Slf4j;
@@ -17,6 +18,27 @@ public class OrderProviderController {
 
     @Autowired
     private OrderService orderService;
+
+    /**
+     * 保存订单信息
+     *
+     * @param orderVO 订单信息
+     */
+    @RequestMapping("save/order/vo/remote")
+    ResultEntity<String> saveOrderVORemote(@RequestBody OrderVO orderVO) {
+
+        try {
+            orderService.saveOrderVO(orderVO);
+
+            return ResultEntity.successWithoutData();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+            return ResultEntity.failed(e.getMessage());
+        }
+
+    }
 
 
     /**

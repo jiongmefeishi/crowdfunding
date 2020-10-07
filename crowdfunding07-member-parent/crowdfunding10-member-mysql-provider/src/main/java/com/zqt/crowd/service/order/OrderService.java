@@ -2,6 +2,7 @@ package com.zqt.crowd.service.order;
 
 import com.zqt.crowd.entity.vo.order.OrderAddressVO;
 import com.zqt.crowd.entity.vo.order.OrderProjectVO;
+import com.zqt.crowd.entity.vo.order.OrderVO;
 
 import java.util.List;
 
@@ -34,4 +35,10 @@ public interface OrderService {
      * @param addressVO 收货地址信息
      */
     void saveAddress(OrderAddressVO addressVO);
+
+    /**
+     * 保存订单信息
+     * @param orderVO 订单信息
+     */
+    void saveOrderVO(OrderVO orderVO);
 }
