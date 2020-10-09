@@ -3,6 +3,7 @@ package com.zqt.crowd;
 import com.zqt.crowd.entity.admin.Admin;
 import com.zqt.crowd.mapper.admin.AdminMapper;
 import com.zqt.crowd.service.api.admin.AdminService;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ import java.sql.SQLException;
  * @Date: 2020/5/16 21:02
  * @version: 1.0
  */
+@Ignore
 // spring 整合Junit注解
 @RunWith(SpringJUnit4ClassRunner.class)
 // spring和mybatis配置文件

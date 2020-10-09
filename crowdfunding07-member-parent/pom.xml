@@ -10,6 +10,13 @@
     <name>crowdfunding07-member-parent</name>
     <description>会员系统父工程</description>
 
+    <!--子工程打包需要继承 spring boot starter parent ,mvn 打包插件需要-->
+    <parent>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <groupId>org.springframework.boot</groupId>
+        <version>2.3.2.RELEASE</version>
+    </parent>
+
     <!--统一管理依赖版本-->
     <properties>
         <java.version>1.8</java.version>
