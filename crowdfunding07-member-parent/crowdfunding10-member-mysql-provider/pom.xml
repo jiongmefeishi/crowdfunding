@@ -5,8 +5,7 @@
     <parent>
         <artifactId>crowdfunding07-member-parent</artifactId>
         <groupId>com.zqt.crowd</groupId>
-        <version>1.0-SNAPSHOT</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <version>1.0-SNAPSHOT</version> <!-- lookup parent from repository -->
     </parent>
 
     <artifactId>crowdfunding10-member-mysql-provider</artifactId>
@@ -92,6 +91,7 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
+                    <skip>true</skip>
                     <source>7</source>
                     <target>7</target>
                 </configuration>
