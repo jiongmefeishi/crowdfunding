@@ -54,6 +54,12 @@
         <!-- 数据库表名字和我们的entity类对应的映射指定 -->
         <!-- 每次执行新数据库表的逆向工程都需要更改此项的 tableName 更改数据库表名，domainObjectName 更改生成的实体名称-->
 
+
+        <!--useActualColumnNames = true 表示使用表中原字段，不转驼峰-->
+     <!--   <table tableName="tb_pro_node_plan" domainObjectName="Project">
+            <property name="useActualColumnNames" value="true" />
+        </table>-->
+
         <!-- 逆向工程：Admin-->
         <!--<table tableName="t_admin" domainObjectName="Admin" />-->
 
