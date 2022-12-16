@@ -17,7 +17,7 @@
 
     <properties>
         <!-- 声明属性，对Spring的版本进行统一管理 -->
-        <zqtao.spring.version>4.3.20.RELEASE</zqtao.spring.version>
+        <zqtao.spring.version>5.2.20.RELEASE</zqtao.spring.version>
 
         <!-- 声明属性，对SpringSecurity的版本进行统一管理 -->
         <zqtao.spring.security.version>4.2.10.RELEASE</zqtao.spring.security.version>
